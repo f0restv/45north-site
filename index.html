@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45° North Collective - Collective Marketplace Opening Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #8f9f83;
+            --sage-dark: #6d7a63;
+            --sage-light: rgba(143, 159, 131, 0.9);
+            --dark: #161616;
+            --darker: #0d0d0d;
+            --light: #f7f7f7;
+            --white: #ffffff;
+            --gray: #a4a4a4;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: var(--white);
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.5rem 2rem;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #e0dcdd;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .nav.scrolled {
+            background: #e0dcdd;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        .logo { position: relative; }
+        .logo img { height: 200px; }
+        .nav-links { display: none; }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            display: flex;
+        }
+        .hero-bg-left, .hero-bg-right {
+            flex: 1;
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-bg-left {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://img1.wsimg.com/isteam/getty/1401699341/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1200,m');
+        }
+        .hero-bg-right {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://img1.wsimg.com/isteam/getty/1093686266/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1200,m');
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: var(--white);
+            max-width: 800px;
+            padding: 2rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        section { padding: 5rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        .service-card p { color: var(--gray); line-height: 1.7; }
+        .faq { background: var(--light); }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-intro { text-align: center; color: var(--gray); margin-bottom: 2rem; }
+        .faq-intro a { color: var(--sage); text-decoration: none; }
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .faq-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--dark);
+            cursor: pointer;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+        }
+        .faq-question:hover { background: var(--light); }
+        .faq-question svg { transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+        .faq-item.active .faq-question svg { transform: rotate(180deg); }
+        .faq-answer { color: var(--gray); padding: 0 1.5rem 1.25rem; display: none; line-height: 1.7; }
+        .faq-item.active .faq-answer { display: block; }
+        .social { text-align: center; padding: 3rem 2rem; }
+        .social h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--dark); margin-bottom: 1.5rem; }
+        .social-links { display: flex; justify-content: center; gap: 1rem; }
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: var(--sage);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .social-links a:hover { background: var(--sage-dark); transform: scale(1.1); }
+        .contact { background: var(--dark); color: var(--white); }
+        .contact .section-header h2 { color: var(--white); }
+        .contact-content { max-width: 500px; margin: 0 auto; }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-bottom: 2px solid var(--sage);
+            background: transparent;
+            color: var(--white);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray); }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--white); }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .checkbox-group { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .checkbox-group input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--sage); }
+        .checkbox-group label { color: var(--gray); font-size: 0.9rem; }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary { background: var(--sage); color: var(--white); }
+        .btn-primary:hover { background: var(--sage-dark); }
+        .footer { background: var(--darker); color: var(--white); padding: 2rem; text-align: center; }
+        .footer p { opacity: 0.7; font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero h2 { font-size: 1.25rem; }
+            section { padding: 3rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="logo">
+            <img src="45north-logo.png" alt="45° North Collective">
+        </div>
+    </nav>
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-bg-left"></div>
+            <div class="hero-bg-right"></div>
+        </div>
+        <div class="hero-content">
+            <h1>45° North Collective - Collective Marketplace Opening Soon</h1>
+            <h2>Welcome to 45° North Collective</h2>
+        </div>
+    </section>
+    <section id="services">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Marketing and Advertising</h3>
+                    <p>At 45° North Collective, we provide a wide range of marketing and advertising services designed to help you reach your target audience and boost brand awareness. Our skilled team leverages the latest techniques, including effective social media marketing strategies, to ensure the success of your online store campaign.</p>
+                </div>
+                <div class="service-card">
+                    <h3>E-Commerce Management</h3>
+                    <p>At 45° North Collective, we have years of experience in e-commerce management across multiple auction sites. Our marketing strategies go beyond just advertising for your online store; we also help move products through effective social media marketing.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Consultation</h3>
+                    <p>At 45° North Collective, we understand that a full marketing service might not fit into your budget right now. That's why we take pride in offering comprehensive consulting strategies for those seeking marketing assistance while managing their own online store and navigating social media marketing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <p class="faq-intro">Please reach us at <a href="mailto:admin@45northcollective.com">admin@45northcollective.com</a> if you cannot find an answer to your question.</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Why pick us?<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div>
+                    <div class="faq-answer">We have years of experience in the marketing field, working with many B2C businesses. We also have experience working with thrift, antique, and coin shops, moving products and highlighting pieces.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you build social media channels for us?<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div>
+                    <div class="faq-answer">Yes! We would build social media accounts from scratch for you as part our social services.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What do you mean by e-commerce management?<svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div>
+                    <div class="faq-answer">We will take items from your shop, and sell them online to a national audience not just through your social media but through other e-commerce platforms. We have years of experiences with many types of e-commerce websites.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="social">
+        <h2>Follow us on social for updates.</h2>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook"><svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg></a>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header"><h2>Contact Us</h2></div>
+            <div class="contact-content">
+                <p style="text-align: center; color: var(--gray); margin-bottom: 2rem;">Drop us a line!</p>
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group"><input type="text" id="name" name="name" placeholder="Name" required></div>
+                    <div class="form-group"><input type="email" id="email" name="email" placeholder="Email*" required></div>
+                    <div class="form-group"><textarea id="message" name="message" placeholder="Message"></textarea></div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="signup" name="signup">
+                        <label for="signup">Sign up for our email list for updates, promotions, and more.</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer class="footer"><p>Copyright © 2025 45° North Collective - All Rights Reserved.</p></footer>
+    <script>
+        window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50); });
+        document.querySelectorAll('.faq-question').forEach(q => { q.addEventListener('click', () => { q.parentElement.classList.toggle('active'); }); });
+        function handleSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const subject = encodeURIComponent(`Website Inquiry from ${form.name.value}`);
+            const body = encodeURIComponent(`Name: ${form.name.value}\nEmail: ${form.email.value}\n\nMessage:\n${form.message.value}`);
+            window.location.href = `mailto:admin@45northcollective.com?subject=${subject}&body=${body}`;
+        }
+    </script>
+</body>
+</html>
