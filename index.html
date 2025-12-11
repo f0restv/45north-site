@@ -45,7 +45,22 @@
         }
         .logo { position: relative; }
         .logo img { height: 200px; }
-        .nav-links { display: none; }
+        .nav-links {
+            position: absolute;
+            right: 2rem;
+            display: flex;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--sage-dark);
+        }
         .hero {
             min-height: 100vh;
             display: flex;
@@ -215,6 +230,9 @@
     <nav class="nav" id="nav">
         <div class="logo">
             <img src="45north-logo.png" alt="45° North Collective">
+        </div>
+        <div class="nav-links">
+            <a href="portfolio.html">Client Portal</a>
         </div>
     </nav>
     <section class="hero" id="home">
