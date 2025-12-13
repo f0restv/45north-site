@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>45° North Collective | We Sell Your Inventory</title>
-    <meta name="description" content="We sell your inventory online. Professional photos, listings on HiBid, eBay & Whatnot, and nationwide marketing. You get 90% — we handle the rest.">
+    <title>45° North Collective | Digital Marketing for Small Business</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
@@ -19,8 +18,9 @@
             --white: #ffffff;
             --gray: #a4a4a4;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+
         body {
             font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--dark);
@@ -31,47 +31,57 @@
         /* Navigation */
         .nav {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             padding: 0.5rem 2rem;
-            height: 120px;
+            height: 200px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #e0dcdd;
-            transition: all 0.3s;
+            background: var(--sage);
+            transition: background 0.3s, box-shadow 0.3s, height 0.3s;
         }
+
         .nav.scrolled {
-            height: 80px;
+            height: 100px;
+            background: var(--sage);
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
-        .logo img { 
-            height: 110px; 
+
+        .logo {
+            position: relative;
+        }
+
+        .logo img {
+            height: 180px;
             transition: height 0.3s;
         }
-        .nav.scrolled .logo img { height: 70px; }
+
+        .nav.scrolled .logo img {
+            height: 80px;
+        }
+
         .nav-links {
             position: absolute;
             right: 2rem;
             display: flex;
             gap: 2rem;
-            align-items: center;
+            list-style: none;
         }
+
         .nav-links a {
-            color: var(--dark);
+            color: var(--white);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: color 0.2s;
+            transition: opacity 0.2s;
         }
-        .nav-links a:hover { color: var(--sage-dark); }
-        .nav-cta {
-            background: var(--sage) !important;
-            color: var(--white) !important;
-            padding: 0.6rem 1.25rem;
-            border-radius: 6px;
+
+        .nav-links a:hover {
+            opacity: 0.8;
         }
-        .nav-cta:hover { background: var(--sage-dark) !important; }
 
         /* Hero */
         .hero {
@@ -80,827 +90,525 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 140px 2rem 4rem;
-            background: linear-gradient(135deg, var(--darker) 0%, #1a1a1a 100%);
             position: relative;
             overflow: hidden;
         }
-        .hero::before {
-            content: '';
+
+        .hero-bg {
             position: absolute;
-            top: -50%; right: -30%;
-            width: 100%; height: 150%;
-            background: radial-gradient(ellipse, rgba(143, 159, 131, 0.15) 0%, transparent 50%);
-            pointer-events: none;
+            inset: 0;
+            display: flex;
         }
+
+        .hero-bg-left, .hero-bg-right {
+            flex: 1;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-bg-left {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://img1.wsimg.com/isteam/getty/1401699341/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1200,m');
+        }
+
+        .hero-bg-right {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://img1.wsimg.com/isteam/getty/1093686266/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1200,m');
+        }
+
         .hero-content {
-            max-width: 900px;
             position: relative;
             z-index: 1;
+            color: var(--white);
+            max-width: 800px;
+            padding: 2rem;
         }
-        .campaign-badge {
-            display: inline-block;
-            background: rgba(143, 159, 131, 0.2);
-            border: 1px solid var(--sage);
-            color: var(--sage);
-            padding: 0.5rem 1.25rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1.5rem;
-        }
+
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 700;
-            color: var(--white);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             line-height: 1.1;
         }
-        .hero h1 span { color: var(--sage); }
-        .hero-sub {
-            font-size: 1.25rem;
-            color: var(--gray);
-            max-width: 650px;
-            margin: 0 auto 2.5rem;
-        }
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.2s;
-            display: inline-block;
-        }
-        .btn-primary {
-            background: var(--sage);
-            color: var(--white);
-        }
-        .btn-primary:hover { background: var(--sage-dark); }
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--gray);
-        }
-        .btn-secondary:hover {
-            border-color: var(--sage);
-            color: var(--sage);
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 2rem;
         }
 
-        /* Stats Bar */
-        .stats {
-            background: var(--darker);
-            padding: 3rem 2rem;
-            border-top: 1px solid #333;
-            border-bottom: 1px solid #333;
+        .hero-cta {
+            display: inline-block;
+            background: var(--sage);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.2s, transform 0.2s;
         }
-        .stats-grid {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            text-align: center;
-        }
-        .stat-item h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--sage);
-            margin-bottom: 0.5rem;
-        }
-        .stat-item p {
-            color: var(--gray);
-            font-size: 0.95rem;
+
+        .hero-cta:hover {
+            background: var(--sage-dark);
+            transform: translateY(-2px);
         }
 
         /* Sections */
-        section { padding: 5rem 2rem; }
-        .container { max-width: 1100px; margin: 0 auto; }
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .section-header {
             text-align: center;
             margin-bottom: 3rem;
         }
-        .section-label {
-            display: inline-block;
-            color: var(--sage);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.75rem;
-        }
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.25rem;
-            color: var(--sage-dark);
-            margin-bottom: 1rem;
-        }
-        .section-sub {
-            color: var(--gray);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
 
-        /* Steps Grid */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .step-card {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            border-top: 4px solid var(--sage);
-        }
-        .step-number {
-            width: 50px; height: 50px;
-            background: var(--sage);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 1rem;
-        }
-        .step-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            color: var(--sage-dark);
-            margin-bottom: 0.75rem;
-        }
-        .step-card p { color: var(--gray); }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-        .service-item {
-            background: var(--light);
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .service-icon {
-            width: 50px; height: 50px;
-            background: var(--sage);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-        }
-        .service-icon svg {
-            width: 24px; height: 24px;
-            stroke: var(--white);
-        }
-        .service-item span {
-            font-weight: 600;
-            color: var(--dark);
-            font-size: 0.9rem;
-        }
-
-        /* Pricing */
-        #pricing { background: var(--light); }
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .pricing-card {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border: 2px solid transparent;
-            transition: border-color 0.3s;
-        }
-        .pricing-card:hover { border-color: var(--sage); }
-        .pricing-card.featured {
-            border-color: var(--sage);
-            position: relative;
-        }
-        .pricing-badge {
-            position: absolute;
-            top: -12px; right: 24px;
-            background: var(--sage);
-            color: var(--white);
-            padding: 0.35rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        .pricing-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--sage-dark);
-            margin-bottom: 0.5rem;
-        }
-        .pricing-card .price {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-        .pricing-card .price span {
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--gray);
-        }
-        .pricing-card p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        .pricing-card ul {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        .pricing-card li {
-            padding: 0.5rem 0;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        .pricing-card li::before {
-            content: '✓';
-            color: var(--sage);
-            font-weight: 700;
-        }
-
-        /* Guarantee */
-        .guarantee {
-            background: var(--sage);
-            color: var(--white);
-            padding: 2.5rem;
-            border-radius: 16px;
-            text-align: center;
-        }
-        .guarantee h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-        }
-        .guarantee p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Results */
-        #results { background: var(--darker); color: var(--white); }
-        #results .section-title { color: var(--white); }
-        .results-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        .results-text h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--sage);
-            margin-bottom: 1rem;
-        }
-        .results-text p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-        .results-list {
-            list-style: none;
-        }
-        .results-list li {
-            padding: 0.75rem 0;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            border-bottom: 1px solid #333;
-        }
-        .results-list li::before {
-            content: '→';
-            color: var(--sage);
-        }
-        .results-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-        .result-stat {
-            background: rgba(143, 159, 131, 0.1);
-            border: 1px solid var(--sage);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-        }
-        .result-stat h4 {
+        .section-header h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            color: var(--sage);
-            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
         }
-        .result-stat p { color: var(--gray); }
 
-        /* About/Team */
-        .team-grid {
+        /* Services */
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* FAQ */
+        .faq {
+            background: var(--light);
+        }
+
+        .faq-list {
             max-width: 800px;
             margin: 0 auto;
         }
-        .team-card {
-            background: var(--light);
-            border-radius: 16px;
-            padding: 2rem;
+
+        .faq-intro {
             text-align: center;
+            color: var(--gray);
+            margin-bottom: 2rem;
         }
-        .team-avatar {
-            width: 100px; height: 100px;
+
+        .faq-intro a {
+            color: var(--sage);
+            text-decoration: none;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--dark);
+            cursor: pointer;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+        }
+
+        .faq-question:hover {
+            background: var(--light);
+        }
+
+        .faq-question svg {
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            color: var(--gray);
+            padding: 0 1.5rem 1.25rem;
+            display: none;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Social */
+        .social {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .social h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
             background: var(--sage);
             border-radius: 50%;
-            margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
             color: var(--white);
+            transition: background 0.2s, transform 0.2s;
         }
-        .team-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            color: var(--sage-dark);
-            margin-bottom: 0.25rem;
+
+        .social-links a:hover {
+            background: var(--sage-dark);
+            transform: scale(1.1);
         }
-        .team-card .role {
-            color: var(--sage);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .team-card p { color: var(--gray); font-size: 0.95rem; }
 
         /* Contact */
-        #contact { background: var(--darker); color: var(--white); }
-        #contact .section-title { color: var(--white); }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-        .contact-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--sage);
-            margin-bottom: 1.5rem;
-        }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.25rem;
-            color: var(--gray);
-        }
-        .contact-item svg {
-            width: 24px; height: 24px;
-            stroke: var(--sage);
-            flex-shrink: 0;
-        }
-        .contact-item a {
+        .contact {
+            background: var(--dark);
             color: var(--white);
-            text-decoration: none;
         }
-        .contact-item a:hover { color: var(--sage); }
-        .campaign-callout {
-            background: rgba(143, 159, 131, 0.1);
-            border: 1px solid var(--sage);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 2rem;
+
+        .contact .section-header h2 {
+            color: var(--white);
         }
-        .campaign-callout h4 {
-            color: var(--sage);
-            margin-bottom: 0.5rem;
+
+        .contact-content {
+            max-width: 500px;
+            margin: 0 auto;
         }
-        .campaign-callout p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
+
         .contact-form {
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 2rem;
+            background: transparent;
         }
-        .form-group { margin-bottom: 1.25rem; }
-        .form-group label {
-            display: block;
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+
+        .form-group {
+            margin-bottom: 1.25rem;
         }
+
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 0.875rem 1rem;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid #444;
-            border-radius: 8px;
+            padding: 1rem;
+            border: none;
+            border-bottom: 2px solid var(--sage);
+            background: transparent;
             color: var(--white);
-            font-family: inherit;
             font-size: 1rem;
+            font-family: inherit;
             transition: border-color 0.2s;
         }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--gray);
+        }
+
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--sage);
+            border-color: var(--white);
         }
-        .form-group textarea { min-height: 120px; resize: vertical; }
-        .form-submit {
-            width: 100%;
-            padding: 1rem;
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--sage);
+        }
+
+        .checkbox-group label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
             background: var(--sage);
             color: var(--white);
-            border: none;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
         }
-        .form-submit:hover { background: var(--sage-dark); }
+
+        .btn-primary:hover {
+            background: var(--sage-dark);
+        }
 
         /* Footer */
         .footer {
-            background: #0a0a0a;
-            color: var(--gray);
+            background: var(--darker);
+            color: var(--white);
             padding: 2rem;
             text-align: center;
         }
-        .footer a { color: var(--sage); text-decoration: none; }
-        .footer a:hover { color: var(--white); }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .steps-grid { grid-template-columns: 1fr; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .pricing-grid { grid-template-columns: 1fr; }
-            .results-content { grid-template-columns: 1fr; }
-            .results-stats { margin-top: 2rem; }
-            .team-grid { grid-template-columns: 1fr; }
-            .contact-grid { grid-template-columns: 1fr; }
+        .footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
         }
-        @media (max-width: 600px) {
-            .nav { height: 80px; padding: 0.5rem 1rem; }
-            .logo img { height: 60px; }
-            .nav-links { display: none; }
-            .stats-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-            .stat-item h3 { font-size: 1.75rem; }
-            .services-grid { grid-template-columns: 1fr 1fr; }
-            section { padding: 3rem 1rem; }
+
+        .footer a {
+            color: var(--white);
+            opacity: 0.7;
+        }
+
+        .footer a:hover {
+            opacity: 1;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav {
+                height: 120px;
+            }
+
+            .nav .logo img {
+                height: 100px;
+            }
+
+            .nav.scrolled {
+                height: 80px;
+            }
+
+            .nav.scrolled .logo img {
+                height: 60px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.25rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="logo">
-            <a href="#home"><img src="45north-logo.png" alt="45° North Collective"></a>
+            <img src="45north-logo.png" alt="45° North Collective">
         </div>
-        <div class="nav-links">
-            <a href="#services">Services</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#results">Results</a>
-            <a href="#about">About</a>
-            <a href="portfolio.html">Client Portal</a>
-            <a href="#contact" class="nav-cta">Get Started</a>
-        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="auctions.html">Auctions</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
     <!-- Hero -->
     <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-bg-left"></div>
+            <div class="hero-bg-right"></div>
+        </div>
         <div class="hero-content">
-            <div class="campaign-badge">🎁 Holiday Campaign</div>
-            <h1>Reuse, Regift, <span>Rewrap</span></h1>
-            <p class="hero-sub">We're spotlighting local shops this holiday season — moving your inventory to buyers nationwide who want to give the gift of previously loved.</p>
-            <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary">Join the Campaign</a>
-                <a href="#services" class="btn btn-secondary">See How It Works</a>
-            </div>
+            <h1>Marketplace Now Live!</h1>
+            <h2>Welcome to 45° North Collective</h2>
+            <a href="auctions.html" class="hero-cta">Shop with Our Clients →</a>
         </div>
     </section>
-
-    <!-- Stats -->
-    <div class="stats">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <h3>$40K+</h3>
-                <p>Sold in One Quarter</p>
-            </div>
-            <div class="stat-item">
-                <h3>8</h3>
-                <p>Completed Auctions</p>
-            </div>
-            <div class="stat-item">
-                <h3>5,000+</h3>
-                <p>Bidder Views</p>
-            </div>
-            <div class="stat-item">
-                <h3>3</h3>
-                <p>Platforms</p>
-            </div>
-        </div>
-    </div>
 
     <!-- Services -->
     <section id="services">
         <div class="container">
-            <div class="section-header">
-                <div class="section-label">How It Works</div>
-                <h2 class="section-title">We Sell Your Inventory. You Get Paid.</h2>
-                <p class="section-sub">We're a marketing agency that actually moves product. You get 90% of your asking price — we handle everything.</p>
-            </div>
-
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3>We Buy Your Inventory</h3>
-                    <p>You name your price. We pay 90% — cash in hand, item off your shelf. No consignment waiting. No risk.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3>We List & Market</h3>
-                    <p>Professional photos. Optimized listings on HiBid, eBay, and Whatnot. Targeted marketing to serious collectors nationwide.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3>We Sell & Ship</h3>
-                    <p>Auctions run, buyers pay, we handle fulfillment. You're done — back to running your business.</p>
-                </div>
-            </div>
-
-            <div class="section-header" style="margin-bottom: 2rem;">
-                <h3 class="section-title" style="font-size: 1.5rem;">What We Handle</h3>
-            </div>
-
             <div class="services-grid">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                    </div>
-                    <span>Professional Photography</span>
+                <div class="service-card">
+                    <h3>Marketing and Advertising</h3>
+                    <p>At 45° North Collective, we provide a wide range of marketing and advertising services designed to help you reach your target audience and boost brand awareness. Our skilled team leverages the latest techniques, including effective social media marketing strategies, to ensure the success of your online store campaign.</p>
                 </div>
-                <div class="service-item">
-                    <div class="service-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                    </div>
-                    <span>Listing Optimization</span>
+                <div class="service-card">
+                    <h3>E-Commerce Management</h3>
+                    <p>At 45° North Collective, we have years of experience in e-commerce management across multiple auction sites. Our marketing strategies go beyond just advertising for your online store; we also help move products through effective social media marketing.</p>
                 </div>
-                <div class="service-item">
-                    <div class="service-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-                    </div>
-                    <span>Multi-Platform Sales</span>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
-                    </div>
-                    <span>Social Media Promo</span>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                    </div>
-                    <span>Email Marketing</span>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
-                    </div>
-                    <span>Customer Service</span>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                    </div>
-                    <span>Payment Processing</span>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
-                    </div>
-                    <span>Packing & Shipping</span>
+                <div class="service-card">
+                    <h3>Consultation</h3>
+                    <p>At 45° North Collective, we understand that a full marketing service might not fit into your budget right now. That's why we take pride in offering comprehensive consulting strategies for those seeking marketing assistance while managing their own online store and navigating social media marketing.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing -->
-    <section id="pricing">
+    <!-- FAQ -->
+    <section class="faq">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Pricing</div>
-                <h2 class="section-title">Simple Pricing. Real Results.</h2>
-                <p class="section-sub">Two ways to work with us — pick what fits your business.</p>
+                <h2>Frequently Asked Questions</h2>
             </div>
-
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Inventory Purchase</h3>
-                    <div class="price">90% <span>of your asking price</span></div>
-                    <p>Cash to you, item off your shelf. Zero risk — it's our inventory now.</p>
-                    <ul>
-                        <li>Paid when we pick up</li>
-                        <li>No fees or commissions</li>
-                        <li>No waiting for sales</li>
-                        <li>Perfect for clearing stock</li>
-                        <li>One-time or ongoing</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-secondary" style="width:100%; text-align:center;">Get Started</a>
+            <p class="faq-intro">Please reach us at <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> if you cannot find an answer to your question.</p>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Why pick us?
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-answer">We have years of experience in the marketing field, working with many B2C businesses. We also have experience working with thrift, antique, and coin shops, moving products and highlighting pieces.</div>
                 </div>
-                <div class="pricing-card featured">
-                    <div class="pricing-badge">Popular</div>
-                    <h3>Marketing Retainer</h3>
-                    <div class="price">$2,500–$5K <span>/month</span></div>
-                    <p>We become your online sales team. Full-service marketing and sales.</p>
-                    <ul>
-                        <li>Dedicated marketing campaigns</li>
-                        <li>Weekly auction listings</li>
-                        <li>Social media content</li>
-                        <li>Email marketing to buyers</li>
-                        <li>Monthly performance reports</li>
-                        <li>Priority pickup & turnaround</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary" style="width:100%; text-align:center;">Let's Talk</a>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you build social media channels for us?
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-answer">Yes! We would build social media accounts from scratch for you as part our social services.</div>
                 </div>
-            </div>
-
-            <div class="guarantee">
-                <h3>Our Guarantee</h3>
-                <p>If our sales don't beat your monthly retainer fee between day 60 and 90, we refund your third month in full. No questions asked. We don't win unless you win.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Results -->
-    <section id="results">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">Case Study</div>
-                <h2 class="section-title">$40K+ Sold in One Quarter</h2>
-                <p class="section-sub" style="color: var(--gray);">How we moved hundreds of items across 8 auctions.</p>
-            </div>
-
-            <div class="results-content">
-                <div class="results-text">
-                    <h3>The Challenge</h3>
-                    <p>A local collectibles inventory needed to reach buyers beyond foot traffic. Great stuff sitting on shelves. No time to photograph, list, and ship.</p>
-                    
-                    <h3>What We Did</h3>
-                    <ul class="results-list">
-                        <li>Photographed and cataloged hundreds of items</li>
-                        <li>Created optimized listings for HiBid auctions</li>
-                        <li>Ran 8 separate auction events over 12 weeks</li>
-                        <li>Promoted across social media and email</li>
-                        <li>Handled all buyer communication and shipping</li>
-                    </ul>
-                </div>
-                <div class="results-stats">
-                    <div class="result-stat">
-                        <h4>$40K+</h4>
-                        <p>Total Sales</p>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What do you mean by e-commerce management?
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </div>
-                    <div class="result-stat">
-                        <h4>8</h4>
-                        <p>Auctions</p>
-                    </div>
-                    <div class="result-stat">
-                        <h4>5,000+</h4>
-                        <p>Bidder Views</p>
-                    </div>
-                    <div class="result-stat">
-                        <h4>100s</h4>
-                        <p>Items Moved</p>
-                    </div>
+                    <div class="faq-answer">We will take items from your shop, and sell them online to a national audience not just through your social media but through other e-commerce platforms. We have years of experiences with many types of e-commerce websites.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">About Us</div>
-                <h2 class="section-title">Who We Are</h2>
-                <p class="section-sub">A small team that moves inventory and builds brands. Based in Portland, Oregon.</p>
-            </div>
-
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-avatar">FV</div>
-                    <h3>Forest VanDehey</h3>
-                    <p class="role">Managing Partner</p>
-                    <p>Years of experience in collectibles, coins, and online sales. Knows what sells, how to price it, and how to get it in front of the right buyers.</p>
-                </div>
-                <div class="team-card">
-                    <div class="team-avatar">PS</div>
-                    <h3>Peyton Sprague</h3>
-                    <p class="role">Chief of Creative</p>
-                    <p>Makes everything look good. From product photography to social content to brand strategy — your inventory gets presented the way it deserves.</p>
-                </div>
-            </div>
+    <!-- Social -->
+    <section class="social">
+        <h2>Follow us on social for updates.</h2>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+            </a>
         </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact">
+    <section class="contact" id="contact">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Get in Touch</div>
-                <h2 class="section-title">Let's Talk</h2>
-                <p class="section-sub" style="color: var(--gray);">Whether you've got questions or you're ready to get started, we're here.</p>
+                <h2>Contact Us</h2>
             </div>
-
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Contact Info</h3>
-                    <div class="contact-item">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                        <a href="mailto:info@45northcollective.com">info@45northcollective.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                        <a href="tel:9713132653">(971) 313-2653</a>
-                    </div>
-                    <div class="contact-item">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                        <span>Portland, Oregon</span>
-                    </div>
-
-                    <div class="campaign-callout">
-                        <h4>🎁 Reuse, Regift, Rewrap</h4>
-                        <p>We're spotlighting local shops this holiday season. Want your inventory featured in our campaign? Mention it in your message.</p>
-                    </div>
-                </div>
-
-                <form class="contact-form" action="https://formsubmit.co/info@45northcollective.com" method="POST">
-                    <input type="hidden" name="_subject" value="New inquiry from 45northcollective.com">
-                    <input type="hidden" name="_captcha" value="false">
+            <div class="contact-content">
+                <p style="text-align: center; color: var(--gray); margin-bottom: 2rem;">Drop us a line!</p>
+                <form class="contact-form" onsubmit="handleSubmit(event)">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" placeholder="Name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" placeholder="Email*" required>
                     </div>
                     <div class="form-group">
-                        <label for="business">Business Name (optional)</label>
-                        <input type="text" id="business" name="business">
+                        <textarea id="message" name="message" placeholder="Message"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required placeholder="Tell us about your inventory..."></textarea>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="signup" name="signup">
+                        <label for="signup">Sign up for our email list for updates, promotions, and more.</label>
                     </div>
-                    <button type="submit" class="form-submit">Send Message</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
                 </form>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
-        <p>© 2025 45° North Collective · Portland, Oregon · <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> · <a href="tel:9713132653">(971) 313-2653</a></p>
+        <p>Copyright © 2025 45° North Collective - All Rights Reserved.</p>
     </footer>
 
     <script>
+        // Nav scroll effect
         window.addEventListener('scroll', () => {
             document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
         });
+
+        // FAQ toggle
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                q.parentElement.classList.toggle('active');
+            });
+        });
+
+        // Form submit
+        function handleSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const subject = encodeURIComponent(`Website Inquiry from ${form.name.value}`);
+            const body = encodeURIComponent(`Name: ${form.name.value}\nEmail: ${form.email.value}\n\nMessage:\n${form.message.value}`);
+            window.location.href = `mailto:info@45northcollective.com?subject=${subject}&body=${body}`;
+        }
     </script>
 </body>
 </html>

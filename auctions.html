@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45° North Auctions | Shop Our Clients' Inventory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #8f9f83;
+            --sage-dark: #6d7a63;
+            --gold: #c9a227;
+            --gold-light: #e3c355;
+            --dark: #0d1117;
+            --card-bg: #161b22;
+            --card-border: #30363d;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --success: #238636;
+            --warning: #d29922;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: var(--sage);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--card-bg) 0%, #1a1f26 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Filters */
+        .filters {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-box input {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1rem;
+            width: 100%;
+            margin-left: 0.5rem;
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .search-box input:focus {
+            outline: none;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--sage);
+            border-color: var(--sage);
+            color: white;
+        }
+
+        /* Auction Grid */
+        .auction-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .lot-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .lot-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+
+        .lot-image {
+            position: relative;
+            aspect-ratio: 1;
+            background: #1a1f26;
+        }
+
+        .lot-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .lot-badges {
+            position: absolute;
+            top: 0.75rem;
+            left: 0.75rem;
+            right: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .lot-number {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .image-count {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .lot-info {
+            padding: 1rem;
+        }
+
+        .lot-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .lot-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        .current-bid {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .bid-count {
+            color: var(--text-secondary);
+        }
+
+        .lot-timer {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .lot-timer.ending-soon {
+            color: var(--warning);
+        }
+
+        .bid-button {
+            width: 100%;
+            background: var(--sage);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .bid-button:hover {
+            background: var(--sage-dark);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-lot-preview {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .modal-lot-preview img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .modal-lot-info h3 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .modal-lot-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--dark);
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--sage);
+        }
+
+        .bid-summary {
+            background: var(--dark);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .bid-summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .bid-summary-row.total {
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .modal-submit {
+            width: 100%;
+            background: var(--sage);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .modal-submit:hover {
+            background: var(--sage-dark);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--card-bg);
+            border-top: 1px solid var(--card-border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .footer a {
+            color: var(--sage);
+            text-decoration: none;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .filters {
+                flex-direction: column;
+            }
+
+            .search-box {
+                max-width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="45north-logo.png" alt="45° North Collective">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Live Auctions</h1>
+        <p>Shop inventory from our partner shops — coins, collectibles, vintage finds & more</p>
+    </section>
+
+    <div class="filters">
+        <div class="search-box">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="searchInput" placeholder="Search lots...">
+        </div>
+        <div class="filter-buttons">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Gold</button>
+            <button class="filter-btn">Coins</button>
+            <button class="filter-btn">Collectibles</button>
+            <button class="filter-btn">No Bids Yet</button>
+        </div>
+    </div>
+
+    <div class="auction-grid" id="auctionGrid"></div>
+
+    <div class="modal-overlay" id="bidModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Place Your Bid</h2>
+                <button class="modal-close" onclick="closeBidModal()">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 45° North Collective · Portland, Oregon · <a href="mailto:info@45northcollective.com">info@45northcollective.com</a></p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Buyer's Premium: 15%</p>
+    </footer>
+
+    <script>
+        // Sample lots - replace with real data from CSV/HiBid
+        const lots = [
+            { id: 1, lotNumber: 1, title: "1921 Morgan Silver Dollar - BU", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=Morgan", imageCount: 3, currentBid: 85, minBid: 90, bidCount: 4, endTime: new Date(Date.now() + 3600000 * 2), category: "coins" },
+            { id: 2, lotNumber: 2, title: "$5 Pre-33 Gold Indian - AU/UNC", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=Gold+Indian", imageCount: 4, currentBid: 1050, minBid: 1100, bidCount: 7, endTime: new Date(Date.now() + 3600000 * 5), category: "gold" },
+            { id: 3, lotNumber: 3, title: "Vintage Starting Lineup - Johnny Bench", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=Bench", imageCount: 2, currentBid: 0, minBid: 10, bidCount: 0, endTime: new Date(Date.now() + 3600000 * 8), category: "collectibles" },
+            { id: 4, lotNumber: 4, title: "$20 MS64 Pre-33 Gold Liberty Head", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=Liberty", imageCount: 2, currentBid: 2950, minBid: 3000, bidCount: 12, endTime: new Date(Date.now() + 3600000 * 1.5), category: "gold" },
+            { id: 5, lotNumber: 5, title: "1oz American Gold Eagle - 2024", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=AGE", imageCount: 3, currentBid: 2400, minBid: 2450, bidCount: 9, endTime: new Date(Date.now() + 3600000 * 4), category: "gold" },
+            { id: 6, lotNumber: 6, title: "Peace Dollar Collection (5 coins)", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=Peace", imageCount: 6, currentBid: 175, minBid: 185, bidCount: 3, endTime: new Date(Date.now() + 3600000 * 6), category: "coins" },
+            { id: 7, lotNumber: 7, title: "Vintage Coca-Cola Serving Tray", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=Coke", imageCount: 2, currentBid: 0, minBid: 25, bidCount: 0, endTime: new Date(Date.now() + 3600000 * 10), category: "collectibles" },
+            { id: 8, lotNumber: 8, title: "1oz Silver Bar - .999 Fine", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=Silver", imageCount: 2, currentBid: 32, minBid: 35, bidCount: 2, endTime: new Date(Date.now() + 3600000 * 3), category: "coins" },
+        ];
+
+        let selectedLot = null;
+
+        function formatTime(ms) {
+            if (ms <= 0) return "Ended";
+            const h = Math.floor(ms / 3600000);
+            const m = Math.floor((ms % 3600000) / 60000);
+            const s = Math.floor((ms % 60000) / 1000);
+            if (h > 0) return `${h}h ${m}m`;
+            if (m > 0) return `${m}m ${s}s`;
+            return `${s}s`;
+        }
+
+        function renderLots(lotsToRender) {
+            const grid = document.getElementById('auctionGrid');
+            grid.innerHTML = lotsToRender.map(lot => {
+                const timeLeft = lot.endTime - Date.now();
+                const isEndingSoon = timeLeft < 3600000 && timeLeft > 0;
+                return `
+                    <div class="lot-card">
+                        <div class="lot-image">
+                            <img src="${lot.image}" alt="${lot.title}">
+                            <div class="lot-badges">
+                                <span class="lot-number">Lot #${lot.lotNumber}</span>
+                                <span class="image-count">📷 ${lot.imageCount}</span>
+                            </div>
+                        </div>
+                        <div class="lot-info">
+                            <h3 class="lot-title">${lot.title}</h3>
+                            <div class="lot-meta">
+                                <span class="current-bid">${lot.currentBid > 0 ? '$' + lot.currentBid.toLocaleString() : 'No bids'}</span>
+                                <span class="bid-count">${lot.bidCount} bid${lot.bidCount !== 1 ? 's' : ''}</span>
+                            </div>
+                            <div class="lot-timer ${isEndingSoon ? 'ending-soon' : ''}" data-end="${lot.endTime.getTime()}">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                <span>${formatTime(timeLeft)}</span>
+                            </div>
+                            <button class="bid-button" onclick="openBidModal(${lot.id})">Bid $${lot.minBid.toLocaleString()}</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateCountdowns() {
+            document.querySelectorAll('.lot-timer').forEach(timer => {
+                const endTime = parseInt(timer.dataset.end);
+                const timeLeft = endTime - Date.now();
+                timer.querySelector('span').textContent = formatTime(timeLeft);
+                timer.classList.toggle('ending-soon', timeLeft < 3600000 && timeLeft > 0);
+            });
+        }
+
+        function openBidModal(lotId) {
+            selectedLot = lots.find(l => l.id === lotId);
+            const modal = document.getElementById('bidModal');
+            const body = document.getElementById('modalBody');
+            
+            body.innerHTML = `
+                <div class="modal-lot-preview">
+                    <img src="${selectedLot.image}" alt="${selectedLot.title}">
+                    <div class="modal-lot-info">
+                        <h3>Lot #${selectedLot.lotNumber}: ${selectedLot.title}</h3>
+                        <p>Current: ${selectedLot.currentBid > 0 ? '$' + selectedLot.currentBid.toLocaleString() : 'No bids'} · Min: $${selectedLot.minBid.toLocaleString()}</p>
+                    </div>
+                </div>
+                <form onsubmit="submitBid(event)">
+                    <div class="form-group">
+                        <label for="maxBid">Your Max Bid ($)</label>
+                        <input type="number" id="maxBid" min="${selectedLot.minBid}" value="${selectedLot.minBid}" required oninput="updateSummary()">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="you@email.com" required>
+                    </div>
+                    <div class="bid-summary">
+                        <div class="bid-summary-row">
+                            <span>Your Max Bid</span>
+                            <span id="summaryBid">$${selectedLot.minBid.toLocaleString()}</span>
+                        </div>
+                        <div class="bid-summary-row">
+                            <span>Buyer's Premium (15%)</span>
+                            <span id="summaryPremium">$${(selectedLot.minBid * 0.15).toFixed(2)}</span>
+                        </div>
+                        <div class="bid-summary-row total">
+                            <span>Total if You Win</span>
+                            <span id="summaryTotal">$${(selectedLot.minBid * 1.15).toFixed(2)}</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="modal-submit">Place Bid</button>
+                </form>
+            `;
+            
+            modal.classList.add('active');
+        }
+
+        function closeBidModal() {
+            document.getElementById('bidModal').classList.remove('active');
+            selectedLot = null;
+        }
+
+        function updateSummary() {
+            const bid = parseFloat(document.getElementById('maxBid').value) || 0;
+            document.getElementById('summaryBid').textContent = '$' + bid.toLocaleString();
+            document.getElementById('summaryPremium').textContent = '$' + (bid * 0.15).toFixed(2);
+            document.getElementById('summaryTotal').textContent = '$' + (bid * 1.15).toFixed(2);
+        }
+
+        function submitBid(e) {
+            e.preventDefault();
+            const bid = document.getElementById('maxBid').value;
+            const email = document.getElementById('email').value;
+            
+            // In production: POST to webhook or send email
+            console.log('Bid submitted:', { lot: selectedLot.lotNumber, title: selectedLot.title, bid, email });
+            
+            document.getElementById('modalBody').innerHTML = `
+                <div style="text-align: center; padding: 2rem;">
+                    <svg width="64" height="64" fill="none" stroke="#8f9f83" viewBox="0 0 24 24" style="margin-bottom: 1rem;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <h3 style="margin-bottom: 0.5rem;">Bid Placed!</h3>
+                    <p style="color: var(--text-secondary);">We'll notify you at ${email} if you win or get outbid.</p>
+                    <button onclick="closeBidModal()" style="margin-top: 1.5rem; padding: 0.75rem 2rem; background: var(--sage); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">Done</button>
+                </div>
+            `;
+        }
+
+        // Search
+        document.getElementById('searchInput').addEventListener('input', e => {
+            const q = e.target.value.toLowerCase();
+            renderLots(lots.filter(l => l.title.toLowerCase().includes(q) || l.lotNumber.toString().includes(q)));
+        });
+
+        // Filters
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const f = btn.textContent.toLowerCase();
+                let filtered = lots;
+                if (f === 'gold') filtered = lots.filter(l => l.category === 'gold');
+                else if (f === 'coins') filtered = lots.filter(l => l.category === 'coins');
+                else if (f === 'collectibles') filtered = lots.filter(l => l.category === 'collectibles');
+                else if (f === 'no bids yet') filtered = lots.filter(l => l.bidCount === 0);
+                renderLots(filtered);
+            });
+        });
+
+        // Close modal on overlay click
+        document.getElementById('bidModal').addEventListener('click', e => {
+            if (e.target.classList.contains('modal-overlay')) closeBidModal();
+        });
+
+        // Init
+        renderLots(lots);
+        setInterval(updateCountdowns, 1000);
+    </script>
+</body>
+</html>
