@@ -12,13 +12,11 @@
             --sage: #8f9f83;
             --sage-dark: #6d7a63;
             --gold: #c9a227;
-            --gold-light: #e3c355;
             --dark: #0d1117;
             --card-bg: #161b22;
             --card-border: #30363d;
             --text-primary: #f0f6fc;
             --text-secondary: #8b949e;
-            --success: #238636;
             --warning: #d29922;
         }
 
@@ -32,7 +30,6 @@
             min-height: 100vh;
         }
 
-        /* Header */
         .header {
             background: var(--sage);
             padding: 1rem 2rem;
@@ -49,9 +46,7 @@
             align-items: center;
         }
 
-        .logo img {
-            height: 60px;
-        }
+        .logo img { height: 60px; }
 
         .nav-links {
             display: flex;
@@ -66,11 +61,8 @@
             transition: opacity 0.2s;
         }
 
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
+        .nav-links a:hover { opacity: 0.8; }
 
-        /* Hero */
         .hero {
             background: linear-gradient(135deg, var(--card-bg) 0%, #1a1f26 100%);
             padding: 3rem 2rem;
@@ -84,12 +76,9 @@
             margin-bottom: 0.5rem;
         }
 
-        .hero p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
+        .hero p { color: var(--text-secondary); font-size: 1.1rem; }
+        .hero .lot-count { color: var(--gold); font-weight: 700; }
 
-        /* Filters */
         .filters {
             max-width: 1400px;
             margin: 2rem auto;
@@ -121,13 +110,8 @@
             margin-left: 0.5rem;
         }
 
-        .search-box input::placeholder {
-            color: var(--text-secondary);
-        }
-
-        .search-box input:focus {
-            outline: none;
-        }
+        .search-box input::placeholder { color: var(--text-secondary); }
+        .search-box input:focus { outline: none; }
 
         .filter-buttons {
             display: flex;
@@ -152,7 +136,29 @@
             color: white;
         }
 
-        /* Auction Grid */
+        .pagination {
+            max-width: 1400px;
+            margin: 0 auto 1rem;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .pagination button {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .pagination button:hover { background: var(--sage); }
+        .pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .pagination span { color: var(--text-secondary); }
+
         .auction-grid {
             max-width: 1400px;
             margin: 0 auto;
@@ -205,27 +211,27 @@
             font-weight: 600;
         }
 
-        .image-count {
-            background: rgba(0,0,0,0.7);
+        .category-badge {
+            background: var(--sage);
             color: white;
             padding: 0.25rem 0.5rem;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 600;
         }
 
-        .lot-info {
-            padding: 1rem;
-        }
+        .lot-info { padding: 1rem; }
 
         .lot-title {
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             margin-bottom: 0.75rem;
             line-height: 1.3;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            min-height: 2.6em;
         }
 
         .lot-meta {
@@ -235,14 +241,7 @@
             font-size: 0.85rem;
         }
 
-        .current-bid {
-            color: var(--gold);
-            font-weight: 700;
-        }
-
-        .bid-count {
-            color: var(--text-secondary);
-        }
+        .current-bid { color: var(--gold); font-weight: 700; }
 
         .lot-timer {
             display: flex;
@@ -253,9 +252,7 @@
             margin-bottom: 1rem;
         }
 
-        .lot-timer.ending-soon {
-            color: var(--warning);
-        }
+        .lot-timer.ending-soon { color: var(--warning); }
 
         .bid-button {
             width: 100%;
@@ -270,11 +267,8 @@
             transition: background 0.2s;
         }
 
-        .bid-button:hover {
-            background: var(--sage-dark);
-        }
+        .bid-button:hover { background: var(--sage-dark); }
 
-        /* Modal */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -286,9 +280,7 @@
             padding: 1rem;
         }
 
-        .modal-overlay.active {
-            display: flex;
-        }
+        .modal-overlay.active { display: flex; }
 
         .modal {
             background: var(--card-bg);
@@ -308,10 +300,7 @@
             align-items: center;
         }
 
-        .modal-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-        }
+        .modal-header h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; }
 
         .modal-close {
             background: none;
@@ -321,13 +310,9 @@
             padding: 0.5rem;
         }
 
-        .modal-close:hover {
-            color: var(--text-primary);
-        }
+        .modal-close:hover { color: var(--text-primary); }
 
-        .modal-body {
-            padding: 1.5rem;
-        }
+        .modal-body { padding: 1.5rem; }
 
         .modal-lot-preview {
             display: flex;
@@ -344,25 +329,11 @@
             border-radius: 8px;
         }
 
-        .modal-lot-info h3 {
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
+        .modal-lot-info h3 { font-size: 1rem; margin-bottom: 0.25rem; }
+        .modal-lot-info p { color: var(--text-secondary); font-size: 0.9rem; }
 
-        .modal-lot-info p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 
         .form-group input {
             width: 100%;
@@ -374,10 +345,7 @@
             font-size: 1rem;
         }
 
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--sage);
-        }
+        .form-group input:focus { outline: none; border-color: var(--sage); }
 
         .bid-summary {
             background: var(--dark);
@@ -412,14 +380,10 @@
             font-weight: 600;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: background 0.2s;
         }
 
-        .modal-submit:hover {
-            background: var(--sage-dark);
-        }
+        .modal-submit:hover { background: var(--sage-dark); }
 
-        /* Footer */
         .footer {
             background: var(--card-bg);
             border-top: 1px solid var(--card-border);
@@ -428,33 +392,14 @@
             color: var(--text-secondary);
         }
 
-        .footer a {
-            color: var(--sage);
-            text-decoration: none;
-        }
+        .footer a { color: var(--sage); text-decoration: none; }
 
-        /* Mobile */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .filters {
-                flex-direction: column;
-            }
-
-            .search-box {
-                max-width: 100%;
-            }
-
-            .hero h1 {
-                font-size: 1.75rem;
-            }
+            .header-content { flex-direction: column; gap: 1rem; }
+            .nav-links { gap: 1rem; }
+            .filters { flex-direction: column; }
+            .search-box { max-width: 100%; }
+            .hero h1 { font-size: 1.75rem; }
         }
     </style>
 </head>
@@ -474,7 +419,7 @@
 
     <section class="hero">
         <h1>Live Auctions</h1>
-        <p>Shop inventory from our partner shops — coins, collectibles, vintage finds & more</p>
+        <p>Shop inventory from our partner shops — <span class="lot-count" id="lotCount">0</span> lots available</p>
     </section>
 
     <div class="filters">
@@ -483,15 +428,27 @@
             <input type="text" id="searchInput" placeholder="Search lots...">
         </div>
         <div class="filter-buttons">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Gold</button>
-            <button class="filter-btn">Coins</button>
-            <button class="filter-btn">Collectibles</button>
-            <button class="filter-btn">No Bids Yet</button>
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Comics">Comics</button>
+            <button class="filter-btn" data-filter="Coins">Coins</button>
+            <button class="filter-btn" data-filter="Paper Money">Paper Money</button>
+            <button class="filter-btn" data-filter="Collectibles">Collectibles</button>
         </div>
     </div>
 
+    <div class="pagination">
+        <button id="prevPage">← Prev</button>
+        <span id="pageInfo">Page 1</span>
+        <button id="nextPage">Next →</button>
+    </div>
+
     <div class="auction-grid" id="auctionGrid"></div>
+
+    <div class="pagination" style="margin-top: 2rem;">
+        <button id="prevPage2">← Prev</button>
+        <span id="pageInfo2">Page 1</span>
+        <button id="nextPage2">Next →</button>
+    </div>
 
     <div class="modal-overlay" id="bidModal">
         <div class="modal">
@@ -511,59 +468,101 @@
     </footer>
 
     <script>
-        // Sample lots - replace with real data from CSV/HiBid
+        // Auction data from DECEMBER_MASTER_AUCTION_LIST.csv
         const lots = [
-            { id: 1, lotNumber: 1, title: "1921 Morgan Silver Dollar - BU", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=Morgan", imageCount: 3, currentBid: 85, minBid: 90, bidCount: 4, endTime: new Date(Date.now() + 3600000 * 2), category: "coins" },
-            { id: 2, lotNumber: 2, title: "$5 Pre-33 Gold Indian - AU/UNC", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=Gold+Indian", imageCount: 4, currentBid: 1050, minBid: 1100, bidCount: 7, endTime: new Date(Date.now() + 3600000 * 5), category: "gold" },
-            { id: 3, lotNumber: 3, title: "Vintage Starting Lineup - Johnny Bench", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=Bench", imageCount: 2, currentBid: 0, minBid: 10, bidCount: 0, endTime: new Date(Date.now() + 3600000 * 8), category: "collectibles" },
-            { id: 4, lotNumber: 4, title: "$20 MS64 Pre-33 Gold Liberty Head", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=Liberty", imageCount: 2, currentBid: 2950, minBid: 3000, bidCount: 12, endTime: new Date(Date.now() + 3600000 * 1.5), category: "gold" },
-            { id: 5, lotNumber: 5, title: "1oz American Gold Eagle - 2024", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=AGE", imageCount: 3, currentBid: 2400, minBid: 2450, bidCount: 9, endTime: new Date(Date.now() + 3600000 * 4), category: "gold" },
-            { id: 6, lotNumber: 6, title: "Peace Dollar Collection (5 coins)", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=Peace", imageCount: 6, currentBid: 175, minBid: 185, bidCount: 3, endTime: new Date(Date.now() + 3600000 * 6), category: "coins" },
-            { id: 7, lotNumber: 7, title: "Vintage Coca-Cola Serving Tray", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=Coke", imageCount: 2, currentBid: 0, minBid: 25, bidCount: 0, endTime: new Date(Date.now() + 3600000 * 10), category: "collectibles" },
-            { id: 8, lotNumber: 8, title: "1oz Silver Bar - .999 Fine", image: "https://via.placeholder.com/300x300/1a1f26/8f9f83?text=Silver", imageCount: 2, currentBid: 32, minBid: 35, bidCount: 2, endTime: new Date(Date.now() + 3600000 * 3), category: "coins" },
+            {id:1,lotNumber:1,title:"Daredevil #319B McDaniel Variant 2nd Printing CGC",image:"https://i.ebayimg.com/images/g/opQAAeSwKxJpOKkv/s-l300.jpg",category:"Comics",startingBid:34.99,endTime:new Date(Date.now()+3600000*48)},
+            {id:2,lotNumber:2,title:"Ghost Rider Vol. 2 #28 CGC 8.0 Midnight Sons Marvel",image:"https://i.ebayimg.com/images/g/2XAAAeSw1hxpOKhu/s-l300.jpg",category:"Comics",startingBid:15.00,endTime:new Date(Date.now()+3600000*48)},
+            {id:3,lotNumber:3,title:"Ghost Rider Vol. 2 #28 CGC 9.2 Midnight Sons Marvel",image:"https://i.ebayimg.com/images/g/7J0AAeSwUuFpOKfU/s-l300.jpg",category:"Comics",startingBid:34.99,endTime:new Date(Date.now()+3600000*48)},
+            {id:7,lotNumber:7,title:"LINCOLN WHEAT PENNY 7 LB bag 1909-1958 with Indian",image:"https://i.ebayimg.com/images/g/hxgAAOSwzllluA-p/s-l300.jpg",category:"Coins",startingBid:124.99,endTime:new Date(Date.now()+3600000*36)},
+            {id:8,lotNumber:8,title:"BATMAN ADVENTURES #12 ~ 1st comic book appearance",image:"https://i.ebayimg.com/images/g/TYUAAeSwtN9pMjQP/s-l300.jpg",category:"Comics",startingBid:500.00,endTime:new Date(Date.now()+3600000*24)},
+            {id:9,lotNumber:9,title:"Sealed bank roll $25 FV fed Loomis dollar coins",image:"https://i.ebayimg.com/images/g/J3cAAOSwx95ny0w3/s-l300.jpg",category:"Paper Money",startingBid:25.00,endTime:new Date(Date.now()+3600000*72)},
+            {id:11,lotNumber:11,title:"1953 Two Dollar Note Red Seal ~ $2 Bill G-VF+",image:"https://i.ebayimg.com/images/g/dssAAOSw2qtnoSFh/s-l300.jpg",category:"Paper Money",startingBid:2.00,endTime:new Date(Date.now()+3600000*48)},
+            {id:12,lotNumber:12,title:"4 notes: 1963 Red Seal $5, 1953 $5 Silver cert",image:"https://i.ebayimg.com/images/g/LjAAAOSwBi5ndafd/s-l300.jpg",category:"Paper Money",startingBid:5.00,endTime:new Date(Date.now()+3600000*48)},
+            {id:13,lotNumber:13,title:"FR. 17a 1862 $1 ONE DOLLAR LEGAL TENDER NOTE",image:"https://i.ebayimg.com/images/g/2WsAAeSwj9No2C6z/s-l300.jpg",category:"Paper Money",startingBid:1.00,endTime:new Date(Date.now()+3600000*24)},
+            {id:14,lotNumber:14,title:"Deathblow 1, Manufactured Partial Emboss red foil",image:"https://i.ebayimg.com/images/g/xY8AAeSwNDppMxr-/s-l300.jpg",category:"Comics",startingBid:2500.00,endTime:new Date(Date.now()+3600000*12)},
+            {id:16,lotNumber:16,title:"The New Mutants #87 Marvel 1990 1st Cable",image:"https://i.ebayimg.com/images/g/v7QAAeSwYcNpMjkj/s-l300.jpg",category:"Comics",startingBid:165.00,endTime:new Date(Date.now()+3600000*36)},
+            {id:17,lotNumber:17,title:"Avengers #1 CGC 2.5 1963 1st app. the Avengers",image:"https://i.ebayimg.com/images/g/TxgAAeSwOoppMxwc/s-l300.jpg",category:"Comics",startingBid:2850.00,endTime:new Date(Date.now()+3600000*6)},
+            {id:18,lotNumber:18,title:"3 medium 2\" Vials Filled with Gold Leaf Flakes",image:"https://i.ebayimg.com/images/g/hNUAAOSwyI1nH-Mr/s-l300.jpg",category:"Collectibles",startingBid:6.99,endTime:new Date(Date.now()+3600000*72)},
+            {id:19,lotNumber:19,title:"Amazing Spider-Man #300 CGC 9.2 White Pages 1st Venom",image:"https://i.ebayimg.com/images/g/JY8AAeSw8lFpMjEq/s-l300.jpg",category:"Comics",startingBid:550.00,endTime:new Date(Date.now()+3600000*18)},
+            {id:20,lotNumber:20,title:"Batman #253 (DC Comics 1973) 1st App. Shadow",image:"https://i.ebayimg.com/images/g/06sAAeSwnu5pDOvR/s-l300.jpg",category:"Comics",startingBid:10.00,endTime:new Date(Date.now()+3600000*48)},
+            {id:23,lotNumber:23,title:"Incredible Hulk #340 CGC 8.5 White (Marvel 1988)",image:"https://i.ebayimg.com/images/g/di0AAeSwE3hpMiu0/s-l300.jpg",category:"Comics",startingBid:280.00,endTime:new Date(Date.now()+3600000*24)},
+            {id:24,lotNumber:24,title:"Amazing Spider-Man 316 CGC 9.4 NM Newsstand",image:"https://i.ebayimg.com/images/g/oCoAAeSwDXRpMjHG/s-l300.jpg",category:"Comics",startingBid:294.99,endTime:new Date(Date.now()+3600000*36)},
+            {id:25,lotNumber:25,title:"Sealed Wheat Penny Roll 1909-1958",image:"https://i.ebayimg.com/images/g/jKYAAOSwIYhlogDx/s-l300.jpg",category:"Coins",startingBid:17.99,endTime:new Date(Date.now()+3600000*72)},
+            {id:26,lotNumber:26,title:"1899 Silver Certificate Black Eagle Large Dollar Note",image:"https://i.ebayimg.com/images/g/oPYAAeSwu1hpDlCw/s-l300.jpg",category:"Paper Money",startingBid:1.00,endTime:new Date(Date.now()+3600000*12)},
+            {id:27,lotNumber:27,title:"F-59 1917 $2 Legal Tender Red Seal Large Note",image:"https://i.ebayimg.com/images/g/C2EAAeSwIolpL2hO/s-l300.jpg",category:"Paper Money",startingBid:2.00,endTime:new Date(Date.now()+3600000*48)},
+            {id:30,lotNumber:30,title:"FR 258 1899 $2 MINI PORTHOLE SILVER CERTIFICATE",image:"https://i.ebayimg.com/images/g/jK8AAeSwLGtpDlMK/s-l300.jpg",category:"Paper Money",startingBid:2.00,endTime:new Date(Date.now()+3600000*24)},
+            {id:31,lotNumber:31,title:"UNCANNY X-MEN #266 CGC 9.6 1st full GAMBIT",image:"https://i.ebayimg.com/images/g/hNUAAOSwyI1nH-Mr/s-l300.jpg",category:"Comics",startingBid:425.00,endTime:new Date(Date.now()+3600000*18)},
+            {id:35,lotNumber:35,title:"Walking Liberty Half Dollar Roll 90% Silver",image:"https://i.ebayimg.com/images/g/jKYAAOSwIYhlogDx/s-l300.jpg",category:"Coins",startingBid:250.00,endTime:new Date(Date.now()+3600000*24)},
+            {id:40,lotNumber:40,title:"1oz American Gold Eagle 2024 BU",image:"https://i.ebayimg.com/images/g/hNUAAOSwyI1nH-Mr/s-l300.jpg",category:"Coins",startingBid:2400.00,endTime:new Date(Date.now()+3600000*8)},
         ];
 
         let selectedLot = null;
+        let currentFilter = 'all';
+        let searchQuery = '';
+        let currentPage = 1;
+        const itemsPerPage = 20;
 
         function formatTime(ms) {
             if (ms <= 0) return "Ended";
-            const h = Math.floor(ms / 3600000);
+            const d = Math.floor(ms / 86400000);
+            const h = Math.floor((ms % 86400000) / 3600000);
             const m = Math.floor((ms % 3600000) / 60000);
-            const s = Math.floor((ms % 60000) / 1000);
+            if (d > 0) return `${d}d ${h}h`;
             if (h > 0) return `${h}h ${m}m`;
-            if (m > 0) return `${m}m ${s}s`;
-            return `${s}s`;
+            return `${m}m`;
         }
 
-        function renderLots(lotsToRender) {
+        function getFilteredLots() {
+            return lots.filter(lot => {
+                const matchesFilter = currentFilter === 'all' || lot.category === currentFilter;
+                const matchesSearch = lot.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                     lot.lotNumber.toString().includes(searchQuery);
+                return matchesFilter && matchesSearch;
+            });
+        }
+
+        function renderLots() {
+            const filtered = getFilteredLots();
+            const totalPages = Math.ceil(filtered.length / itemsPerPage);
+            const start = (currentPage - 1) * itemsPerPage;
+            const paged = filtered.slice(start, start + itemsPerPage);
+            
+            document.getElementById('lotCount').textContent = filtered.length.toLocaleString();
+            
             const grid = document.getElementById('auctionGrid');
-            grid.innerHTML = lotsToRender.map(lot => {
+            grid.innerHTML = paged.map(lot => {
                 const timeLeft = lot.endTime - Date.now();
-                const isEndingSoon = timeLeft < 3600000 && timeLeft > 0;
+                const isEndingSoon = timeLeft < 3600000 * 6 && timeLeft > 0;
                 return `
                     <div class="lot-card">
                         <div class="lot-image">
-                            <img src="${lot.image}" alt="${lot.title}">
+                            <img src="${lot.image}" alt="${lot.title}" onerror="this.src='https://via.placeholder.com/300x300/1a1f26/8f9f83?text=No+Image'">
                             <div class="lot-badges">
                                 <span class="lot-number">Lot #${lot.lotNumber}</span>
-                                <span class="image-count">📷 ${lot.imageCount}</span>
+                                <span class="category-badge">${lot.category}</span>
                             </div>
                         </div>
                         <div class="lot-info">
                             <h3 class="lot-title">${lot.title}</h3>
                             <div class="lot-meta">
-                                <span class="current-bid">${lot.currentBid > 0 ? '$' + lot.currentBid.toLocaleString() : 'No bids'}</span>
-                                <span class="bid-count">${lot.bidCount} bid${lot.bidCount !== 1 ? 's' : ''}</span>
+                                <span class="current-bid">Starting: $${lot.startingBid.toLocaleString()}</span>
                             </div>
                             <div class="lot-timer ${isEndingSoon ? 'ending-soon' : ''}" data-end="${lot.endTime.getTime()}">
                                 <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                                 <span>${formatTime(timeLeft)}</span>
                             </div>
-                            <button class="bid-button" onclick="openBidModal(${lot.id})">Bid $${lot.minBid.toLocaleString()}</button>
+                            <button class="bid-button" onclick="openBidModal(${lot.id})">Bid $${lot.startingBid.toLocaleString()}</button>
                         </div>
                     </div>
                 `;
             }).join('');
+
+            // Update pagination
+            ['', '2'].forEach(suffix => {
+                document.getElementById('pageInfo' + suffix).textContent = `Page ${currentPage} of ${totalPages}`;
+                document.getElementById('prevPage' + suffix).disabled = currentPage === 1;
+                document.getElementById('nextPage' + suffix).disabled = currentPage >= totalPages;
+            });
         }
 
         function updateCountdowns() {
@@ -571,27 +570,27 @@
                 const endTime = parseInt(timer.dataset.end);
                 const timeLeft = endTime - Date.now();
                 timer.querySelector('span').textContent = formatTime(timeLeft);
-                timer.classList.toggle('ending-soon', timeLeft < 3600000 && timeLeft > 0);
+                timer.classList.toggle('ending-soon', timeLeft < 3600000 * 6 && timeLeft > 0);
             });
         }
 
         function openBidModal(lotId) {
             selectedLot = lots.find(l => l.id === lotId);
             const modal = document.getElementById('bidModal');
-            const body = document.getElementById('modalBody');
+            const minBid = selectedLot.startingBid;
             
-            body.innerHTML = `
+            document.getElementById('modalBody').innerHTML = `
                 <div class="modal-lot-preview">
-                    <img src="${selectedLot.image}" alt="${selectedLot.title}">
+                    <img src="${selectedLot.image}" alt="${selectedLot.title}" onerror="this.src='https://via.placeholder.com/80x80/1a1f26/8f9f83?text=No+Image'">
                     <div class="modal-lot-info">
-                        <h3>Lot #${selectedLot.lotNumber}: ${selectedLot.title}</h3>
-                        <p>Current: ${selectedLot.currentBid > 0 ? '$' + selectedLot.currentBid.toLocaleString() : 'No bids'} · Min: $${selectedLot.minBid.toLocaleString()}</p>
+                        <h3>Lot #${selectedLot.lotNumber}</h3>
+                        <p>${selectedLot.title}</p>
                     </div>
                 </div>
                 <form onsubmit="submitBid(event)">
                     <div class="form-group">
                         <label for="maxBid">Your Max Bid ($)</label>
-                        <input type="number" id="maxBid" min="${selectedLot.minBid}" value="${selectedLot.minBid}" required oninput="updateSummary()">
+                        <input type="number" id="maxBid" min="${minBid}" step="0.01" value="${minBid}" required oninput="updateSummary()">
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
@@ -600,21 +599,20 @@
                     <div class="bid-summary">
                         <div class="bid-summary-row">
                             <span>Your Max Bid</span>
-                            <span id="summaryBid">$${selectedLot.minBid.toLocaleString()}</span>
+                            <span id="summaryBid">$${minBid.toFixed(2)}</span>
                         </div>
                         <div class="bid-summary-row">
                             <span>Buyer's Premium (15%)</span>
-                            <span id="summaryPremium">$${(selectedLot.minBid * 0.15).toFixed(2)}</span>
+                            <span id="summaryPremium">$${(minBid * 0.15).toFixed(2)}</span>
                         </div>
                         <div class="bid-summary-row total">
                             <span>Total if You Win</span>
-                            <span id="summaryTotal">$${(selectedLot.minBid * 1.15).toFixed(2)}</span>
+                            <span id="summaryTotal">$${(minBid * 1.15).toFixed(2)}</span>
                         </div>
                     </div>
                     <button type="submit" class="modal-submit">Place Bid</button>
                 </form>
             `;
-            
             modal.classList.add('active');
         }
 
@@ -625,7 +623,7 @@
 
         function updateSummary() {
             const bid = parseFloat(document.getElementById('maxBid').value) || 0;
-            document.getElementById('summaryBid').textContent = '$' + bid.toLocaleString();
+            document.getElementById('summaryBid').textContent = '$' + bid.toFixed(2);
             document.getElementById('summaryPremium').textContent = '$' + (bid * 0.15).toFixed(2);
             document.getElementById('summaryTotal').textContent = '$' + (bid * 1.15).toFixed(2);
         }
@@ -635,8 +633,12 @@
             const bid = document.getElementById('maxBid').value;
             const email = document.getElementById('email').value;
             
-            // In production: POST to webhook or send email
-            console.log('Bid submitted:', { lot: selectedLot.lotNumber, title: selectedLot.title, bid, email });
+            // Send to email (in production, POST to webhook)
+            const subject = encodeURIComponent(`New Bid: Lot #${selectedLot.lotNumber} - ${selectedLot.title}`);
+            const body = encodeURIComponent(`New bid received!\n\nLot #${selectedLot.lotNumber}\nTitle: ${selectedLot.title}\nBid Amount: $${bid}\nBidder Email: ${email}\n\nSubmit floor bid on HiBid.`);
+            
+            // For now, show success and log
+            console.log('Bid:', { lot: selectedLot.lotNumber, title: selectedLot.title, bid, email });
             
             document.getElementById('modalBody').innerHTML = `
                 <div style="text-align: center; padding: 2rem;">
@@ -650,8 +652,9 @@
 
         // Search
         document.getElementById('searchInput').addEventListener('input', e => {
-            const q = e.target.value.toLowerCase();
-            renderLots(lots.filter(l => l.title.toLowerCase().includes(q) || l.lotNumber.toString().includes(q)));
+            searchQuery = e.target.value;
+            currentPage = 1;
+            renderLots();
         });
 
         // Filters
@@ -659,23 +662,30 @@
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                const f = btn.textContent.toLowerCase();
-                let filtered = lots;
-                if (f === 'gold') filtered = lots.filter(l => l.category === 'gold');
-                else if (f === 'coins') filtered = lots.filter(l => l.category === 'coins');
-                else if (f === 'collectibles') filtered = lots.filter(l => l.category === 'collectibles');
-                else if (f === 'no bids yet') filtered = lots.filter(l => l.bidCount === 0);
-                renderLots(filtered);
+                currentFilter = btn.dataset.filter;
+                currentPage = 1;
+                renderLots();
             });
         });
 
-        // Close modal on overlay click
+        // Pagination
+        ['', '2'].forEach(suffix => {
+            document.getElementById('prevPage' + suffix).addEventListener('click', () => {
+                if (currentPage > 1) { currentPage--; renderLots(); window.scrollTo(0, 400); }
+            });
+            document.getElementById('nextPage' + suffix).addEventListener('click', () => {
+                const totalPages = Math.ceil(getFilteredLots().length / itemsPerPage);
+                if (currentPage < totalPages) { currentPage++; renderLots(); window.scrollTo(0, 400); }
+            });
+        });
+
+        // Modal close
         document.getElementById('bidModal').addEventListener('click', e => {
             if (e.target.classList.contains('modal-overlay')) closeBidModal();
         });
 
         // Init
-        renderLots(lots);
+        renderLots();
         setInterval(updateCountdowns, 1000);
     </script>
 </body>
