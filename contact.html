@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45° North Collective | Contact Us</title>
+    <meta name="description" content="Ready to move some inventory? Get in touch with 45° North Collective. We respond within 24 hours.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #8f9f83;
+            --sage-dark: #6d7a63;
+            --dark: #161616;
+            --darker: #0d0d0d;
+            --light: #f7f7f7;
+            --white: #ffffff;
+            --gray: #a4a4a4;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: var(--white);
+        }
+        /* === STANDARDIZED NAV === */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+            background: var(--sage);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 50px; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+        .nav-links a:hover { opacity: 0.8; }
+        .nav-cta {
+            background: white !important;
+            color: var(--sage) !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s;
+        }
+        /* === END NAV === */
+
+        section { padding: 5rem 2rem; margin-top: 70px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .section-sub {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-item-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--sage);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .contact-item-text h4 {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .contact-item-text a {
+            color: var(--sage);
+            text-decoration: none;
+        }
+        .contact-item-text a:hover { text-decoration: underline; }
+        .contact-campaign {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        .contact-campaign h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .contact-campaign p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .form-group { display: flex; flex-direction: column; }
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .form-group input, .form-group textarea {
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--sage);
+        }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .btn {
+            padding: 1rem 2rem;
+            background: var(--sage);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover { background: var(--sage-dark); }
+        .form-note {
+            background: var(--light);
+            border-left: 4px solid var(--sage);
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+        .footer {
+            background: var(--darker);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+        .footer a { color: var(--sage); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            section { padding: 3rem 1rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--sage);
+                padding: 1rem 2rem;
+                gap: 1rem;
+            }
+            .nav-links.open { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="logo">
+            <img src="45north-logo.png" alt="45° North Collective">
+        </a>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="auctions.html">Auctions</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="portal-simple.html" class="nav-cta">Client Portal</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Let's Talk</h2>
+                <p class="section-sub">Whether you've got questions or you're ready to get started, we're here.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">✉️</div>
+                        <div class="contact-item-text">
+                            <h4>Email</h4>
+                            <a href="mailto:info@45northcollective.com">info@45northcollective.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <div class="contact-item-text">
+                            <h4>Phone</h4>
+                            <a href="tel:9713132653">(971) 313-2653</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div class="contact-item-text">
+                            <h4>Location</h4>
+                            <p>Portland, Oregon</p>
+                        </div>
+                    </div>
+                    <div class="contact-campaign">
+                        <h4>🎁 Current Campaign</h4>
+                        <p><strong>Reuse, Regift, Rewrap</strong></p>
+                        <p style="margin-top: 0.5rem; font-size: 0.85rem;">We're spotlighting local shops this holiday season. Mention it in your message to be featured!</p>
+                    </div>
+                </div>
+
+                <form class="contact-form" action="https://formsubmit.co/admin@45northcollective.com" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="business">Business Name</label>
+                            <input type="text" id="business" name="business">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell us about your inventory and what you're hoping to accomplish..."></textarea>
+                    </div>
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+
+            <div class="form-note">
+                <strong>What happens next:</strong> We'll respond within 24 hours. Quick call to learn about your inventory and goals. If it's a fit, we'll schedule a pickup or walkthrough. You start getting paid.
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 45° North Collective - All Rights Reserved.</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">Portland, Oregon | <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> | <a href="tel:9713132653">(971) 313-2653</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+    </script>
+</body>
+</html>

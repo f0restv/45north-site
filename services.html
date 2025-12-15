@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45° North Collective | Services & Pricing</title>
+    <meta name="description" content="Simple pricing for inventory sales. Get 90% of your asking price or partner with us on a monthly retainer.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #8f9f83;
+            --sage-dark: #6d7a63;
+            --dark: #161616;
+            --darker: #0d0d0d;
+            --light: #f7f7f7;
+            --white: #ffffff;
+            --gray: #a4a4a4;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: var(--white);
+        }
+        /* === STANDARDIZED NAV === */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+            background: var(--sage);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 50px; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+        .nav-links a:hover { opacity: 0.8; }
+        .nav-cta {
+            background: white !important;
+            color: var(--sage) !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s;
+        }
+        /* === END NAV === */
+
+        section { padding: 5rem 2rem; margin-top: 70px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-label {
+            color: var(--sage);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .section-sub {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--sage);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .step-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .pricing-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .pricing-card.featured { border: 3px solid var(--sage); }
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--sage);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .pricing-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--sage);
+            margin-bottom: 1rem;
+        }
+        .price span { font-size: 1rem; color: var(--gray); }
+        .pricing-card ul { list-style: none; margin: 2rem 0; }
+        .pricing-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .pricing-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--sage);
+            font-weight: bold;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--sage);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .btn:hover { background: var(--sage-dark); }
+        .guarantee-box {
+            background: var(--sage);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .guarantee-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            text-align: center;
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+        .results-grid .stat {
+            font-size: 2rem;
+            color: var(--sage);
+            font-weight: 700;
+        }
+        .results-grid .label { color: var(--gray); }
+        .footer {
+            background: var(--darker);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+        .footer a { color: var(--sage); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            section { padding: 3rem 1rem; }
+            .steps-grid, .pricing-grid { grid-template-columns: 1fr; }
+            .results-grid { grid-template-columns: repeat(2, 1fr); }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--sage);
+                padding: 1rem 2rem;
+                gap: 1rem;
+            }
+            .nav-links.open { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="logo">
+            <img src="45north-logo.png" alt="45° North Collective">
+        </a>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="auctions.html">Auctions</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="portal-simple.html" class="nav-cta">Client Portal</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Process</span>
+                <h2>How It Works</h2>
+                <p class="section-sub">Three simple steps to move your inventory and get paid.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>We Buy Your Inventory</h3>
+                    <p>You name your price. We pay 90% — cash in hand, item off your shelf. No consignment waiting. No risk.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>We List & Market</h3>
+                    <p>Professional photos. Optimized listings on HiBid, eBay, and Whatnot. Targeted marketing to serious collectors nationwide.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>We Sell & Ship</h3>
+                    <p>Auctions run, buyers pay, we handle fulfillment. You're done. No shipping headaches. We handle it all.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: var(--light);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Investment</span>
+                <h2>Simple Pricing. Real Results.</h2>
+                <p class="section-sub">Two ways to work with us — pick what fits your business.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Inventory Purchase</h3>
+                    <div class="price">90<span>%</span></div>
+                    <p style="color: var(--gray); margin-bottom: 1.5rem;">One-time or ongoing</p>
+                    <ul>
+                        <li>You set the price</li>
+                        <li>We buy at 90% of asking</li>
+                        <li>Cash paid immediately</li>
+                        <li>Zero involvement needed</li>
+                        <li>No fees. No commissions.</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <h3>Marketing Retainer</h3>
+                    <div class="price">$2.5K<span>–$5K/month</span></div>
+                    <p style="color: var(--gray); margin-bottom: 1.5rem;">3-month minimum</p>
+                    <ul>
+                        <li>Dedicated marketing team</li>
+                        <li>Weekly auction listings</li>
+                        <li>Social & email promotion</li>
+                        <li>Monthly reports</li>
+                        <li>Priority pickup & turnaround</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Talk to Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="guarantee-box">
+                <h3>💰 Our Performance Guarantee</h3>
+                <p style="font-size: 1.1rem; line-height: 1.6;">If our sales don't beat your monthly retainer fee between day 60 and 90, we refund your third month in full and part ways. No questions asked.<br><br><strong>We don't win unless you win.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Case Study</span>
+                <h2>$40K+ Sold in One Quarter</h2>
+                <p class="section-sub">How we moved hundreds of items across 8 auctions</p>
+            </div>
+            <div class="results-grid">
+                <div><div class="stat">$40K+</div><div class="label">Total Sales</div></div>
+                <div><div class="stat">8</div><div class="label">Auctions</div></div>
+                <div><div class="stat">5K+</div><div class="label">Bidder Views</div></div>
+                <div><div class="stat">3</div><div class="label">Platforms</div></div>
+            </div>
+            <p style="font-size: 1.1rem; color: var(--gray); line-height: 1.7; margin-top: 2rem;">Your inventory has value. The buyers are out there — they're just not walking through your door. We connect your stuff to collectors and shoppers nationwide who are actively looking for exactly what you have.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 45° North Collective - All Rights Reserved.</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">Portland, Oregon | <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> | <a href="tel:9713132653">(971) 313-2653</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+    </script>
+</body>
+</html>

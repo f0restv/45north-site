@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>45° North Auctions | Shop Our Clients' Inventory</title>
+    <meta name="description" content="Browse live auctions of coins, collectibles, vintage items, and more. Professional photography, fair prices, nationwide shipping.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
@@ -18,64 +19,79 @@
             --text-primary: #f0f6fc;
             --text-secondary: #8b949e;
             --warning: #d29922;
+            --white: #ffffff;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
-            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Source Sans Pro', -apple-system, sans-serif;
             background: var(--dark);
             color: var(--text-primary);
             line-height: 1.6;
             min-height: 100vh;
         }
 
-        .header {
-            background: var(--sage);
-            padding: 1rem 2rem;
-            position: sticky;
+        /* === STANDARDIZED NAV === */
+        .nav {
+            position: fixed;
             top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+            background: var(--sage);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 70px;
         }
-
-        .logo img { height: 60px; }
-
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 50px; }
         .nav-links {
             display: flex;
             gap: 2rem;
+            align-items: center;
             list-style: none;
         }
-
         .nav-links a {
             color: white;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
             transition: opacity 0.2s;
         }
-
         .nav-links a:hover { opacity: 0.8; }
+        .nav-cta {
+            background: white !important;
+            color: var(--sage) !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s;
+        }
+        /* === END NAV === */
 
         .hero {
             background: linear-gradient(135deg, var(--card-bg) 0%, #1a1f26 100%);
             padding: 3rem 2rem;
             text-align: center;
+            margin-top: 70px;
             border-bottom: 1px solid var(--card-border);
         }
-
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
-
         .hero p { color: var(--text-secondary); font-size: 1.1rem; }
         .hero .lot-count { color: var(--gold); font-weight: 700; }
 
@@ -89,7 +105,6 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-
         .search-box {
             display: flex;
             align-items: center;
@@ -100,7 +115,6 @@
             flex: 1;
             max-width: 400px;
         }
-
         .search-box input {
             background: none;
             border: none;
@@ -109,16 +123,9 @@
             width: 100%;
             margin-left: 0.5rem;
         }
-
         .search-box input::placeholder { color: var(--text-secondary); }
         .search-box input:focus { outline: none; }
-
-        .filter-buttons {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
+        .filter-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; }
         .filter-btn {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -129,35 +136,11 @@
             transition: all 0.2s;
             font-size: 0.9rem;
         }
-
         .filter-btn:hover, .filter-btn.active {
             background: var(--sage);
             border-color: var(--sage);
             color: white;
         }
-
-        .pagination {
-            max-width: 1400px;
-            margin: 0 auto 1rem;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .pagination button {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            color: var(--text-primary);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .pagination button:hover { background: var(--sage); }
-        .pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
-        .pagination span { color: var(--text-secondary); }
 
         .auction-grid {
             max-width: 1400px;
@@ -167,7 +150,6 @@
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
         }
-
         .lot-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -175,24 +157,20 @@
             overflow: hidden;
             transition: transform 0.2s, box-shadow 0.2s;
         }
-
         .lot-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.3);
         }
-
         .lot-image {
             position: relative;
             aspect-ratio: 1;
             background: #1a1f26;
         }
-
         .lot-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
         .lot-badges {
             position: absolute;
             top: 0.75rem;
@@ -201,7 +179,6 @@
             display: flex;
             justify-content: space-between;
         }
-
         .lot-number {
             background: rgba(0,0,0,0.7);
             color: white;
@@ -210,7 +187,6 @@
             font-size: 0.8rem;
             font-weight: 600;
         }
-
         .category-badge {
             background: var(--sage);
             color: white;
@@ -219,9 +195,7 @@
             font-size: 0.75rem;
             font-weight: 600;
         }
-
         .lot-info { padding: 1rem; }
-
         .lot-title {
             font-weight: 600;
             font-size: 0.95rem;
@@ -233,27 +207,13 @@
             overflow: hidden;
             min-height: 2.6em;
         }
-
         .lot-meta {
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.75rem;
             font-size: 0.85rem;
         }
-
         .current-bid { color: var(--gold); font-weight: 700; }
-
-        .lot-timer {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
-
-        .lot-timer.ending-soon { color: var(--warning); }
-
         .bid-button {
             width: 100%;
             background: var(--sage);
@@ -266,123 +226,7 @@
             cursor: pointer;
             transition: background 0.2s;
         }
-
         .bid-button:hover { background: var(--sage-dark); }
-
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.8);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            padding: 1rem;
-        }
-
-        .modal-overlay.active { display: flex; }
-
-        .modal {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            max-width: 500px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--card-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-header h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; }
-
-        .modal-close {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .modal-close:hover { color: var(--text-primary); }
-
-        .modal-body { padding: 1.5rem; }
-
-        .modal-lot-preview {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .modal-lot-preview img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .modal-lot-info h3 { font-size: 1rem; margin-bottom: 0.25rem; }
-        .modal-lot-info p { color: var(--text-secondary); font-size: 0.9rem; }
-
-        .form-group { margin-bottom: 1rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
-
-        .form-group input {
-            width: 100%;
-            padding: 0.75rem;
-            background: var(--dark);
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            color: var(--text-primary);
-            font-size: 1rem;
-        }
-
-        .form-group input:focus { outline: none; border-color: var(--sage); }
-
-        .bid-summary {
-            background: var(--dark);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-        }
-
-        .bid-summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            color: var(--text-secondary);
-        }
-
-        .bid-summary-row.total {
-            color: var(--text-primary);
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-top: 0.75rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid var(--card-border);
-        }
-
-        .modal-submit {
-            width: 100%;
-            background: var(--sage);
-            color: white;
-            border: none;
-            padding: 1rem;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-        }
-
-        .modal-submit:hover { background: var(--sage-dark); }
 
         .footer {
             background: var(--card-bg);
@@ -391,31 +235,45 @@
             text-align: center;
             color: var(--text-secondary);
         }
-
         .footer a { color: var(--sage); text-decoration: none; }
 
         @media (max-width: 768px) {
-            .header-content { flex-direction: column; gap: 1rem; }
-            .nav-links { gap: 1rem; }
             .filters { flex-direction: column; }
             .search-box { max-width: 100%; }
             .hero h1 { font-size: 1.75rem; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--sage);
+                padding: 1rem 2rem;
+                gap: 1rem;
+            }
+            .nav-links.open { display: flex; }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-content">
-            <a href="index.html" class="logo">
-                <img src="45north-logo.png" alt="45° North Collective">
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
+    <nav class="nav">
+        <a href="index.html" class="logo">
+            <img src="45north-logo.png" alt="45° North Collective">
+        </a>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
         </div>
-    </header>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="auctions.html">Auctions</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="portal-simple.html" class="nav-cta">Client Portal</a></li>
+        </ul>
+    </nav>
 
     <section class="hero">
         <h1>Live Auctions</h1>
@@ -436,31 +294,7 @@
         </div>
     </div>
 
-    <div class="pagination">
-        <button id="prevPage">← Prev</button>
-        <span id="pageInfo">Page 1</span>
-        <button id="nextPage">Next →</button>
-    </div>
-
     <div class="auction-grid" id="auctionGrid"></div>
-
-    <div class="pagination" style="margin-top: 2rem;">
-        <button id="prevPage2">← Prev</button>
-        <span id="pageInfo2">Page 1</span>
-        <button id="nextPage2">Next →</button>
-    </div>
-
-    <div class="modal-overlay" id="bidModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h2>Place Your Bid</h2>
-                <button class="modal-close" onclick="closeBidModal()">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
-            </div>
-            <div class="modal-body" id="modalBody"></div>
-        </div>
-    </div>
 
     <footer class="footer">
         <p>© 2025 45° North Collective · Portland, Oregon · <a href="mailto:info@45northcollective.com">info@45northcollective.com</a></p>
@@ -468,225 +302,72 @@
     </footer>
 
     <script>
-        // Auction data from DECEMBER_MASTER_AUCTION_LIST.csv
         const lots = [
-            {id:1,lotNumber:1,title:"Daredevil #319B McDaniel Variant 2nd Printing CGC",image:"https://i.ebayimg.com/images/g/opQAAeSwKxJpOKkv/s-l300.jpg",category:"Comics",startingBid:34.99,endTime:new Date(Date.now()+3600000*48)},
-            {id:2,lotNumber:2,title:"Ghost Rider Vol. 2 #28 CGC 8.0 Midnight Sons Marvel",image:"https://i.ebayimg.com/images/g/2XAAAeSw1hxpOKhu/s-l300.jpg",category:"Comics",startingBid:15.00,endTime:new Date(Date.now()+3600000*48)},
-            {id:3,lotNumber:3,title:"Ghost Rider Vol. 2 #28 CGC 9.2 Midnight Sons Marvel",image:"https://i.ebayimg.com/images/g/7J0AAeSwUuFpOKfU/s-l300.jpg",category:"Comics",startingBid:34.99,endTime:new Date(Date.now()+3600000*48)},
-            {id:7,lotNumber:7,title:"LINCOLN WHEAT PENNY 7 LB bag 1909-1958 with Indian",image:"https://i.ebayimg.com/images/g/hxgAAOSwzllluA-p/s-l300.jpg",category:"Coins",startingBid:124.99,endTime:new Date(Date.now()+3600000*36)},
-            {id:8,lotNumber:8,title:"BATMAN ADVENTURES #12 ~ 1st comic book appearance",image:"https://i.ebayimg.com/images/g/TYUAAeSwtN9pMjQP/s-l300.jpg",category:"Comics",startingBid:500.00,endTime:new Date(Date.now()+3600000*24)},
-            {id:9,lotNumber:9,title:"Sealed bank roll $25 FV fed Loomis dollar coins",image:"https://i.ebayimg.com/images/g/J3cAAOSwx95ny0w3/s-l300.jpg",category:"Paper Money",startingBid:25.00,endTime:new Date(Date.now()+3600000*72)},
-            {id:11,lotNumber:11,title:"1953 Two Dollar Note Red Seal ~ $2 Bill G-VF+",image:"https://i.ebayimg.com/images/g/dssAAOSw2qtnoSFh/s-l300.jpg",category:"Paper Money",startingBid:2.00,endTime:new Date(Date.now()+3600000*48)},
-            {id:12,lotNumber:12,title:"4 notes: 1963 Red Seal $5, 1953 $5 Silver cert",image:"https://i.ebayimg.com/images/g/LjAAAOSwBi5ndafd/s-l300.jpg",category:"Paper Money",startingBid:5.00,endTime:new Date(Date.now()+3600000*48)},
-            {id:13,lotNumber:13,title:"FR. 17a 1862 $1 ONE DOLLAR LEGAL TENDER NOTE",image:"https://i.ebayimg.com/images/g/2WsAAeSwj9No2C6z/s-l300.jpg",category:"Paper Money",startingBid:1.00,endTime:new Date(Date.now()+3600000*24)},
-            {id:14,lotNumber:14,title:"Deathblow 1, Manufactured Partial Emboss red foil",image:"https://i.ebayimg.com/images/g/xY8AAeSwNDppMxr-/s-l300.jpg",category:"Comics",startingBid:2500.00,endTime:new Date(Date.now()+3600000*12)},
-            {id:16,lotNumber:16,title:"The New Mutants #87 Marvel 1990 1st Cable",image:"https://i.ebayimg.com/images/g/v7QAAeSwYcNpMjkj/s-l300.jpg",category:"Comics",startingBid:165.00,endTime:new Date(Date.now()+3600000*36)},
-            {id:17,lotNumber:17,title:"Avengers #1 CGC 2.5 1963 1st app. the Avengers",image:"https://i.ebayimg.com/images/g/TxgAAeSwOoppMxwc/s-l300.jpg",category:"Comics",startingBid:2850.00,endTime:new Date(Date.now()+3600000*6)},
-            {id:18,lotNumber:18,title:"3 medium 2\" Vials Filled with Gold Leaf Flakes",image:"https://i.ebayimg.com/images/g/hNUAAOSwyI1nH-Mr/s-l300.jpg",category:"Collectibles",startingBid:6.99,endTime:new Date(Date.now()+3600000*72)},
-            {id:19,lotNumber:19,title:"Amazing Spider-Man #300 CGC 9.2 White Pages 1st Venom",image:"https://i.ebayimg.com/images/g/JY8AAeSw8lFpMjEq/s-l300.jpg",category:"Comics",startingBid:550.00,endTime:new Date(Date.now()+3600000*18)},
-            {id:20,lotNumber:20,title:"Batman #253 (DC Comics 1973) 1st App. Shadow",image:"https://i.ebayimg.com/images/g/06sAAeSwnu5pDOvR/s-l300.jpg",category:"Comics",startingBid:10.00,endTime:new Date(Date.now()+3600000*48)},
-            {id:23,lotNumber:23,title:"Incredible Hulk #340 CGC 8.5 White (Marvel 1988)",image:"https://i.ebayimg.com/images/g/di0AAeSwE3hpMiu0/s-l300.jpg",category:"Comics",startingBid:280.00,endTime:new Date(Date.now()+3600000*24)},
-            {id:24,lotNumber:24,title:"Amazing Spider-Man 316 CGC 9.4 NM Newsstand",image:"https://i.ebayimg.com/images/g/oCoAAeSwDXRpMjHG/s-l300.jpg",category:"Comics",startingBid:294.99,endTime:new Date(Date.now()+3600000*36)},
-            {id:25,lotNumber:25,title:"Sealed Wheat Penny Roll 1909-1958",image:"https://i.ebayimg.com/images/g/jKYAAOSwIYhlogDx/s-l300.jpg",category:"Coins",startingBid:17.99,endTime:new Date(Date.now()+3600000*72)},
-            {id:26,lotNumber:26,title:"1899 Silver Certificate Black Eagle Large Dollar Note",image:"https://i.ebayimg.com/images/g/oPYAAeSwu1hpDlCw/s-l300.jpg",category:"Paper Money",startingBid:1.00,endTime:new Date(Date.now()+3600000*12)},
-            {id:27,lotNumber:27,title:"F-59 1917 $2 Legal Tender Red Seal Large Note",image:"https://i.ebayimg.com/images/g/C2EAAeSwIolpL2hO/s-l300.jpg",category:"Paper Money",startingBid:2.00,endTime:new Date(Date.now()+3600000*48)},
-            {id:30,lotNumber:30,title:"FR 258 1899 $2 MINI PORTHOLE SILVER CERTIFICATE",image:"https://i.ebayimg.com/images/g/jK8AAeSwLGtpDlMK/s-l300.jpg",category:"Paper Money",startingBid:2.00,endTime:new Date(Date.now()+3600000*24)},
-            {id:31,lotNumber:31,title:"UNCANNY X-MEN #266 CGC 9.6 1st full GAMBIT",image:"https://i.ebayimg.com/images/g/hNUAAOSwyI1nH-Mr/s-l300.jpg",category:"Comics",startingBid:425.00,endTime:new Date(Date.now()+3600000*18)},
-            {id:35,lotNumber:35,title:"Walking Liberty Half Dollar Roll 90% Silver",image:"https://i.ebayimg.com/images/g/jKYAAOSwIYhlogDx/s-l300.jpg",category:"Coins",startingBid:250.00,endTime:new Date(Date.now()+3600000*24)},
-            {id:40,lotNumber:40,title:"1oz American Gold Eagle 2024 BU",image:"https://i.ebayimg.com/images/g/hNUAAOSwyI1nH-Mr/s-l300.jpg",category:"Coins",startingBid:2400.00,endTime:new Date(Date.now()+3600000*8)},
+            {id:1,lotNumber:1,title:"Daredevil #319B McDaniel Variant CGC",image:"https://i.ebayimg.com/images/g/opQAAeSwKxJpOKkv/s-l300.jpg",category:"Comics",startingBid:34.99},
+            {id:2,lotNumber:2,title:"Ghost Rider Vol. 2 #28 CGC 8.0 Midnight Sons",image:"https://i.ebayimg.com/images/g/2XAAAeSw1hxpOKhu/s-l300.jpg",category:"Comics",startingBid:15.00},
+            {id:7,lotNumber:7,title:"LINCOLN WHEAT PENNY 7 LB bag 1909-1958",image:"https://i.ebayimg.com/images/g/hxgAAOSwzllluA-p/s-l300.jpg",category:"Coins",startingBid:124.99},
+            {id:8,lotNumber:8,title:"BATMAN ADVENTURES #12 1st Harley Quinn",image:"https://i.ebayimg.com/images/g/TYUAAeSwtN9pMjQP/s-l300.jpg",category:"Comics",startingBid:500.00},
+            {id:11,lotNumber:11,title:"1953 Two Dollar Note Red Seal $2 Bill",image:"https://i.ebayimg.com/images/g/dssAAOSw2qtnoSFh/s-l300.jpg",category:"Paper Money",startingBid:2.00},
+            {id:13,lotNumber:13,title:"FR. 17a 1862 $1 Legal Tender Note",image:"https://i.ebayimg.com/images/g/2WsAAeSwj9No2C6z/s-l300.jpg",category:"Paper Money",startingBid:1.00},
+            {id:16,lotNumber:16,title:"New Mutants #87 Marvel 1990 1st Cable",image:"https://i.ebayimg.com/images/g/v7QAAeSwYcNpMjkj/s-l300.jpg",category:"Comics",startingBid:165.00},
+            {id:17,lotNumber:17,title:"Avengers #1 CGC 2.5 1963 1st Avengers",image:"https://i.ebayimg.com/images/g/TxgAAeSwOoppMxwc/s-l300.jpg",category:"Comics",startingBid:2850.00},
+            {id:18,lotNumber:18,title:"3 Vials Gold Leaf Flakes",image:"https://i.ebayimg.com/images/g/hNUAAOSwyI1nH-Mr/s-l300.jpg",category:"Collectibles",startingBid:6.99},
+            {id:19,lotNumber:19,title:"Amazing Spider-Man #300 CGC 9.2 1st Venom",image:"https://i.ebayimg.com/images/g/JY8AAeSw8lFpMjEq/s-l300.jpg",category:"Comics",startingBid:550.00},
+            {id:25,lotNumber:25,title:"Sealed Wheat Penny Roll 1909-1958",image:"https://i.ebayimg.com/images/g/jKYAAOSwIYhlogDx/s-l300.jpg",category:"Coins",startingBid:17.99},
+            {id:26,lotNumber:26,title:"1899 Silver Certificate Black Eagle",image:"https://i.ebayimg.com/images/g/oPYAAeSwu1hpDlCw/s-l300.jpg",category:"Paper Money",startingBid:1.00},
         ];
 
-        let selectedLot = null;
         let currentFilter = 'all';
         let searchQuery = '';
-        let currentPage = 1;
-        const itemsPerPage = 20;
-
-        function formatTime(ms) {
-            if (ms <= 0) return "Ended";
-            const d = Math.floor(ms / 86400000);
-            const h = Math.floor((ms % 86400000) / 3600000);
-            const m = Math.floor((ms % 3600000) / 60000);
-            if (d > 0) return `${d}d ${h}h`;
-            if (h > 0) return `${h}h ${m}m`;
-            return `${m}m`;
-        }
-
-        function getFilteredLots() {
-            return lots.filter(lot => {
-                const matchesFilter = currentFilter === 'all' || lot.category === currentFilter;
-                const matchesSearch = lot.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                                     lot.lotNumber.toString().includes(searchQuery);
-                return matchesFilter && matchesSearch;
-            });
-        }
 
         function renderLots() {
-            const filtered = getFilteredLots();
-            const totalPages = Math.ceil(filtered.length / itemsPerPage);
-            const start = (currentPage - 1) * itemsPerPage;
-            const paged = filtered.slice(start, start + itemsPerPage);
+            const filtered = lots.filter(lot => {
+                const matchesFilter = currentFilter === 'all' || lot.category === currentFilter;
+                const matchesSearch = lot.title.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesFilter && matchesSearch;
+            });
             
-            document.getElementById('lotCount').textContent = filtered.length.toLocaleString();
+            document.getElementById('lotCount').textContent = filtered.length;
             
-            const grid = document.getElementById('auctionGrid');
-            grid.innerHTML = paged.map(lot => {
-                const timeLeft = lot.endTime - Date.now();
-                const isEndingSoon = timeLeft < 3600000 * 6 && timeLeft > 0;
-                return `
-                    <div class="lot-card">
-                        <div class="lot-image">
-                            <img src="${lot.image}" alt="${lot.title}" onerror="this.src='https://via.placeholder.com/300x300/1a1f26/8f9f83?text=No+Image'">
-                            <div class="lot-badges">
-                                <span class="lot-number">Lot #${lot.lotNumber}</span>
-                                <span class="category-badge">${lot.category}</span>
-                            </div>
-                        </div>
-                        <div class="lot-info">
-                            <h3 class="lot-title">${lot.title}</h3>
-                            <div class="lot-meta">
-                                <span class="current-bid">Starting: $${lot.startingBid.toLocaleString()}</span>
-                            </div>
-                            <div class="lot-timer ${isEndingSoon ? 'ending-soon' : ''}" data-end="${lot.endTime.getTime()}">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                                <span>${formatTime(timeLeft)}</span>
-                            </div>
-                            <button class="bid-button" onclick="openBidModal(${lot.id})">Bid $${lot.startingBid.toLocaleString()}</button>
+            document.getElementById('auctionGrid').innerHTML = filtered.map(lot => `
+                <div class="lot-card">
+                    <div class="lot-image">
+                        <img src="${lot.image}" alt="${lot.title}" onerror="this.src='https://via.placeholder.com/300x300/1a1f26/8f9f83?text=No+Image'">
+                        <div class="lot-badges">
+                            <span class="lot-number">Lot #${lot.lotNumber}</span>
+                            <span class="category-badge">${lot.category}</span>
                         </div>
                     </div>
-                `;
-            }).join('');
-
-            // Update pagination
-            ['', '2'].forEach(suffix => {
-                document.getElementById('pageInfo' + suffix).textContent = `Page ${currentPage} of ${totalPages}`;
-                document.getElementById('prevPage' + suffix).disabled = currentPage === 1;
-                document.getElementById('nextPage' + suffix).disabled = currentPage >= totalPages;
-            });
-        }
-
-        function updateCountdowns() {
-            document.querySelectorAll('.lot-timer').forEach(timer => {
-                const endTime = parseInt(timer.dataset.end);
-                const timeLeft = endTime - Date.now();
-                timer.querySelector('span').textContent = formatTime(timeLeft);
-                timer.classList.toggle('ending-soon', timeLeft < 3600000 * 6 && timeLeft > 0);
-            });
-        }
-
-        function openBidModal(lotId) {
-            selectedLot = lots.find(l => l.id === lotId);
-            const modal = document.getElementById('bidModal');
-            const minBid = selectedLot.startingBid;
-            
-            document.getElementById('modalBody').innerHTML = `
-                <div class="modal-lot-preview">
-                    <img src="${selectedLot.image}" alt="${selectedLot.title}" onerror="this.src='https://via.placeholder.com/80x80/1a1f26/8f9f83?text=No+Image'">
-                    <div class="modal-lot-info">
-                        <h3>Lot #${selectedLot.lotNumber}</h3>
-                        <p>${selectedLot.title}</p>
+                    <div class="lot-info">
+                        <h3 class="lot-title">${lot.title}</h3>
+                        <div class="lot-meta">
+                            <span class="current-bid">Starting: $${lot.startingBid.toLocaleString()}</span>
+                        </div>
+                        <button class="bid-button" onclick="window.open('https://hibid.com','_blank')">Place Bid</button>
                     </div>
                 </div>
-                <form onsubmit="submitBid(event)">
-                    <div class="form-group">
-                        <label for="maxBid">Your Max Bid ($)</label>
-                        <input type="number" id="maxBid" min="${minBid}" step="0.01" value="${minBid}" required oninput="updateSummary()">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="you@email.com" required>
-                    </div>
-                    <div class="bid-summary">
-                        <div class="bid-summary-row">
-                            <span>Your Max Bid</span>
-                            <span id="summaryBid">$${minBid.toFixed(2)}</span>
-                        </div>
-                        <div class="bid-summary-row">
-                            <span>Buyer's Premium (15%)</span>
-                            <span id="summaryPremium">$${(minBid * 0.15).toFixed(2)}</span>
-                        </div>
-                        <div class="bid-summary-row total">
-                            <span>Total if You Win</span>
-                            <span id="summaryTotal">$${(minBid * 1.15).toFixed(2)}</span>
-                        </div>
-                    </div>
-                    <button type="submit" class="modal-submit">Place Bid</button>
-                </form>
-            `;
-            modal.classList.add('active');
+            `).join('');
         }
 
-        function closeBidModal() {
-            document.getElementById('bidModal').classList.remove('active');
-            selectedLot = null;
-        }
-
-        function updateSummary() {
-            const bid = parseFloat(document.getElementById('maxBid').value) || 0;
-            document.getElementById('summaryBid').textContent = '$' + bid.toFixed(2);
-            document.getElementById('summaryPremium').textContent = '$' + (bid * 0.15).toFixed(2);
-            document.getElementById('summaryTotal').textContent = '$' + (bid * 1.15).toFixed(2);
-        }
-
-        function submitBid(e) {
-            e.preventDefault();
-            const bid = document.getElementById('maxBid').value;
-            const email = document.getElementById('email').value;
-            
-            // Send to email (in production, POST to webhook)
-            const subject = encodeURIComponent(`New Bid: Lot #${selectedLot.lotNumber} - ${selectedLot.title}`);
-            const body = encodeURIComponent(`New bid received!\n\nLot #${selectedLot.lotNumber}\nTitle: ${selectedLot.title}\nBid Amount: $${bid}\nBidder Email: ${email}\n\nSubmit floor bid on HiBid.`);
-            
-            // For now, show success and log
-            console.log('Bid:', { lot: selectedLot.lotNumber, title: selectedLot.title, bid, email });
-            
-            document.getElementById('modalBody').innerHTML = `
-                <div style="text-align: center; padding: 2rem;">
-                    <svg width="64" height="64" fill="none" stroke="#8f9f83" viewBox="0 0 24 24" style="margin-bottom: 1rem;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                    <h3 style="margin-bottom: 0.5rem;">Bid Placed!</h3>
-                    <p style="color: var(--text-secondary);">We'll notify you at ${email} if you win or get outbid.</p>
-                    <button onclick="closeBidModal()" style="margin-top: 1.5rem; padding: 0.75rem 2rem; background: var(--sage); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">Done</button>
-                </div>
-            `;
-        }
-
-        // Search
         document.getElementById('searchInput').addEventListener('input', e => {
             searchQuery = e.target.value;
-            currentPage = 1;
             renderLots();
         });
 
-        // Filters
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 currentFilter = btn.dataset.filter;
-                currentPage = 1;
                 renderLots();
             });
         });
 
-        // Pagination
-        ['', '2'].forEach(suffix => {
-            document.getElementById('prevPage' + suffix).addEventListener('click', () => {
-                if (currentPage > 1) { currentPage--; renderLots(); window.scrollTo(0, 400); }
-            });
-            document.getElementById('nextPage' + suffix).addEventListener('click', () => {
-                const totalPages = Math.ceil(getFilteredLots().length / itemsPerPage);
-                if (currentPage < totalPages) { currentPage++; renderLots(); window.scrollTo(0, 400); }
-            });
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
         });
 
-        // Modal close
-        document.getElementById('bidModal').addEventListener('click', e => {
-            if (e.target.classList.contains('modal-overlay')) closeBidModal();
-        });
-
-        // Init
         renderLots();
-        setInterval(updateCountdowns, 1000);
     </script>
 </body>
 </html>

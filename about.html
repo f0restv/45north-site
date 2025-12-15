@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45° North Collective | About Us</title>
+    <meta name="description" content="Meet the Portland-based team behind 45° North Collective. We help local shops reach buyers nationwide.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #8f9f83;
+            --sage-dark: #6d7a63;
+            --dark: #161616;
+            --darker: #0d0d0d;
+            --light: #f7f7f7;
+            --white: #ffffff;
+            --gray: #a4a4a4;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: var(--white);
+        }
+        /* === STANDARDIZED NAV === */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+            background: var(--sage);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 50px; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+        .nav-links a:hover { opacity: 0.8; }
+        .nav-cta {
+            background: white !important;
+            color: var(--sage) !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s;
+        }
+        /* === END NAV === */
+
+        section { padding: 5rem 2rem; margin-top: 70px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        .section-sub {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+        .about-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+        .about-intro h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .about-intro p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .team-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            background: var(--sage);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+        .team-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .role {
+            color: var(--sage);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .team-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        .cta-section {
+            background: var(--sage);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--sage);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        .btn:hover { background: var(--light); }
+        .footer {
+            background: var(--darker);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+        .footer a { color: var(--sage); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            section { padding: 3rem 1rem; }
+            .team-grid { grid-template-columns: 1fr; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--sage);
+                padding: 1rem 2rem;
+                gap: 1rem;
+            }
+            .nav-links.open { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="logo">
+            <img src="45north-logo.png" alt="45° North Collective">
+        </a>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="auctions.html">Auctions</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="portal-simple.html" class="nav-cta">Client Portal</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Who We Are</h2>
+                <p class="section-sub">A small team that moves inventory and builds brands.</p>
+            </div>
+            <div class="about-intro">
+                <h3>Our Story</h3>
+                <p>45° North Collective started with a simple idea: what if a marketing agency actually sold stuff instead of just talking about it?</p>
+                <p>We're based in Portland, Oregon, and we specialize in helping local shops — antique stores, pawn shops, vintage dealers, collectors — reach buyers nationwide. We handle the photos, the listings, the marketing, the sales, and the shipping. You handle running your business.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: var(--light);">
+        <div class="container">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; text-align: center; margin-bottom: 3rem;">The Team</h3>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">F</div>
+                    <h3>Forest VanDehey</h3>
+                    <div class="role">Managing Partner</div>
+                    <p>Forest brings years of experience in collectibles, coins, and online sales. He knows what sells, how to price it, and how to get it in front of the right buyers. If you've got inventory that needs to move, he's the one to call.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">P</div>
+                    <h3>Peyton Sprague</h3>
+                    <div class="role">Chief of Creative</div>
+                    <p>Peyton makes everything look good. From product photography to social content to brand strategy, she ensures your inventory gets presented the way it deserves — professionally and compellingly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem;">Why "45° North"?</h3>
+                <p style="color: var(--gray); font-size: 1.1rem; line-height: 1.7;">Portland sits at 45° north latitude. It's a nod to home, and a reminder that we're a local team serving local businesses — with national reach.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="cta-section">
+                <h2>We'd love to learn about your shop</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;">Ready to get started?</p>
+                <a href="contact.html" class="btn">Let's Connect</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 45° North Collective - All Rights Reserved.</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">Portland, Oregon | <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> | <a href="tel:9713132653">(971) 313-2653</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+    </script>
+</body>
+</html>
