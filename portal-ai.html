@@ -28,8 +28,58 @@
             min-height: 100vh;
             line-height: 1.6;
         }
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        
+        /* === STANDARDIZED NAV === */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+            background: var(--sage);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 50px; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+        .nav-links a:hover { opacity: 0.8; }
+        .nav-cta {
+            background: white !important;
+            color: var(--sage) !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s;
+        }
+        /* === END NAV === */
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; padding-top: 110px; }
+
         header {
             text-align: center;
             margin-bottom: 40px;
@@ -324,13 +374,46 @@
             font-size: 0.9rem;
         }
         footer a { color: var(--sage); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--sage);
+                padding: 1rem 2rem;
+                gap: 1rem;
+            }
+            .nav-links.open { display: flex; }
+        }
     </style>
 </head>
 <body>
+    <nav class="nav">
+        <a href="index.html" class="logo">
+            <img src="45north-logo.png" alt="45° North Collective">
+        </a>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="auctions.html">Auctions</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="portal-simple.html" class="nav-cta">Client Portal</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
         <header>
-            <div class="logo">45° North Collective</div>
-            <p class="tagline">Client Submission Portal</p>
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 10px;">AI-Powered Client Portal</h1>
+            <p class="tagline">Submit your items for instant AI analysis and valuation</p>
             <div class="ai-badge">✨ Powered by Claude AI</div>
         </header>
 
@@ -592,6 +675,11 @@
             results.classList.remove('visible');
             mainForm.style.display = 'block';
             updateButton();
+        });
+
+        // Hamburger menu
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
         });
     </script>
 </body>
