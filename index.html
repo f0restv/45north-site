@@ -12,16 +12,14 @@
         :root {
             --sage: #8f9f83;
             --sage-dark: #6d7a63;
-            --sage-light: rgba(143, 159, 131, 0.9);
             --dark: #161616;
             --darker: #0d0d0d;
             --light: #f7f7f7;
             --white: #ffffff;
             --gray: #a4a4a4;
+            --rust: #A65D4F;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--dark);
@@ -29,7 +27,7 @@
             background: var(--white);
         }
 
-        /* Navigation */
+        /* Navigation - Big centered logo that shrinks on scroll */
         .nav {
             position: fixed;
             top: 0;
@@ -44,34 +42,24 @@
             background: var(--sage);
             transition: background 0.3s, box-shadow 0.3s, height 0.3s;
         }
-
         .nav.scrolled {
             height: 100px;
-            background: var(--sage);
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
-
-        .logo {
-            position: relative;
-        }
-
+        .logo { position: relative; }
         .logo img {
             height: 180px;
             transition: height 0.3s;
         }
-
-        .nav.scrolled .logo img {
-            height: 80px;
-        }
-
+        .nav.scrolled .logo img { height: 80px; }
         .nav-links {
             position: absolute;
             right: 2rem;
             display: flex;
             gap: 2rem;
             list-style: none;
+            align-items: center;
         }
-
         .nav-links a {
             color: var(--white);
             text-decoration: none;
@@ -79,18 +67,13 @@
             font-size: 0.95rem;
             transition: opacity 0.2s;
         }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
+        .nav-links a:hover { opacity: 0.8; }
         .nav-cta {
             background: white !important;
             color: var(--sage) !important;
             padding: 0.6rem 1.25rem;
             border-radius: 6px;
         }
-
         .hamburger {
             display: none;
             position: absolute;
@@ -99,7 +82,6 @@
             cursor: pointer;
             gap: 5px;
         }
-
         .hamburger span {
             width: 25px;
             height: 3px;
@@ -117,27 +99,22 @@
             position: relative;
             overflow: hidden;
         }
-
         .hero-bg {
             position: absolute;
             inset: 0;
             display: flex;
         }
-
         .hero-bg-left, .hero-bg-right {
             flex: 1;
             background-size: cover;
             background-position: center;
         }
-
         .hero-bg-left {
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://img1.wsimg.com/isteam/getty/1401699341/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1200,m');
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800');
         }
-
         .hero-bg-right {
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://img1.wsimg.com/isteam/getty/1093686266/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1200,m');
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800');
         }
-
         .hero-content {
             position: relative;
             z-index: 1;
@@ -145,7 +122,16 @@
             max-width: 800px;
             padding: 2rem;
         }
-
+        .campaign-badge {
+            display: inline-block;
+            background: var(--rust);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.5rem, 6vw, 4rem);
@@ -153,7 +139,6 @@
             margin-bottom: 1rem;
             line-height: 1.1;
         }
-
         .hero h2 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(1.5rem, 3vw, 2rem);
@@ -161,7 +146,6 @@
             opacity: 0.9;
             margin-bottom: 2rem;
         }
-
         .hero-cta {
             display: inline-block;
             background: var(--sage);
@@ -173,27 +157,14 @@
             font-size: 1.1rem;
             transition: background 0.2s, transform 0.2s;
         }
-
         .hero-cta:hover {
             background: var(--sage-dark);
             transform: translateY(-2px);
         }
 
-        /* Sections */
-        section {
-            padding: 5rem 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
+        section { padding: 5rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
         .section-header h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
@@ -202,13 +173,11 @@
             margin-bottom: 1rem;
         }
 
-        /* Services */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-
         .service-card {
             background: var(--white);
             padding: 2.5rem;
@@ -217,45 +186,22 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
         }
-
         .service-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
-
         .service-card h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--dark);
         }
+        .service-card p { color: var(--gray); line-height: 1.7; }
 
-        .service-card p {
-            color: var(--gray);
-            line-height: 1.7;
-        }
-
-        /* FAQ */
-        .faq {
-            background: var(--light);
-        }
-
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-intro {
-            text-align: center;
-            color: var(--gray);
-            margin-bottom: 2rem;
-        }
-
-        .faq-intro a {
-            color: var(--sage);
-            text-decoration: none;
-        }
-
+        .faq { background: var(--light); }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-intro { text-align: center; color: var(--gray); margin-bottom: 2rem; }
+        .faq-intro a { color: var(--sage); text-decoration: none; }
         .faq-item {
             background: var(--white);
             margin-bottom: 1rem;
@@ -263,7 +209,6 @@
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-
         .faq-question {
             font-family: 'Playfair Display', serif;
             font-size: 1.1rem;
@@ -275,51 +220,25 @@
             align-items: center;
             background: var(--white);
         }
-
-        .faq-question:hover {
-            background: var(--light);
-        }
-
-        .faq-question svg {
-            transition: transform 0.3s;
-            flex-shrink: 0;
-            margin-left: 1rem;
-        }
-
-        .faq-item.active .faq-question svg {
-            transform: rotate(180deg);
-        }
-
+        .faq-question:hover { background: var(--light); }
+        .faq-question svg { transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+        .faq-item.active .faq-question svg { transform: rotate(180deg); }
         .faq-answer {
             color: var(--gray);
             padding: 0 1.5rem 1.25rem;
             display: none;
             line-height: 1.7;
         }
+        .faq-item.active .faq-answer { display: block; }
 
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-
-        /* Social */
-        .social {
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-
+        .social { text-align: center; padding: 3rem 2rem; }
         .social h2 {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             color: var(--dark);
             margin-bottom: 1.5rem;
         }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
+        .social-links { display: flex; justify-content: center; gap: 1rem; }
         .social-links a {
             width: 50px;
             height: 50px;
@@ -331,37 +250,13 @@
             color: var(--white);
             transition: background 0.2s, transform 0.2s;
         }
+        .social-links a:hover { background: var(--sage-dark); transform: scale(1.1); }
 
-        .social-links a:hover {
-            background: var(--sage-dark);
-            transform: scale(1.1);
-        }
-
-        /* Contact */
-        .contact {
-            background: var(--dark);
-            color: var(--white);
-        }
-
-        .contact .section-header h2 {
-            color: var(--white);
-        }
-
-        .contact-content {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .contact-form {
-            background: transparent;
-        }
-
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
+        .contact { background: var(--dark); color: var(--white); }
+        .contact .section-header h2 { color: var(--white); }
+        .contact-content { max-width: 500px; margin: 0 auto; }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group input, .form-group textarea {
             width: 100%;
             padding: 1rem;
             border: none;
@@ -370,43 +265,13 @@
             color: var(--white);
             font-size: 1rem;
             font-family: inherit;
-            transition: border-color 0.2s;
         }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: var(--gray);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--white);
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--sage);
-        }
-
-        .checkbox-group label {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
+        .form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray); }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--white); }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .checkbox-group { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .checkbox-group input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--sage); }
+        .checkbox-group label { color: var(--gray); font-size: 0.9rem; }
         .btn {
             display: inline-block;
             padding: 1rem 2.5rem;
@@ -418,60 +283,23 @@
             border: none;
             cursor: pointer;
         }
+        .btn-primary { background: var(--sage); color: var(--white); }
+        .btn-primary:hover { background: var(--sage-dark); }
 
-        .btn-primary {
-            background: var(--sage);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: var(--sage-dark);
-        }
-
-        /* Footer */
         .footer {
             background: var(--darker);
             color: var(--white);
             padding: 2rem;
             text-align: center;
         }
+        .footer p { opacity: 0.7; font-size: 0.9rem; }
+        .footer a { color: var(--sage); text-decoration: none; }
 
-        .footer p {
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        .footer a {
-            color: var(--sage);
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            opacity: 1;
-        }
-
-        /* Mobile */
         @media (max-width: 768px) {
-            .nav {
-                height: 120px;
-            }
-
-            .nav .logo img {
-                height: 100px;
-            }
-
-            .nav.scrolled {
-                height: 80px;
-            }
-
-            .nav.scrolled .logo img {
-                height: 60px;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
+            .nav { height: 120px; }
+            .nav .logo img { height: 100px; }
+            .nav.scrolled { height: 80px; }
+            .nav.scrolled .logo img { height: 60px; }
             .nav-links {
                 display: none;
                 position: absolute;
@@ -483,27 +311,15 @@
                 padding: 1rem 2rem;
                 gap: 1rem;
             }
-
-            .nav-links.open {
-                display: flex;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero h2 {
-                font-size: 1.25rem;
-            }
-
-            section {
-                padding: 3rem 1.5rem;
-            }
+            .nav-links.open { display: flex; }
+            .hamburger { display: flex; }
+            .hero h1 { font-size: 2rem; }
+            .hero h2 { font-size: 1.25rem; }
+            section { padding: 3rem 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="nav" id="nav">
         <a href="index.html" class="logo">
             <img src="45north-logo.png" alt="45° North Collective">
@@ -521,136 +337,127 @@
         </ul>
     </nav>
 
-    <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-bg">
             <div class="hero-bg-left"></div>
             <div class="hero-bg-right"></div>
         </div>
         <div class="hero-content">
-            <h1>Marketplace Now Live!</h1>
-            <h2>Welcome to 45° North Collective</h2>
-            <a href="auctions.html" class="hero-cta">Shop with Our Clients →</a>
+            <div class="campaign-badge">🎁 Holiday Campaign</div>
+            <h1>Reuse, Regift, Rewrap</h1>
+            <h2>We spotlight local shops and move your inventory nationwide</h2>
+            <a href="auctions.html" class="hero-cta">Shop Our Auctions →</a>
         </div>
     </section>
 
-    <!-- Services -->
     <section id="services">
         <div class="container">
+            <div class="section-header">
+                <h2>What We Do</h2>
+            </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <h3>Marketing and Advertising</h3>
-                    <p>At 45° North Collective, we provide a wide range of marketing and advertising services designed to help you reach your target audience and boost brand awareness. Our skilled team leverages the latest techniques, including effective social media marketing strategies, to ensure the success of your online store campaign.</p>
+                    <h3>Marketing & Advertising</h3>
+                    <p>Social media marketing, targeted ads, and brand awareness campaigns designed to reach buyers nationwide who want what you're selling.</p>
                 </div>
                 <div class="service-card">
                     <h3>E-Commerce Management</h3>
-                    <p>At 45° North Collective, we have years of experience in e-commerce management across multiple auction sites. Our marketing strategies go beyond just advertising for your online store; we also help move products through effective social media marketing.</p>
+                    <p>We list and sell your inventory on HiBid, eBay, and Whatnot. Professional photography, optimized listings, customer service, shipping — all handled.</p>
                 </div>
                 <div class="service-card">
                     <h3>Consultation</h3>
-                    <p>At 45° North Collective, we understand that a full marketing service might not fit into your budget right now. That's why we take pride in offering comprehensive consulting strategies for those seeking marketing assistance while managing their own online store and navigating social media marketing.</p>
+                    <p>Not ready for full service? We offer consulting to help you build your own online sales strategy, social presence, and marketing systems.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
     <section class="faq">
         <div class="container">
             <div class="section-header">
                 <h2>Frequently Asked Questions</h2>
             </div>
-            <p class="faq-intro">Please reach us at <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> if you cannot find an answer to your question.</p>
+            <p class="faq-intro">Questions? Email us at <a href="mailto:info@45northcollective.com">info@45northcollective.com</a></p>
             <div class="faq-list">
                 <div class="faq-item">
                     <div class="faq-question">
                         Why pick us?
                         <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </div>
-                    <div class="faq-answer">We have years of experience in the marketing field, working with many B2C businesses. We also have experience working with thrift, antique, and coin shops, moving products and highlighting pieces.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Do you build social media channels for us?
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </div>
-                    <div class="faq-answer">Yes! We would build social media accounts from scratch for you as part our social services.</div>
+                    <div class="faq-answer">We've moved over $40K in a single quarter through 8 auctions. We know what sells, how to price it, and how to get it in front of the right buyers.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">
                         What do you mean by e-commerce management?
                         <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </div>
-                    <div class="faq-answer">We will take items from your shop, and sell them online to a national audience not just through your social media but through other e-commerce platforms. We have years of experiences with many types of e-commerce websites.</div>
+                    <div class="faq-answer">We take items from your shop and sell them online to a national audience — not just through social media, but through auction platforms like HiBid, eBay, and Whatnot.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does pricing work?
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-answer">Two options: We buy your inventory at 90% of asking price (you get cash, we take the risk), or we work on a monthly retainer ($2,500–$5K) as your dedicated sales team.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Social -->
     <section class="social">
         <h2>Follow us on social for updates.</h2>
         <div class="social-links">
-            <a href="#" aria-label="Facebook">
+            <a href="https://facebook.com/45northcollective" aria-label="Facebook" target="_blank">
                 <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
             </a>
-            <a href="#" aria-label="Instagram">
+            <a href="https://instagram.com/45northcollective" aria-label="Instagram" target="_blank">
                 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
             </a>
         </div>
     </section>
 
-    <!-- Contact -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Contact Us</h2>
+                <h2>Get In Touch</h2>
             </div>
             <div class="contact-content">
-                <p style="text-align: center; color: var(--gray); margin-bottom: 2rem;">Drop us a line!</p>
-                <form class="contact-form" action="https://formsubmit.co/info@45northcollective.com" method="POST">
+                <p style="text-align: center; color: var(--gray); margin-bottom: 2rem;">Ready to move some inventory? Drop us a line.</p>
+                <form action="https://formsubmit.co/info@45northcollective.com" method="POST">
                     <input type="hidden" name="_subject" value="Website Inquiry">
                     <input type="hidden" name="_captcha" value="false">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="Email*" required>
+                        <input type="email" name="email" placeholder="Email" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" placeholder="Message"></textarea>
+                        <textarea name="message" placeholder="Tell us about your inventory..."></textarea>
                     </div>
                     <div class="checkbox-group">
                         <input type="checkbox" id="signup" name="signup">
                         <label for="signup">Sign up for our email list for updates, promotions, and more.</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send</button>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <p>© 2025 45° North Collective · Portland, Oregon · <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> · <a href="tel:9713132653">(971) 313-2653</a></p>
     </footer>
 
     <script>
-        // Nav scroll effect
         window.addEventListener('scroll', () => {
             document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
         });
-
-        // Hamburger menu
         document.getElementById('hamburger').addEventListener('click', () => {
             document.getElementById('navLinks').classList.toggle('open');
         });
-
-        // FAQ toggle
         document.querySelectorAll('.faq-question').forEach(q => {
-            q.addEventListener('click', () => {
-                q.parentElement.classList.toggle('active');
-            });
+            q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
         });
     </script>
 </body>
