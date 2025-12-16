@@ -20,6 +20,7 @@
             --rust: #A65D4F;
             --red: #dc2626;
             --green: #16a34a;
+            --card-border: #e2e8f0;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -84,6 +85,7 @@
             padding: 0 20px;
         }
 
+        /* Hero */
         .hero {
             background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 100%);
             color: white;
@@ -129,27 +131,43 @@
             color: var(--gray);
         }
 
-        .difference {
+        /* Sections */
+        section {
             padding: 80px 20px;
-            background: var(--light);
         }
 
-        .difference h2 {
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            color: var(--sage);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 20px;
+            font-weight: 700;
+            margin-bottom: 1rem;
             color: var(--dark);
         }
 
-        .difference .subtitle {
-            text-align: center;
-            font-size: 1.2rem;
+        .section-sub {
             color: var(--gray);
-            margin-bottom: 60px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Difference Section */
+        .difference {
+            background: var(--light);
         }
 
         .comparison {
@@ -207,52 +225,302 @@
             color: var(--green);
         }
 
-        .services {
-            padding: 80px 20px;
-        }
-
-        .services h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            color: var(--dark);
-        }
-
-        .services-grid {
+        /* How It Works */
+        .steps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 1000px;
-            margin: 0 auto;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
 
-        .service-card {
-            padding: 30px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
+        .step-card {
+            background: var(--light);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
             transition: all 0.3s;
+        }
+
+        .step-card:hover {
+            border-color: var(--sage);
+            transform: translateY(-4px);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--sage);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* What We Handle */
+        .handle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .handle-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--light);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+        }
+
+        .handle-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(143, 159, 131, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+
+        .handle-item span {
+            font-weight: 600;
+        }
+
+        /* Pricing */
+        .pricing {
+            background: var(--light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--sage);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--sage);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--sage);
+            color: white;
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .pricing-label {
+            color: var(--sage);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--sage);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .pricing-card .price-note {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card > p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--gray);
+        }
+
+        .pricing-features li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--green);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Results */
+        .results {
             background: white;
         }
 
-        .service-card:hover {
-            border-color: var(--sage);
-            box-shadow: 0 5px 20px rgba(143, 159, 131, 0.15);
-            transform: translateY(-5px);
+        .results-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .service-card h3 {
+        .results-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-box {
+            background: var(--light);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-box .number {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--dark);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--sage);
+            line-height: 1;
+            margin-bottom: 0.5rem;
         }
 
-        .service-card p {
+        .stat-box .label {
             color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .results-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .results-text p {
+            color: var(--gray);
+            margin-bottom: 1rem;
             line-height: 1.7;
         }
 
+        .results-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .results-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--gray);
+        }
+
+        .results-list li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--sage);
+            flex-shrink: 0;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--sage);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--sage-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--card-border);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--sage);
+            color: var(--sage);
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+        }
+
+        /* CTA */
         .cta {
             background: var(--dark);
             color: white;
@@ -272,23 +540,12 @@
             opacity: 0.95;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: var(--sage);
-            color: white;
+        .cta .btn-primary {
             padding: 18px 40px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.2s;
+            font-size: 1.1rem;
         }
 
-        .cta-button:hover {
-            background: var(--sage-dark);
-            transform: scale(1.05);
-        }
-
+        /* Footer */
         .footer {
             background: var(--darker);
             color: var(--white);
@@ -303,7 +560,10 @@
             .hero h1 { font-size: 2rem; }
             .hero .subtitle { font-size: 1.2rem; }
             .comparison { grid-template-columns: 1fr; }
-            .services h2, .difference h2, .cta h2 { font-size: 2rem; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .results-content { grid-template-columns: 1fr; gap: 2rem; }
+            .section-title { font-size: 2rem; }
             .hamburger { display: flex; }
             .nav-links {
                 display: none;
@@ -352,8 +612,10 @@
 
     <section class="difference">
         <div class="container">
-            <h2>The Difference Is Simple</h2>
-            <p class="subtitle">Most agencies optimize for metrics. We optimize for revenue.</p>
+            <div class="section-header">
+                <div class="section-label">The Difference</div>
+                <h2 class="section-title">Most Agencies Optimize for Metrics.<br>We Optimize for Revenue.</h2>
+            </div>
             
             <div class="comparison">
                 <div class="comparison-card them">
@@ -381,39 +643,186 @@
         </div>
     </section>
 
-    <section class="services">
+    <section>
         <div class="container">
-            <h2>How We Drive Sales</h2>
-            
-            <div class="services-grid">
-                <div class="service-card">
+            <div class="section-header">
+                <div class="section-label">Our Process</div>
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-sub">Three simple steps to move your inventory and get paid.</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>We Buy Your Inventory</h3>
+                    <p>You name your price. We pay 90% — cash in hand, item off your shelf. No consignment waiting. No risk.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>We List & Market</h3>
+                    <p>Professional photos. Optimized listings on HiBid, eBay, and Whatnot. Targeted marketing to serious collectors nationwide.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>We Sell & Ship</h3>
+                    <p>Auctions run, buyers pay, we handle fulfillment. You're done. No shipping headaches. We handle it all.</p>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 4rem;">
+                <h2 class="section-title">What We Handle</h2>
+                <p class="section-sub">Everything from photo to doorstep — you don't lift a finger.</p>
+            </div>
+
+            <div class="handle-grid">
+                <div class="handle-item">
+                    <div class="handle-icon">📸</div>
+                    <span>Professional Photography</span>
+                </div>
+                <div class="handle-item">
+                    <div class="handle-icon">📝</div>
+                    <span>Optimized Listings</span>
+                </div>
+                <div class="handle-item">
+                    <div class="handle-icon">📣</div>
+                    <span>Marketing & Promotion</span>
+                </div>
+                <div class="handle-item">
+                    <div class="handle-icon">💬</div>
+                    <span>Customer Service</span>
+                </div>
+                <div class="handle-item">
+                    <div class="handle-icon">📦</div>
+                    <span>Shipping & Fulfillment</span>
+                </div>
+                <div class="handle-item">
+                    <div class="handle-icon">🔄</div>
+                    <span>Returns & Issues</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Pricing</div>
+                <h2 class="section-title">Simple Pricing. Real Results.</h2>
+                <p class="section-sub">Two ways to work with us — pick what fits your business.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-label">One-Time or Ongoing</div>
                     <h3>Inventory Purchase</h3>
-                    <p>We buy your inventory at 90% of asking price. You get cash immediately, we take the risk. No consignment, no waiting.</p>
+                    <div class="price">90%<span> of asking price</span></div>
+                    <div class="price-note">Cash when we pick up</div>
+                    <p>You set the price on your items. We buy at 90%. Done.</p>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            90% of your asking price, paid upfront
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Zero risk — it's our inventory now
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            No fees, no commissions, no waiting
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Perfect for clearing specific items
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-secondary">Get Started</a>
                 </div>
-                
-                <div class="service-card">
-                    <h3>E-Commerce Management</h3>
-                    <p>We list and sell your items on HiBid, eBay, and Whatnot. Professional photos, optimized listings, customer service, and shipping — all handled.</p>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-label">Ongoing Partnership</div>
+                    <h3>Marketing Retainer</h3>
+                    <div class="price">$2,500–$5,000<span>/mo</span></div>
+                    <div class="price-note">3-month minimum</div>
+                    <p>Full-service marketing and sales. We become your online sales team.</p>
+                    <ul class="pricing-features">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Dedicated marketing campaigns
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Weekly auction listings
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Social media content & promotion
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Monthly performance reports
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Priority pickup & turnaround
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">Let's Talk</a>
                 </div>
-                
-                <div class="service-card">
-                    <h3>Social Media Marketing</h3>
-                    <p>Content that sells, not just engages. We create posts designed to drive buyers to your inventory and build your brand.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="results">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Case Study</div>
+                <h2 class="section-title">$40K+ Sold in One Quarter</h2>
+                <p class="section-sub">Real inventory. Real buyers. Real results.</p>
+            </div>
+
+            <div class="results-content">
+                <div class="results-stats">
+                    <div class="stat-box">
+                        <div class="number">$40K+</div>
+                        <div class="label">Total Sales</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">8</div>
+                        <div class="label">Auctions</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">5,000+</div>
+                        <div class="label">Bidder Views</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">3</div>
+                        <div class="label">Platforms</div>
+                    </div>
                 </div>
-                
-                <div class="service-card">
-                    <h3>Targeted Advertising</h3>
-                    <p>Ad spend focused on bottom-line impact. We track every dollar to revenue generated, not impressions or clicks.</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3>Email & Automation</h3>
-                    <p>Sequences that nurture, retarget, and convert. Automated systems that turn browsers into buyers while you sleep.</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3>Consultation</h3>
-                    <p>Not ready for full service? We'll help you build your own online sales strategy, social presence, and marketing systems.</p>
+
+                <div class="results-text">
+                    <h3>What This Means for You</h3>
+                    <p>A local collectibles inventory needed to reach buyers beyond foot traffic. Great stuff sitting on shelves. No time to photograph, list, and ship. Sound familiar?</p>
+                    <ul class="results-list">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Photographed and cataloged hundreds of items
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Created optimized listings for HiBid auctions
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Ran 8 auction events over 12 weeks
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Handled all buyer communication and shipping
+                        </li>
+                    </ul>
+                    <p>Your inventory has value. The buyers are out there — they're just not walking through your door.</p>
                 </div>
             </div>
         </div>
@@ -423,7 +832,7 @@
         <div class="container">
             <h2>Ready to Make This a No-Brainer?</h2>
             <p>If we don't generate ROI in 90 days, you don't pay. Let's talk.</p>
-            <a href="contact.html" class="cta-button">Get Started →</a>
+            <a href="contact.html" class="btn btn-primary">Get Started →</a>
         </div>
     </section>
 
