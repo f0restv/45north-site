@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>45° North Collective | Services & Pricing</title>
-    <meta name="description" content="Simple pricing for inventory sales. Get 90% of your asking price or partner with us on a monthly retainer.">
+    <title>Services - 45° North Collective</title>
+    <meta name="description" content="We're not a marketing agency. We're your sales partner. 90-day guarantee or we pay the difference.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,15 +16,18 @@
             --darker: #0d0d0d;
             --light: #f7f7f7;
             --white: #ffffff;
-            --gray: #a4a4a4;
+            --gray: #64748b;
+            --rust: #A65D4F;
+            --red: #dc2626;
+            --green: #16a34a;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Source Sans Pro', sans-serif;
-            color: var(--dark);
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            background: var(--white);
+            color: var(--dark);
         }
+
         /* === STANDARDIZED NAV === */
         .nav {
             position: fixed;
@@ -75,161 +78,232 @@
         }
         /* === END NAV === */
 
-        section { padding: 5rem 2rem; margin-top: 70px; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .section-header {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 100%);
+            color: white;
+            padding: 120px 20px 80px;
             text-align: center;
-            margin-bottom: 3rem;
+            margin-top: 70px;
         }
-        .section-label {
-            color: var(--sage);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .section-header h2 {
+
+        .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
+            margin-bottom: 20px;
             font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 1rem;
+            line-height: 1.2;
         }
-        .section-sub {
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .guarantee-box {
+            background: white;
+            color: var(--dark);
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 700px;
+            margin: 40px auto 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .guarantee-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--rust);
+        }
+
+        .guarantee-box p {
             font-size: 1.1rem;
+            line-height: 1.7;
             color: var(--gray);
         }
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 4rem;
+
+        .difference {
+            padding: 80px 20px;
+            background: var(--light);
         }
-        .step-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--sage);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        .step-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .pricing-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        .pricing-card.featured { border: 3px solid var(--sage); }
-        .pricing-badge {
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            background: var(--sage);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        .pricing-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-        .price {
+
+        .difference h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            color: var(--sage);
-            margin-bottom: 1rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--dark);
         }
-        .price span { font-size: 1rem; color: var(--gray); }
-        .pricing-card ul { list-style: none; margin: 2rem 0; }
-        .pricing-card li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
+
+        .difference .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .comparison-card {
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .comparison-card.them {
+            background: #fee2e2;
+            border-left: 4px solid var(--red);
+        }
+
+        .comparison-card.us {
+            background: #dcfce7;
+            border-left: 4px solid var(--green);
+        }
+
+        .comparison-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .comparison-card ul {
+            list-style: none;
+        }
+
+        .comparison-card li {
+            padding: 8px 0;
+            padding-left: 25px;
             position: relative;
         }
-        .pricing-card li:before {
-            content: "✓";
+
+        .comparison-card li:before {
+            content: "✕";
             position: absolute;
             left: 0;
-            color: var(--sage);
             font-weight: bold;
         }
-        .btn {
+
+        .comparison-card.them li:before {
+            color: var(--red);
+        }
+
+        .comparison-card.us li:before {
+            content: "✓";
+            color: var(--green);
+        }
+
+        .services {
+            padding: 80px 20px;
+        }
+
+        .services h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--dark);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            padding: 30px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .service-card:hover {
+            border-color: var(--sage);
+            box-shadow: 0 5px 20px rgba(143, 159, 131, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .cta {
+            background: var(--dark);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
             display: inline-block;
-            padding: 1rem 2rem;
             background: var(--sage);
             color: white;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
             text-decoration: none;
             border-radius: 6px;
-            font-weight: 600;
-            transition: background 0.3s;
+            transition: all 0.2s;
         }
-        .btn:hover { background: var(--sage-dark); }
-        .guarantee-box {
-            background: var(--sage);
-            color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
+
+        .cta-button:hover {
+            background: var(--sage-dark);
+            transform: scale(1.05);
         }
-        .guarantee-box h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            text-align: center;
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 12px;
-        }
-        .results-grid .stat {
-            font-size: 2rem;
-            color: var(--sage);
-            font-weight: 700;
-        }
-        .results-grid .label { color: var(--gray); }
+
         .footer {
             background: var(--darker);
             color: var(--white);
             padding: 2rem;
             text-align: center;
         }
+        .footer p { opacity: 0.7; font-size: 0.9rem; }
         .footer a { color: var(--sage); text-decoration: none; }
 
         @media (max-width: 768px) {
-            section { padding: 3rem 1rem; }
-            .steps-grid, .pricing-grid { grid-template-columns: 1fr; }
-            .results-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero { padding: 100px 20px 60px; }
+            .hero h1 { font-size: 2rem; }
+            .hero .subtitle { font-size: 1.2rem; }
+            .comparison { grid-template-columns: 1fr; }
+            .services h2, .difference h2, .cta h2 { font-size: 2rem; }
             .hamburger { display: flex; }
             .nav-links {
                 display: none;
@@ -264,101 +338,97 @@
         </ul>
     </nav>
 
-    <section>
+    <section class="hero">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">Our Process</span>
-                <h2>How It Works</h2>
-                <p class="section-sub">Three simple steps to move your inventory and get paid.</p>
-            </div>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3>We Buy Your Inventory</h3>
-                    <p>You name your price. We pay 90% — cash in hand, item off your shelf. No consignment waiting. No risk.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3>We List & Market</h3>
-                    <p>Professional photos. Optimized listings on HiBid, eBay, and Whatnot. Targeted marketing to serious collectors nationwide.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3>We Sell & Ship</h3>
-                    <p>Auctions run, buyers pay, we handle fulfillment. You're done. No shipping headaches. We handle it all.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section style="background: var(--light);">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Investment</span>
-                <h2>Simple Pricing. Real Results.</h2>
-                <p class="section-sub">Two ways to work with us — pick what fits your business.</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Inventory Purchase</h3>
-                    <div class="price">90<span>%</span></div>
-                    <p style="color: var(--gray); margin-bottom: 1.5rem;">One-time or ongoing</p>
-                    <ul>
-                        <li>You set the price</li>
-                        <li>We buy at 90% of asking</li>
-                        <li>Cash paid immediately</li>
-                        <li>Zero involvement needed</li>
-                        <li>No fees. No commissions.</li>
-                    </ul>
-                    <a href="contact.html" class="btn">Get Started</a>
-                </div>
-                <div class="pricing-card featured">
-                    <div class="pricing-badge">Most Popular</div>
-                    <h3>Marketing Retainer</h3>
-                    <div class="price">$2.5K<span>–$5K/month</span></div>
-                    <p style="color: var(--gray); margin-bottom: 1.5rem;">3-month minimum</p>
-                    <ul>
-                        <li>Dedicated marketing team</li>
-                        <li>Weekly auction listings</li>
-                        <li>Social & email promotion</li>
-                        <li>Monthly reports</li>
-                        <li>Priority pickup & turnaround</li>
-                    </ul>
-                    <a href="contact.html" class="btn">Talk to Us</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
+            <h1>We're Not a Marketing Agency.<br>We're Your Sales Partner.</h1>
+            <p class="subtitle">We don't get paid to run campaigns. We get paid when you make money.</p>
+            
             <div class="guarantee-box">
-                <h3>💰 Our Performance Guarantee</h3>
-                <p style="font-size: 1.1rem; line-height: 1.6;">If our sales don't beat your monthly retainer fee between day 60 and 90, we refund your third month in full and part ways. No questions asked.<br><br><strong>We don't win unless you win.</strong></p>
+                <h2>💰 Our 90-Day Guarantee</h2>
+                <p>Your services will pay for themselves within 90 days, or we personally pay you the difference. No fine print. No excuses. That's the deal.</p>
             </div>
         </div>
     </section>
 
-    <section>
+    <section class="difference">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">Case Study</span>
-                <h2>$40K+ Sold in One Quarter</h2>
-                <p class="section-sub">How we moved hundreds of items across 8 auctions</p>
+            <h2>The Difference Is Simple</h2>
+            <p class="subtitle">Most agencies optimize for metrics. We optimize for revenue.</p>
+            
+            <div class="comparison">
+                <div class="comparison-card them">
+                    <h3>Typical Agencies</h3>
+                    <ul>
+                        <li>Charge monthly retainers regardless of results</li>
+                        <li>Focus on vanity metrics (likes, impressions)</li>
+                        <li>Treat you like a campaign number</li>
+                        <li>Lock you into long contracts</li>
+                        <li>Success = keeping you paying</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-card us">
+                    <h3>45° North Collective</h3>
+                    <ul>
+                        <li>Guarantee ROI within 90 days</li>
+                        <li>Focus on revenue and actual sales</li>
+                        <li>Operate as your sales partner</li>
+                        <li>Skin in the game with every client</li>
+                        <li>Success = making you money</li>
+                    </ul>
+                </div>
             </div>
-            <div class="results-grid">
-                <div><div class="stat">$40K+</div><div class="label">Total Sales</div></div>
-                <div><div class="stat">8</div><div class="label">Auctions</div></div>
-                <div><div class="stat">5K+</div><div class="label">Bidder Views</div></div>
-                <div><div class="stat">3</div><div class="label">Platforms</div></div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2>How We Drive Sales</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Inventory Purchase</h3>
+                    <p>We buy your inventory at 90% of asking price. You get cash immediately, we take the risk. No consignment, no waiting.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>E-Commerce Management</h3>
+                    <p>We list and sell your items on HiBid, eBay, and Whatnot. Professional photos, optimized listings, customer service, and shipping — all handled.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Social Media Marketing</h3>
+                    <p>Content that sells, not just engages. We create posts designed to drive buyers to your inventory and build your brand.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Targeted Advertising</h3>
+                    <p>Ad spend focused on bottom-line impact. We track every dollar to revenue generated, not impressions or clicks.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Email & Automation</h3>
+                    <p>Sequences that nurture, retarget, and convert. Automated systems that turn browsers into buyers while you sleep.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Consultation</h3>
+                    <p>Not ready for full service? We'll help you build your own online sales strategy, social presence, and marketing systems.</p>
+                </div>
             </div>
-            <p style="font-size: 1.1rem; color: var(--gray); line-height: 1.7; margin-top: 2rem;">Your inventory has value. The buyers are out there — they're just not walking through your door. We connect your stuff to collectors and shoppers nationwide who are actively looking for exactly what you have.</p>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Make This a No-Brainer?</h2>
+            <p>If we don't generate ROI in 90 days, you don't pay. Let's talk.</p>
+            <a href="contact.html" class="cta-button">Get Started →</a>
         </div>
     </section>
 
     <footer class="footer">
-        <p>© 2025 45° North Collective - All Rights Reserved.</p>
-        <p style="margin-top: 1rem; font-size: 0.85rem;">Portland, Oregon | <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> | <a href="tel:9713132653">(971) 313-2653</a></p>
+        <p>© 2025 45° North Collective · Portland, Oregon · <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> · <a href="tel:9713132653">(971) 313-2653</a></p>
     </footer>
 
     <script>
