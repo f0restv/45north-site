@@ -27,7 +27,7 @@
             background: var(--white);
         }
 
-        /* Navigation - Big centered logo that shrinks on scroll */
+        /* Navigation - Logo on left that shrinks on scroll */
         .nav {
             position: fixed;
             top: 0;
@@ -37,7 +37,7 @@
             padding: 0.5rem 2rem;
             height: 200px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             background: var(--sage);
             transition: all 0.3s;
@@ -53,8 +53,6 @@
         }
         .nav.scrolled .logo img { height: 80px; }
         .nav-links {
-            position: absolute;
-            right: 2rem;
             display: flex;
             gap: 2rem;
             list-style: none;
@@ -76,8 +74,6 @@
         }
         .hamburger {
             display: none;
-            position: absolute;
-            right: 2rem;
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
