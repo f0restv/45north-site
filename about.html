@@ -66,6 +66,9 @@
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
+            background: none;
+            border: none;
+            padding: 0;
         }
         .hamburger span {
             width: 25px;
@@ -205,9 +208,9 @@
         <a href="index.html" class="logo">
             <img src="45north-logo.png" alt="45° North Collective">
         </a>
-        <div class="hamburger" id="hamburger">
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
             <span></span><span></span><span></span>
-        </div>
+        </button>
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Services</a></li>
@@ -218,6 +221,7 @@
         </ul>
     </nav>
 
+    <main>
     <section>
         <div class="container">
             <div class="section-header">
@@ -270,6 +274,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <footer class="footer">
         <p>© 2025 45° North Collective - All Rights Reserved.</p>
