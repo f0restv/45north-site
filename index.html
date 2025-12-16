@@ -27,23 +27,34 @@
             background: var(--white);
         }
 
-        /* Navigation - Logo on left */
+        /* Navigation - Big centered logo that shrinks on scroll */
         .nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 0 2rem;
-            height: 70px;
+            padding: 0.5rem 2rem;
+            height: 200px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             background: var(--sage);
+            transition: all 0.3s;
         }
-        .logo { display: flex; align-items: center; }
-        .logo img { height: 50px; }
+        .nav.scrolled {
+            height: 100px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        .logo { position: relative; }
+        .logo img {
+            height: 180px;
+            transition: height 0.3s;
+        }
+        .nav.scrolled .logo img { height: 80px; }
         .nav-links {
+            position: absolute;
+            right: 2rem;
             display: flex;
             gap: 2rem;
             list-style: none;
@@ -65,6 +76,8 @@
         }
         .hamburger {
             display: none;
+            position: absolute;
+            right: 2rem;
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
@@ -79,13 +92,13 @@
         /* Hero */
         .hero {
             min-height: 100vh;
+            padding-top: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             overflow: hidden;
-            margin-top: 70px;
         }
         .hero-bg {
             position: absolute;
@@ -284,10 +297,14 @@
         .footer a { color: var(--sage); text-decoration: none; }
 
         @media (max-width: 768px) {
+            .nav { height: 120px; }
+            .nav.scrolled { height: 80px; }
+            .logo img { height: 100px; }
+            .nav.scrolled .logo img { height: 60px; }
             .nav-links {
                 display: none;
                 position: absolute;
-                top: 70px;
+                top: 100%;
                 left: 0;
                 right: 0;
                 flex-direction: column;
@@ -297,6 +314,7 @@
             }
             .nav-links.open { display: flex; }
             .hamburger { display: flex; }
+            .hero { padding-top: 120px; }
             .hero h1 { font-size: 2rem; }
             .hero h2 { font-size: 1.25rem; }
             section { padding: 3rem 1.5rem; }
@@ -434,6 +452,9 @@
     </footer>
 
     <script>
+        window.addEventListener('scroll', () => {
+            document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
         document.getElementById('hamburger').addEventListener('click', () => {
             document.getElementById('navLinks').classList.toggle('open');
         });
