@@ -27,7 +27,7 @@
             background: var(--white);
         }
 
-        /* Navigation */
+        /* Navigation - Logo on left */
         .nav {
             position: fixed;
             top: 0;
@@ -98,28 +98,27 @@
             background-position: center;
         }
         .hero-bg-left {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800');
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800');
         }
         .hero-bg-right {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800');
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800');
         }
         .hero-content {
             position: relative;
             z-index: 1;
             color: var(--white);
-            max-width: 850px;
+            max-width: 800px;
             padding: 2rem;
         }
-        .hero-tagline {
+        .campaign-badge {
             display: inline-block;
-            background: rgba(143, 159, 131, 0.9);
+            background: var(--rust);
             color: white;
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
-            letter-spacing: 0.5px;
         }
         .hero h1 {
             font-family: 'Playfair Display', serif;
@@ -129,21 +128,11 @@
             line-height: 1.1;
         }
         .hero h2 {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 400;
-            opacity: 0.95;
+            opacity: 0.9;
             margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
         }
         .hero-cta {
             display: inline-block;
@@ -160,47 +149,6 @@
             background: var(--sage-dark);
             transform: translateY(-2px);
         }
-        .hero-cta-secondary {
-            display: inline-block;
-            background: transparent;
-            color: var(--white);
-            padding: 1rem 2.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: 2px solid var(--white);
-            transition: background 0.2s, transform 0.2s;
-        }
-        .hero-cta-secondary:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-2px);
-        }
-
-        /* Stats Bar */
-        .stats-bar {
-            background: var(--sage);
-            padding: 3rem 2rem;
-        }
-        .stats-grid {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            text-align: center;
-        }
-        .stat-item .number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--white);
-        }
-        .stat-item .label {
-            color: rgba(255,255,255,0.85);
-            font-size: 0.95rem;
-            margin-top: 0.25rem;
-        }
 
         section { padding: 5rem 2rem; }
         .container { max-width: 1200px; margin: 0 auto; }
@@ -211,12 +159,6 @@
             font-weight: 700;
             color: var(--dark);
             margin-bottom: 1rem;
-        }
-        .section-header p {
-            color: var(--gray);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .services-grid {
@@ -236,21 +178,6 @@
             transform: translateY(-5px);
             box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--sage);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-        }
-        .service-icon svg {
-            width: 28px;
-            height: 28px;
-            stroke: white;
-        }
         .service-card h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
@@ -259,53 +186,16 @@
         }
         .service-card p { color: var(--gray); line-height: 1.7; }
 
-        /* How It Works */
-        .how-it-works { background: var(--light); }
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .step-card {
-            text-align: center;
-            position: relative;
-        }
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--sage);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 1.5rem;
-        }
-        .step-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            color: var(--dark);
-        }
-        .step-card p {
-            color: var(--gray);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .faq { background: var(--white); }
+        .faq { background: var(--light); }
         .faq-list { max-width: 800px; margin: 0 auto; }
         .faq-intro { text-align: center; color: var(--gray); margin-bottom: 2rem; }
         .faq-intro a { color: var(--sage); text-decoration: none; }
         .faq-item {
-            background: var(--light);
+            background: var(--white);
             margin-bottom: 1rem;
             border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .faq-question {
             font-family: 'Playfair Display', serif;
@@ -316,9 +206,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: var(--light);
+            background: var(--white);
         }
-        .faq-question:hover { background: #e8e8e8; }
+        .faq-question:hover { background: var(--light); }
         .faq-question svg { transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
         .faq-item.active .faq-question svg { transform: rotate(180deg); }
         .faq-answer {
@@ -329,7 +219,7 @@
         }
         .faq-item.active .faq-answer { display: block; }
 
-        .social { text-align: center; padding: 3rem 2rem; background: var(--light); }
+        .social { text-align: center; padding: 3rem 2rem; }
         .social h2 {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
@@ -408,16 +298,13 @@
             .nav-links.open { display: flex; }
             .hamburger { display: flex; }
             .hero h1 { font-size: 2rem; }
-            .hero h2 { font-size: 1.1rem; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-            .stat-item .number { font-size: 2rem; }
-            .steps-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .hero h2 { font-size: 1.25rem; }
             section { padding: 3rem 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <nav class="nav">
+    <nav class="nav" id="nav">
         <a href="index.html" class="logo">
             <img src="45north-logo.png" alt="45° North Collective">
         </a>
@@ -434,102 +321,36 @@
         </ul>
     </nav>
 
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="hero-bg">
             <div class="hero-bg-left"></div>
             <div class="hero-bg-right"></div>
         </div>
         <div class="hero-content">
-            <div class="hero-tagline">Portland Marketing Agency</div>
-            <h1>We Don't Just Market Your Inventory. We Sell It.</h1>
-            <h2>Professional photography, optimized listings, nationwide reach. You focus on your shop — we'll move your merchandise.</h2>
-            <div class="hero-buttons">
-                <a href="services.html" class="hero-cta">See How It Works</a>
-                <a href="auctions.html" class="hero-cta-secondary">Browse Auctions</a>
-            </div>
+            <div class="campaign-badge">🎁 Holiday Campaign</div>
+            <h1>Reuse, Regift, Rewrap</h1>
+            <h2>We spotlight local shops and move your inventory nationwide</h2>
+            <a href="auctions.html" class="hero-cta">Shop Our Auctions →</a>
         </div>
     </section>
-
-    <div class="stats-bar">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="number">$40K+</div>
-                <div class="label">Sold Last Quarter</div>
-            </div>
-            <div class="stat-item">
-                <div class="number">8</div>
-                <div class="label">Auctions Run</div>
-            </div>
-            <div class="stat-item">
-                <div class="number">3</div>
-                <div class="label">Platforms</div>
-            </div>
-            <div class="stat-item">
-                <div class="number">90%</div>
-                <div class="label">Payout Rate</div>
-            </div>
-        </div>
-    </div>
 
     <section id="services">
         <div class="container">
             <div class="section-header">
                 <h2>What We Do</h2>
-                <p>Full-service e-commerce and marketing for antique shops, pawn shops, and vintage dealers.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-                        </svg>
-                    </div>
-                    <h3>E-Commerce Sales</h3>
-                    <p>We list and sell your inventory on HiBid, eBay, and Whatnot. Professional photography, optimized listings, customer service, and shipping — all handled.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 01-1.44-4.282m3.102.069a18.03 18.03 0 01-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 018.835 2.535M10.34 6.66a23.847 23.847 0 008.835-2.535m0 0A23.74 23.74 0 0018.795 3m.38 1.125a23.91 23.91 0 011.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 001.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 010 3.46" />
-                        </svg>
-                    </div>
-                    <h3>Marketing & Ads</h3>
+                    <h3>Marketing & Advertising</h3>
                     <p>Social media marketing, targeted ads, and brand awareness campaigns designed to reach buyers nationwide who want what you're selling.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
-                        </svg>
-                    </div>
+                    <h3>E-Commerce Management</h3>
+                    <p>We list and sell your inventory on HiBid, eBay, and Whatnot. Professional photography, optimized listings, customer service, shipping — all handled.</p>
+                </div>
+                <div class="service-card">
                     <h3>Consultation</h3>
                     <p>Not ready for full service? We offer consulting to help you build your own online sales strategy, social presence, and marketing systems.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <h2>How It Works</h2>
-                <p>Three simple steps to turn your inventory into cash.</p>
-            </div>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3>We Buy Your Inventory</h3>
-                    <p>You name your price. We pay 90% — cash in hand, item off your shelf. No consignment waiting, no risk on your end.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3>We List & Market</h3>
-                    <p>Professional photos. Optimized listings on HiBid, eBay, and Whatnot. Targeted marketing to serious collectors nationwide.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3>We Sell & Ship</h3>
-                    <p>Auctions run, buyers pay, we handle fulfillment. You're done. No shipping headaches — we take care of everything.</p>
                 </div>
             </div>
         </div>
@@ -562,13 +383,6 @@
                         <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </div>
                     <div class="faq-answer">Two options: We buy your inventory at 90% of asking price (you get cash, we take the risk), or we work on a monthly retainer ($2,500–$5K) as your dedicated sales team.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        What types of items do you sell?
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </div>
-                    <div class="faq-answer">We specialize in coins, collectibles, comics, vintage items, antiques, and estate goods. If it has value to collectors, we can move it.</div>
                 </div>
             </div>
         </div>
