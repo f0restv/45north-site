@@ -325,7 +325,7 @@
         <a href="index.html" class="logo">
             <img src="45north-logo.png" alt="45° North Collective">
         </a>
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
             <span></span><span></span><span></span>
         </button>
         <ul class="nav-links" id="navLinks">
@@ -457,7 +457,10 @@
             document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
         });
         document.getElementById('hamburger').addEventListener('click', () => {
-            document.getElementById('navLinks').classList.toggle('open');
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.getElementById('hamburger');
+            const isOpen = navLinks.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', isOpen);
         });
         document.querySelectorAll('.faq-question').forEach(q => {
             q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
