@@ -81,6 +81,9 @@
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
+            background: none;
+            border: none;
+            padding: 0;
         }
         .hamburger span {
             width: 25px;
@@ -326,9 +329,9 @@
         <a href="index.html" class="logo">
             <img src="45north-logo.png" alt="45° North Collective">
         </a>
-        <div class="hamburger" id="hamburger">
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
             <span></span><span></span><span></span>
-        </div>
+        </button>
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Services</a></li>
@@ -339,6 +342,7 @@
         </ul>
     </nav>
 
+    <main>
     <section class="hero" id="home">
         <div class="hero-bg">
             <div class="hero-bg-left"></div>
@@ -406,7 +410,7 @@
         </div>
     </section>
 
-    <section class="social">
+    <aside class="social">
         <h2>Follow us on social for updates.</h2>
         <div class="social-links">
             <a href="https://facebook.com/45northcollective" aria-label="Facebook" target="_blank">
@@ -416,7 +420,7 @@
                 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
             </a>
         </div>
-    </section>
+    </aside>
 
     <section class="contact" id="contact">
         <div class="container">
@@ -446,6 +450,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <footer class="footer">
         <p>© 2025 45° North Collective · Portland, Oregon · <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> · <a href="tel:9713132653">(971) 313-2653</a></p>
