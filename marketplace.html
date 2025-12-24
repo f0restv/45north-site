@@ -3,11 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>45° North Auctions | Shop Our Clients' Inventory</title>
-    <meta name="description" content="Browse live auctions of coins, collectibles, vintage items, and more. Professional photography, fair prices, nationwide shipping.">
+    <title>45° North Marketplace | Shop Our Clients' Inventory</title>
+    <meta name="description" content="Browse live listings of coins, collectibles, vintage items, and more. Professional photography, fair prices, nationwide shipping.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://45degreesnorth.co/marketplace.html">
+    <meta property="og:title" content="Marketplace | 45° North Collective">
+    <meta property="og:description" content="Browse live listings of coins, collectibles, vintage items, and more. Professional photography, fair prices, nationwide shipping.">
+    <meta property="og:image" content="https://45degreesnorth.co/45north-logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://45degreesnorth.co/marketplace.html">
+    <meta name="twitter:title" content="Marketplace | 45° North Collective">
+    <meta name="twitter:description" content="Browse live listings of coins, collectibles, vintage items, and more. Professional photography, fair prices, nationwide shipping.">
+    <meta name="twitter:image" content="https://45degreesnorth.co/45north-logo.png">
+    
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="cookie-consent.css">
+    
+    <!-- Google Analytics with Cookie Consent -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      if (localStorage.getItem('cookieConsent') === 'accepted') {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-MJE80RBSSL';
+        document.head.appendChild(script);
+        script.onload = function() {
+          gtag('js', new Date());
+          gtag('config', 'G-MJE80RBSSL');
+        };
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="cart.js"></script>
     <style>
         :root {
             --sage: #8f9f83;
@@ -22,8 +54,24 @@
             --white: #ffffff;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* Skip to main content link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--sage);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
         body {
-            font-family: 'Source Sans Pro', -apple-system, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--dark);
             color: var(--text-primary);
             line-height: 1.6;
@@ -39,32 +87,67 @@
             z-index: 1000;
             padding: 0 2rem;
             background: var(--sage);
+            transition: all 0.3s ease;
+            height: 120px;
+            overflow: visible;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
         }
-        .logo { display: flex; align-items: center; }
-        .logo img { height: 50px; }
+        .nav.scrolled {
+            height: 80px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+        .logo { 
+            display: flex; 
+            align-items: center;
+            position: relative;
+            top: -10px;
+        }
+        .logo img { 
+            height: 130px;
+            transition: height 0.3s;
+        }
+        .nav.scrolled .logo img { height: 100px; }
         .nav-links {
             display: flex;
-            gap: 2rem;
-            align-items: center;
+            gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
         .nav-links a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 0.95rem;
-            transition: opacity 0.2s;
+            transition: color 0.2s;
+            position: relative;
         }
-        .nav-links a:hover { opacity: 0.8; }
+        .nav-links a:not(.nav-cta):hover { color: rgba(255, 255, 255, 0.8); }
+        .nav-links a:not(.nav-cta)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+        }
+        .nav-links a:not(.nav-cta):hover::after { width: 100%; }
         .nav-cta {
             background: white !important;
-            color: var(--sage) !important;
-            padding: 0.6rem 1.25rem;
-            border-radius: 6px;
+            color: var(--sage-dark) !important;
+            padding: 0.65rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
         .hamburger {
             display: none;
@@ -76,7 +159,30 @@
             width: 25px;
             height: 3px;
             background: white;
+            border-radius: 2px;
             transition: all 0.3s;
+        }
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+        }
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--gold);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
         }
         /* === END NAV === */
 
@@ -84,7 +190,7 @@
             background: linear-gradient(135deg, var(--card-bg) 0%, #1a1f26 100%);
             padding: 3rem 2rem;
             text-align: center;
-            margin-top: 70px;
+            margin-top: 120px;
             border-bottom: 1px solid var(--card-border);
         }
         .hero h1 {
@@ -150,6 +256,60 @@
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
         }
+
+        /* Coming Soon Overlay */
+        .coming-soon-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            padding: 2rem;
+        }
+        .coming-soon-content {
+            text-align: center;
+            max-width: 600px;
+        }
+        .coming-soon-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--sage);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .coming-soon-content p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .coming-soon-content a {
+            display: inline-block;
+            background: var(--sage);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .coming-soon-content a:hover {
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .coming-soon-content h1 {
+                font-size: 2.5rem;
+            }
+            .coming-soon-content p {
+                font-size: 1rem;
+            }
+        }
+
         .lot-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -237,6 +397,21 @@
         }
         .footer a { color: var(--sage); text-decoration: none; }
 
+        @media (max-width: 1100px) {
+            .nav { padding: 0 1.5rem; }
+            .nav-links { gap: 1.5rem; }
+            .nav-links a { font-size: 0.9rem; }
+        }
+
+        @media (max-width: 968px) {
+            .nav { height: 100px; }
+            .nav.scrolled { height: 80px; }
+            .logo img { height: 110px; }
+            .nav.scrolled .logo img { height: 90px; }
+            .nav-links { gap: 1.25rem; }
+            .items-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 768px) {
             .filters { flex-direction: column; }
             .search-box { max-width: 100%; }
@@ -258,6 +433,27 @@
     </style>
 </head>
 <body>
+    <!-- Coming Soon Overlay -->
+    <div class="coming-soon-overlay">
+        <div class="coming-soon-content">
+            <h1>Coming Soon</h1>
+            <p>Our marketplace is launching soon. Check back for curated collectibles, coins, and vintage items.</p>
+            <a href="index.html">Return Home</a>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <p><strong>🍪 We use cookies</strong></p>
+            <p>We use Google Analytics to understand how visitors interact with our site. By clicking "Accept", you consent to our use of cookies. <a href="privacy-policy.html">Learn more</a></p>
+            <div class="cookie-buttons">
+                <button onclick="acceptCookies()" class="cookie-accept">Accept</button>
+                <button onclick="declineCookies()" class="cookie-decline">Decline</button>
+            </div>
+        </div>
+    </div>
+
     <nav class="nav">
         <a href="index.html" class="logo">
             <img src="45north-logo.png" alt="45° North Collective">
@@ -269,16 +465,49 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="auctions.html">Auctions</a></li>
+            <li><a href="holiday-campaign.html">Campaigns</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li>
+                <div class="cart-icon" onclick="window.location.href='checkout.html'">
+                    <svg width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </li>
             <li><a href="portal-simple.html" class="nav-cta">Client Portal</a></li>
         </ul>
     </nav>
 
     <section class="hero">
-        <h1>Live Auctions</h1>
-        <p>Shop inventory from our partner shops — <span class="lot-count" id="lotCount">0</span> lots available</p>
+        <h1>Marketplace</h1>
+        <p>Shop inventory from our partner shops</p>
     </section>
+
+    <!-- Buy It Now Section -->
+    <section style="max-width: 1400px; margin: 3rem auto 0; padding: 0 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <div>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem;">Buy It Now</h2>
+                <p style="color: var(--text-secondary);">Ready to ship — <span class="buy-now-count" id="buyNowCount">0</span> items available</p>
+            </div>
+            <a href="#auctions" style="color: var(--sage); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
+                View Auctions
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </a>
+        </div>
+        <div class="auction-grid" id="buyNowGrid"></div>
+    </section>
+
+    <!-- Auctions Section -->
+    <section id="auctions" style="max-width: 1400px; margin: 4rem auto 0; padding: 0 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <div>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem;">Auctions</h2>
+                <p style="color: var(--text-secondary);">Bid to win — <span class="lot-count" id="lotCount">0</span> lots available</p>
+            </div>
+        </div>
 
     <div class="filters">
         <div class="search-box">
@@ -295,55 +524,152 @@
     </div>
 
     <div class="auction-grid" id="auctionGrid"></div>
+    </section>
 
     <footer class="footer">
-        <p>© 2025 45° North Collective · Portland, Oregon · <a href="mailto:info@45northcollective.com">info@45northcollective.com</a></p>
-        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Buyer's Premium: 15%</p>
+        <p>© 2025 45° North Collective · 431 NW Flanders St #305, Portland, Oregon · <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> · <a href="tel:6575226467">(657) 522-6467</a></p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://www.instagram.com/45northcollective" target="_blank" rel="noopener noreferrer" style="margin: 0 0.5rem;">Instagram</a> · 
+            <a href="https://www.facebook.com/45northcollective" target="_blank" rel="noopener noreferrer" style="margin: 0 0.5rem;">Facebook</a>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;"><a href="privacy-policy.html">Privacy Policy</a></p>
     </footer>
 
     <script>
-        const lots = [
-            {id:1,lotNumber:1,title:"Daredevil #319B McDaniel Variant CGC",image:"https://i.ebayimg.com/images/g/opQAAeSwKxJpOKkv/s-l300.jpg",category:"Comics",startingBid:34.99},
-            {id:2,lotNumber:2,title:"Ghost Rider Vol. 2 #28 CGC 8.0 Midnight Sons",image:"https://i.ebayimg.com/images/g/2XAAAeSw1hxpOKhu/s-l300.jpg",category:"Comics",startingBid:15.00},
-            {id:7,lotNumber:7,title:"LINCOLN WHEAT PENNY 7 LB bag 1909-1958",image:"https://i.ebayimg.com/images/g/hxgAAOSwzllluA-p/s-l300.jpg",category:"Coins",startingBid:124.99},
-            {id:8,lotNumber:8,title:"BATMAN ADVENTURES #12 1st Harley Quinn",image:"https://i.ebayimg.com/images/g/TYUAAeSwtN9pMjQP/s-l300.jpg",category:"Comics",startingBid:500.00},
-            {id:11,lotNumber:11,title:"1953 Two Dollar Note Red Seal $2 Bill",image:"https://i.ebayimg.com/images/g/dssAAOSw2qtnoSFh/s-l300.jpg",category:"Paper Money",startingBid:2.00},
-            {id:13,lotNumber:13,title:"FR. 17a 1862 $1 Legal Tender Note",image:"https://i.ebayimg.com/images/g/2WsAAeSwj9No2C6z/s-l300.jpg",category:"Paper Money",startingBid:1.00},
-            {id:16,lotNumber:16,title:"New Mutants #87 Marvel 1990 1st Cable",image:"https://i.ebayimg.com/images/g/v7QAAeSwYcNpMjkj/s-l300.jpg",category:"Comics",startingBid:165.00},
-            {id:17,lotNumber:17,title:"Avengers #1 CGC 2.5 1963 1st Avengers",image:"https://i.ebayimg.com/images/g/TxgAAeSwOoppMxwc/s-l300.jpg",category:"Comics",startingBid:2850.00},
-            {id:18,lotNumber:18,title:"3 Vials Gold Leaf Flakes",image:"https://i.ebayimg.com/images/g/hNUAAOSwyI1nH-Mr/s-l300.jpg",category:"Collectibles",startingBid:6.99},
-            {id:19,lotNumber:19,title:"Amazing Spider-Man #300 CGC 9.2 1st Venom",image:"https://i.ebayimg.com/images/g/JY8AAeSw8lFpMjEq/s-l300.jpg",category:"Comics",startingBid:550.00},
-            {id:25,lotNumber:25,title:"Sealed Wheat Penny Roll 1909-1958",image:"https://i.ebayimg.com/images/g/jKYAAOSwIYhlogDx/s-l300.jpg",category:"Coins",startingBid:17.99},
-            {id:26,lotNumber:26,title:"1899 Silver Certificate Black Eagle",image:"https://i.ebayimg.com/images/g/oPYAAeSwu1hpDlCw/s-l300.jpg",category:"Paper Money",startingBid:1.00},
-        ];
+        // State
+        let allItems = [];
+        let buyNowItems = [];
+        let auctionItems = [];
+        let currentFilter = 'all';
+        let searchQuery = '';
+        let isLoading = true;
+
+        // Fetch items from API
+        async function loadMarketplaceItems() {
+            try {
+                isLoading = true;
+                showLoadingState();
+                
+                const response = await fetch('/api/marketplace');
+                const data = await response.json();
+                
+                if (data.success) {
+                    allItems = data.items;
+                    buyNowItems = allItems.filter(item => item.type === 'buyNow');
+                    auctionItems = allItems.filter(item => item.type === 'auction');
+                    
+                    renderBuyNow();
+                    renderLots();
+                } else {
+                    showErrorState(data.error);
+                }
+            } catch (error) {
+                console.error('Error loading marketplace items:', error);
+                // Fallback to demo data if API fails
+                loadFallbackData();
+            } finally {
+                isLoading = false;
+            }
+        }
+
+        // Fallback demo data
+        function loadFallbackData() {
+            buyNowItems = [
+                {id:101,title:"1964 Kennedy Half Dollar MS65",image:"https://i.ebayimg.com/images/g/kqEAAOSwz7RnHzqM/s-l300.jpg",category:"Coins",price:24.99,type:'buyNow'},
+                {id:102,title:"Amazing Fantasy #15 Facsimile Edition",image:"https://i.ebayimg.com/images/g/M8QAAOSwzwZnH0pR/s-l300.jpg",category:"Comics",price:12.99,type:'buyNow'},
+                {id:103,title:"1935A $1 Silver Certificate VF",image:"https://i.ebayimg.com/images/g/yPoAAOSw7P9nH1Ae/s-l300.jpg",category:"Paper Money",price:8.50,type:'buyNow'},
+                {id:104,title:"Morgan Silver Dollar 1921",image:"https://i.ebayimg.com/images/g/BasAAOSwistmkPQx/s-l300.jpg",category:"Coins",price:45.00,type:'buyNow'},
+                {id:105,title:"Batman #423 Death in the Family Part 3",image:"https://i.ebayimg.com/images/g/nxEAAOSwZHRnH2M~/s-l300.jpg",category:"Comics",price:18.00,type:'buyNow'},
+                {id:106,title:"1928 Red Seal $2 Bill Fine Condition",image:"https://i.ebayimg.com/images/g/3IkAAOSw0hFnH2xQ/s-l300.jpg",category:"Paper Money",price:95.00,type:'buyNow'},
+            ];
+
+            auctionItems = [
+                {id:1,lotNumber:1,title:"Daredevil #319B McDaniel Variant CGC",image:"https://i.ebayimg.com/images/g/opQAAeSwKxJpOKkv/s-l300.jpg",category:"Comics",price:34.99,type:'auction'},
+                {id:2,lotNumber:2,title:"Ghost Rider Vol. 2 #28 CGC 8.0 Midnight Sons",image:"https://i.ebayimg.com/images/g/2XAAAeSw1hxpOKhu/s-l300.jpg",category:"Comics",price:15.00,type:'auction'},
+                {id:7,lotNumber:7,title:"LINCOLN WHEAT PENNY 7 LB bag 1909-1958",image:"https://i.ebayimg.com/images/g/hxgAAOSwzllluA-p/s-l300.jpg",category:"Coins",price:124.99,type:'auction'},
+                {id:8,lotNumber:8,title:"BATMAN ADVENTURES #12 1st Harley Quinn",image:"https://i.ebayimg.com/images/g/TYUAAeSwtN9pMjQP/s-l300.jpg",category:"Comics",price:500.00,type:'auction'},
+                {id:11,lotNumber:11,title:"1953 Two Dollar Note Red Seal $2 Bill",image:"https://i.ebayimg.com/images/g/dssAAOSw2qtnoSFh/s-l300.jpg",category:"Paper Money",price:2.00,type:'auction'},
+                {id:13,lotNumber:13,title:"FR. 17a 1862 $1 Legal Tender Note",image:"https://i.ebayimg.com/images/g/2WsAAeSwj9No2C6z/s-l300.jpg",category:"Paper Money",price:1.00,type:'auction'},
+                {id:16,lotNumber:16,title:"New Mutants #87 Marvel 1990 1st Cable",image:"https://i.ebayimg.com/images/g/v7QAAeSwYcNpMjkj/s-l300.jpg",category:"Comics",price:165.00,type:'auction'},
+                {id:17,lotNumber:17,title:"Avengers #1 CGC 2.5 1963 1st Avengers",image:"https://i.ebayimg.com/images/g/TxgAAeSwOoppMxwc/s-l300.jpg",category:"Comics",price:2850.00,type:'auction'},
+                {id:18,lotNumber:18,title:"3 Vials Gold Leaf Flakes",image:"https://i.ebayimg.com/images/g/hNUAAOSwyI1nH-Mr/s-l300.jpg",category:"Collectibles",price:6.99,type:'auction'},
+                {id:19,lotNumber:19,title:"Amazing Spider-Man #300 CGC 9.2 1st Venom",image:"https://i.ebayimg.com/images/g/JY8AAeSw8lFpMjEq/s-l300.jpg",category:"Comics",price:550.00,type:'auction'},
+                {id:25,lotNumber:25,title:"Sealed Wheat Penny Roll 1909-1958",image:"https://i.ebayimg.com/images/g/jKYAAOSwIYhlogDx/s-l300.jpg",category:"Coins",price:17.99,type:'auction'},
+                {id:26,lotNumber:26,title:"1899 Silver Certificate Black Eagle",image:"https://i.ebayimg.com/images/g/oPYAAeSwu1hpDlCw/s-l300.jpg",category:"Paper Money",price:1.00,type:'auction'},
+            ];
+
+            renderBuyNow();
+            renderLots();
+        }
+
+        function showLoadingState() {
+            document.getElementById('buyNowGrid').innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-secondary);">Loading items...</div>';
+            document.getElementById('auctionGrid').innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-secondary);">Loading items...</div>';
+        }
+
+        function showErrorState(error) {
+            const errorMsg = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-secondary);">Error loading items. Using demo data.</div>`;
+            document.getElementById('buyNowGrid').innerHTML = errorMsg;
+            document.getElementById('auctionGrid').innerHTML = errorMsg;
+            loadFallbackData();
+        }
 
         let currentFilter = 'all';
         let searchQuery = '';
 
+        function renderBuyNow() {
+            const filtered = buyNowItems.filter(item => {
+                const matchesFilter = currentFilter === 'all' || item.category === currentFilter;
+                const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesFilter && matchesSearch;
+            });
+            
+            document.getElementById('buyNowCount').textContent = filtered.length;
+            
+            document.getElementById('buyNowGrid').innerHTML = filtered.map(item => `
+                <div class="lot-card">
+                    <div class="lot-image">
+                        <img src="${item.image}" alt="${item.title}" onerror="this.src='https://via.placeholder.com/300x300/1a1f26/8f9f83?text=No+Image'">
+                        <div class="lot-badges">
+                            <span class="lot-number">Buy Now</span>
+                            <span class="category-badge">${item.category}</span>
+                        </div>
+                    </div>
+                    <div class="lot-info">
+                        <h3 class="lot-title">${item.title}</h3>
+                        <div class="lot-meta">
+                            <span class="current-bid">$${item.price.toLocaleString()}</span>
+                        </div>
+                        <button class="bid-button" onclick="window.cart.addItem(${JSON.stringify(item).replace(/"/g, '&quot;')})">Add to Cart</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
         function renderLots() {
-            const filtered = lots.filter(lot => {
-                const matchesFilter = currentFilter === 'all' || lot.category === currentFilter;
-                const matchesSearch = lot.title.toLowerCase().includes(searchQuery.toLowerCase());
+            const filtered = auctionItems.filter(item => {
+                const matchesFilter = currentFilter === 'all' || item.category === currentFilter;
+                const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase());
                 return matchesFilter && matchesSearch;
             });
             
             document.getElementById('lotCount').textContent = filtered.length;
             
-            document.getElementById('auctionGrid').innerHTML = filtered.map(lot => `
+            document.getElementById('auctionGrid').innerHTML = filtered.map(item => `
                 <div class="lot-card">
                     <div class="lot-image">
-                        <img src="${lot.image}" alt="${lot.title}" onerror="this.src='https://via.placeholder.com/300x300/1a1f26/8f9f83?text=No+Image'">
+                        <img src="${item.image}" alt="${item.title}" onerror="this.src='https://via.placeholder.com/300x300/1a1f26/8f9f83?text=No+Image'">
                         <div class="lot-badges">
-                            <span class="lot-number">Lot #${lot.lotNumber}</span>
-                            <span class="category-badge">${lot.category}</span>
+                            <span class="lot-number">${item.lotNumber ? `Lot #${item.lotNumber}` : 'Auction'}</span>
+                            <span class="category-badge">${item.category}</span>
                         </div>
                     </div>
                     <div class="lot-info">
-                        <h3 class="lot-title">${lot.title}</h3>
+                        <h3 class="lot-title">${item.title}</h3>
                         <div class="lot-meta">
-                            <span class="current-bid">Starting: $${lot.startingBid.toLocaleString()}</span>
+                            <span class="current-bid">Starting: $${item.price.toLocaleString()}</span>
                         </div>
-                        <button class="bid-button" onclick="window.open('https://hibid.com','_blank')">Place Bid</button>
+                        <button class="bid-button" onclick="${item.url ? `window.open('${item.url}','_blank')` : `window.open('https://hibid.com','_blank')`}">Place Bid</button>
                     </div>
                 </div>
             `).join('');
@@ -351,6 +677,7 @@
 
         document.getElementById('searchInput').addEventListener('input', e => {
             searchQuery = e.target.value;
+            renderBuyNow();
             renderLots();
         });
 
@@ -359,6 +686,7 @@
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 currentFilter = btn.dataset.filter;
+                renderBuyNow();
                 renderLots();
             });
         });
@@ -367,7 +695,22 @@
             document.getElementById('navLinks').classList.toggle('open');
         });
 
-        renderLots();
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+
+        // Load items on page load
+        loadMarketplaceItems();
     </script>
+    <script src="cookie-consent.js"></script>
 </body>
 </html>

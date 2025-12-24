@@ -5,9 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - 45° North Collective</title>
     <meta name="description" content="We're not a marketing agency. We're your sales partner. 90-day guarantee or we pay the difference.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://45degreesnorth.co/services.html">
+    <meta property="og:title" content="Services | 45° North Collective">
+    <meta property="og:description" content="We're not a marketing agency. We're your sales partner. 90-day guarantee or we pay the difference.">
+    <meta property="og:image" content="https://45degreesnorth.co/45north-logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://45degreesnorth.co/services.html">
+    <meta name="twitter:title" content="Services | 45° North Collective">
+    <meta name="twitter:description" content="We're not a marketing agency. We're your sales partner. 90-day guarantee or we pay the difference.">
+    <meta name="twitter:image" content="https://45degreesnorth.co/45north-logo.png">
+    
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="cookie-consent.css">
+    
+    <!-- Google Analytics with Cookie Consent -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      if (localStorage.getItem('cookieConsent') === 'accepted') {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-MJE80RBSSL';
+        document.head.appendChild(script);
+        script.onload = function() {
+          gtag('js', new Date());
+          gtag('config', 'G-MJE80RBSSL');
+        };
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --sage: #8f9f83;
@@ -23,8 +54,24 @@
             --card-border: #e2e8f0;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* Skip to main content link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--sage);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
         body {
-            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             color: var(--dark);
         }
@@ -38,32 +85,67 @@
             z-index: 1000;
             padding: 0 2rem;
             background: var(--sage);
+            transition: all 0.3s ease;
+            height: 120px;
+            overflow: visible;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
         }
-        .logo { display: flex; align-items: center; }
-        .logo img { height: 50px; }
+        .nav.scrolled {
+            height: 80px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+        .logo { 
+            display: flex; 
+            align-items: center;
+            position: relative;
+            top: -10px;
+        }
+        .logo img { 
+            height: 130px;
+            transition: height 0.3s;
+        }
+        .nav.scrolled .logo img { height: 100px; }
         .nav-links {
             display: flex;
-            gap: 2rem;
-            align-items: center;
+            gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
         .nav-links a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 0.95rem;
-            transition: opacity 0.2s;
+            transition: color 0.2s;
+            position: relative;
         }
-        .nav-links a:hover { opacity: 0.8; }
+        .nav-links a:not(.nav-cta):hover { color: rgba(255, 255, 255, 0.8); }
+        .nav-links a:not(.nav-cta)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+        }
+        .nav-links a:not(.nav-cta):hover::after { width: 100%; }
         .nav-cta {
             background: white !important;
-            color: var(--sage) !important;
-            padding: 0.6rem 1.25rem;
-            border-radius: 6px;
+            color: var(--sage-dark) !important;
+            padding: 0.65rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
         .hamburger {
             display: none;
@@ -75,6 +157,7 @@
             width: 25px;
             height: 3px;
             background: white;
+            border-radius: 2px;
             transition: all 0.3s;
         }
         /* === END NAV === */
@@ -134,6 +217,10 @@
         /* Sections */
         section {
             padding: 80px 20px;
+        }
+
+        section:first-of-type {
+            padding-top: 180px;
         }
 
         .section-header {
@@ -555,6 +642,20 @@
         .footer p { opacity: 0.7; font-size: 0.9rem; }
         .footer a { color: var(--sage); text-decoration: none; }
 
+        @media (max-width: 1100px) {
+            .nav { padding: 0 1.5rem; }
+            .nav-links { gap: 1.5rem; }
+            .nav-links a { font-size: 0.9rem; }
+        }
+
+        @media (max-width: 968px) {
+            .nav { height: 100px; }
+            .nav.scrolled { height: 80px; }
+            .logo img { height: 110px; }
+            .nav.scrolled .logo img { height: 90px; }
+            .nav-links { gap: 1.25rem; }
+        }
+
         @media (max-width: 768px) {
             .hero { padding: 100px 20px 60px; }
             .hero h1 { font-size: 2rem; }
@@ -581,24 +682,40 @@
     </style>
 </head>
 <body>
-    <nav class="nav">
-        <a href="index.html" class="logo">
+    <!-- Skip to main content link for keyboard navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner" style="display: none;" role="dialog" aria-label="Cookie consent">
+        <div class="cookie-content">
+            <p><strong>🍪 We use cookies</strong></p>
+            <p>We use Google Analytics to understand how visitors interact with our site. By clicking "Accept", you consent to our use of cookies. <a href="privacy-policy.html">Learn more</a></p>
+            <div class="cookie-buttons">
+                <button onclick="acceptCookies()" class="cookie-accept" aria-label="Accept cookies">Accept</button>
+                <button onclick="declineCookies()" class="cookie-decline" aria-label="Decline cookies">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="logo" aria-label="45° North Collective Home">
             <img src="45north-logo.png" alt="45° North Collective">
         </a>
-        <div class="hamburger" id="hamburger">
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
             <span></span><span></span><span></span>
-        </div>
+        </button>
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="marketplace.html">Marketplace</a></li>
+            <li><a href="services.html" aria-current="page">Services</a></li>
+            <li><span style="color: rgba(255, 255, 255, 0.5); cursor: not-allowed;">Marketplace (Coming Soon)</span></li>
+            <li><a href="holiday-campaign.html">Campaigns</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="portal-simple.html" class="nav-cta">Client Portal</a></li>
         </ul>
     </nav>
 
-    <section class="hero">
+    <section class="hero" id="main-content" role="main">
         <div class="container">
             <h1>We're Not a Marketing Agency.<br>We're Your Sales Partner.</h1>
             <p class="subtitle">We don't get paid to run campaigns. We get paid when you make money.</p>
@@ -654,8 +771,8 @@
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-number">1</div>
-                    <h3>We Buy Your Inventory</h3>
-                    <p>You name your price. We pay 90% — cash in hand, item off your shelf. No consignment waiting. No risk.</p>
+                    <h3>We Sell Your Inventory</h3>
+                    <p>Keep your inventory at your shop. Upload photos or video to our client portal. We list, market, and sell. You get paid 80-90% when it sells.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
@@ -714,18 +831,18 @@
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-label">One-Time or Ongoing</div>
-                    <h3>Inventory Purchase</h3>
-                    <div class="price">90%<span> of asking price</span></div>
-                    <div class="price-note">Cash when we pick up</div>
-                    <p>You set the price on your items. We buy at 90%. Done.</p>
+                    <h3>Remote Consignment</h3>
+                    <div class="price">80-90%<span> when it sells</span></div>
+                    <div class="price-note">Paid when item sells</div>
+                    <p>Upload photos or video to our portal. Keep inventory at your shop. We list, market, and sell. You get 80-90% when it moves.</p>
                     <ul class="pricing-features">
                         <li>
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            90% of your asking price, paid upfront
+                            80-90% of your retail price when sold
                         </li>
                         <li>
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            Zero risk — it's our inventory now
+                            Keep inventory at your location
                         </li>
                         <li>
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
@@ -777,18 +894,18 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-label">Case Study</div>
-                <h2 class="section-title">$40K+ Sold in One Quarter</h2>
+                <h2 class="section-title">$50K+ Sold in One Quarter</h2>
                 <p class="section-sub">Real inventory. Real buyers. Real results.</p>
             </div>
 
             <div class="results-content">
                 <div class="results-stats">
                     <div class="stat-box">
-                        <div class="number">$40K+</div>
+                        <div class="number">$50K+</div>
                         <div class="label">Total Sales</div>
                     </div>
                     <div class="stat-box">
-                        <div class="number">8</div>
+                        <div class="number">9</div>
                         <div class="label">Auctions</div>
                     </div>
                     <div class="stat-box">
@@ -815,7 +932,7 @@
                         </li>
                         <li>
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            Ran 8 auction events over 12 weeks
+                            Ran 9 auction events over 12 weeks
                         </li>
                         <li>
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
@@ -823,6 +940,29 @@
                         </li>
                     </ul>
                     <p>Your inventory has value. The buyers are out there — they're just not walking through your door.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card animate-in animate-delay-1">
+                    <div class="stat-value">$50K+</div>
+                    <div class="stat-label">Sold This Quarter</div>
+                </div>
+                <div class="stat-card animate-in animate-delay-2">
+                    <div class="stat-value">9</div>
+                    <div class="stat-label">Auctions Completed</div>
+                </div>
+                <div class="stat-card animate-in animate-delay-3">
+                    <div class="stat-value">5,000+</div>
+                    <div class="stat-label">Bidder Views</div>
+                </div>
+                <div class="stat-card animate-in animate-delay-3">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Platforms</div>
                 </div>
             </div>
         </div>
@@ -837,13 +977,36 @@
     </section>
 
     <footer class="footer">
-        <p>© 2025 45° North Collective · Portland, Oregon · <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> · <a href="tel:9713132653">(971) 313-2653</a></p>
+        <p>© 2025 45° North Collective · 431 NW Flanders St #305, Portland, Oregon · <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> · <a href="tel:6575226467">(657) 522-6467</a></p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://www.instagram.com/45northcollective" target="_blank" rel="noopener noreferrer" style="margin: 0 0.5rem;">Instagram</a> · 
+            <a href="https://www.facebook.com/45northcollective" target="_blank" rel="noopener noreferrer" style="margin: 0 0.5rem;">Facebook</a>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;"><a href="privacy-policy.html">Privacy Policy</a></p>
     </footer>
 
     <script>
-        document.getElementById('hamburger').addEventListener('click', () => {
-            document.getElementById('navLinks').classList.toggle('open');
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
         });
     </script>
+    <script src="cookie-consent.js"></script>
 </body>
 </html>

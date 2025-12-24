@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://45degreesnorth.co/sitemap.xml
+
+# Crawl-delay for politeness
+Crawl-delay: 1
+
+# Disallow admin/internal pages
+Disallow: /api/
+Disallow: /*.md$
+Disallow: /node_modules/
+Disallow: /.git/
+
+# Allow all images and CSS/JS
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.svg$
+Allow: /*.webp$

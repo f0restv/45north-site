@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | 45° North Collective</title>
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://45degreesnorth.co/checkout.html">
+    <meta property="og:title" content="Checkout | 45° North Collective">
+    <meta property="og:image" content="https://45degreesnorth.co/45north-logo.png">
+    
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="cookie-consent.css">
+    
+    <!-- Google Analytics with Cookie Consent -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      if (localStorage.getItem('cookieConsent') === 'accepted') {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-MJE80RBSSL';
+        document.head.appendChild(script);
+        script.onload = function() {
+          gtag('js', new Date());
+          gtag('config', 'G-MJE80RBSSL');
+        };
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        :root {
+            --sage: #8f9f83;
+            --sage-dark: #6d7a63;
+            --gold: #c9a227;
+            --dark: #0d1117;
+            --card-bg: #161b22;
+            --card-border: #30363d;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --error: #f85149;
+            --success: #3fb950;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* === STANDARDIZED NAV === */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+            background: var(--sage);
+            transition: all 0.3s ease;
+            height: 120px;
+            overflow: visible;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav.scrolled { height: 80px; box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
+        .logo { display: flex; align-items: center; position: relative; top: -10px; }
+        .logo img { height: 130px; transition: height 0.3s; }
+        .nav.scrolled .logo img { height: 100px; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+        .nav-links a:hover { opacity: 0.8; }
+        .nav-cta {
+            background: white !important;
+            color: var(--sage) !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+        }
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--gold);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 180px 2rem 4rem;
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--sage);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--dark);
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--sage);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: var(--dark);
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-category {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .cart-item-price {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .order-summary {
+            position: sticky;
+            top: 140px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .summary-row.total {
+            font-size: 1.25rem;
+            font-weight: 700;
+            border-top: 2px solid var(--card-border);
+            border-bottom: none;
+            padding-top: 1.5rem;
+        }
+
+        .checkout-button {
+            width: 100%;
+            background: var(--sage);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 1.5rem;
+        }
+
+        .checkout-button:hover {
+            background: var(--sage-dark);
+        }
+
+        .checkout-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+            opacity: 0.6;
+        }
+
+        .payment-methods img {
+            height: 24px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-cart h2 {
+            margin-bottom: 1rem;
+        }
+
+        .continue-shopping {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: var(--sage);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .error-message {
+            background: rgba(248, 81, 73, 0.1);
+            border: 1px solid var(--error);
+            color: var(--error);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .success-message {
+            background: rgba(63, 185, 80, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 1100px) {
+            .nav { padding: 0 1.5rem; }
+            .nav-links { gap: 1.5rem; }
+            .nav-links a { font-size: 0.9rem; }
+        }
+
+        @media (max-width: 968px) {
+            .nav { height: 100px; }
+            .nav.scrolled { height: 80px; }
+            .logo img { height: 110px; }
+            .nav.scrolled .logo img { height: 90px; }
+            .nav-links { gap: 1.25rem; }
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+            .order-summary {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <p><strong>🍪 We use cookies</strong></p>
+            <p>We use Google Analytics to understand how visitors interact with our site. By clicking "Accept", you consent to our use of cookies. <a href="privacy-policy.html">Learn more</a></p>
+            <div class="cookie-buttons">
+                <button onclick="acceptCookies()" class="cookie-accept">Accept</button>
+                <button onclick="declineCookies()" class="cookie-decline">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="index.html" class="logo">
+            <img src="45north-logo.png" alt="45° North Collective">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="marketplace.html">Marketplace</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+                <div class="cart-icon" onclick="window.location.href='checkout.html'">
+                    <svg width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    <span class="cart-count" id="headerCartCount">0</span>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Checkout</h1>
+        
+        <div id="emptyCart" class="empty-cart" style="display: none;">
+            <svg width="64" height="64" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin: 0 auto 1rem; opacity: 0.3;">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            <h2>Your cart is empty</h2>
+            <p>Add some items from our marketplace to get started</p>
+            <a href="marketplace.html" class="continue-shopping">Continue Shopping</a>
+        </div>
+
+        <div id="checkoutContent" class="checkout-grid">
+            <div>
+                <div class="section">
+                    <h2>Contact Information</h2>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Shipping Address</h2>
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Street Address</label>
+                        <input type="text" id="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address2">Apt, Suite, etc. (optional)</label>
+                        <input type="text" id="address2">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="zip">ZIP Code</label>
+                            <input type="text" id="zip" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select id="country" required>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Payment Information</h2>
+                    <div id="payment-element"></div>
+                    <div id="error-message" class="error-message" style="display: none;"></div>
+                </div>
+            </div>
+
+            <div>
+                <div class="section order-summary">
+                    <h2>Order Summary</h2>
+                    <div id="cartItems"></div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span id="shipping">$9.99</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax</span>
+                            <span id="tax">$0.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="total">$0.00</span>
+                        </div>
+                    </div>
+
+                    <button class="checkout-button" id="submitButton">
+                        Complete Purchase
+                    </button>
+
+                    <div class="payment-methods">
+                        <span style="opacity: 0.6; font-size: 0.85rem;">Secure payment powered by Stripe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cart management
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        let stripe = null;
+        let elements = null;
+        let paymentElement = null;
+
+        // Initialize Stripe (replace with your publishable key)
+        const STRIPE_PUBLIC_KEY = 'pk_test_YOUR_STRIPE_KEY'; // Replace with your key
+
+        function initializeStripe() {
+            stripe = Stripe(STRIPE_PUBLIC_KEY);
+            // In production, create payment intent on server and return client secret
+            // For now, we'll use a demo flow
+        }
+
+        function updateCartDisplay() {
+            document.getElementById('headerCartCount').textContent = cart.length;
+
+            if (cart.length === 0) {
+                document.getElementById('emptyCart').style.display = 'block';
+                document.getElementById('checkoutContent').style.display = 'none';
+                return;
+            }
+
+            document.getElementById('emptyCart').style.display = 'none';
+            document.getElementById('checkoutContent').style.display = 'grid';
+
+            const cartItemsHTML = cart.map(item => `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.title}" class="cart-item-image" onerror="this.src='https://via.placeholder.com/80'">
+                    <div class="cart-item-info">
+                        <div class="cart-item-title">${item.title}</div>
+                        <div class="cart-item-category">${item.category}</div>
+                    </div>
+                    <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                </div>
+            `).join('');
+
+            document.getElementById('cartItems').innerHTML = cartItemsHTML;
+
+            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+            const shipping = 9.99;
+            const tax = subtotal * 0.08; // 8% tax
+            const total = subtotal + shipping + tax;
+
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('shipping').textContent = `$${shipping.toFixed(2)}`;
+            document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+        }
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+            
+            const submitButton = document.getElementById('submitButton');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Processing...';
+
+            // Validate form
+            const email = document.getElementById('email').value;
+            const fullName = document.getElementById('fullName').value;
+            const address = document.getElementById('address').value;
+            const city = document.getElementById('city').value;
+            const state = document.getElementById('state').value;
+            const zip = document.getElementById('zip').value;
+
+            if (!email || !fullName || !address || !city || !state || !zip) {
+                alert('Please fill in all required fields');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Complete Purchase';
+                return;
+            }
+
+            // In production, send to your server endpoint
+            try {
+                const orderData = {
+                    items: cart,
+                    customer: { email, fullName },
+                    shipping: { address, city, state, zip },
+                    total: document.getElementById('total').textContent
+                };
+
+                const response = await fetch('/api/create-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(orderData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Clear cart
+                    localStorage.removeItem('cart');
+                    // Redirect to success page
+                    window.location.href = 'order-confirmation.html?order=' + result.orderId;
+                } else {
+                    throw new Error(result.error || 'Payment failed');
+                }
+            } catch (error) {
+                console.error('Checkout error:', error);
+                document.getElementById('error-message').textContent = error.message;
+                document.getElementById('error-message').style.display = 'block';
+                submitButton.disabled = false;
+                submitButton.textContent = 'Complete Purchase';
+            }
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Initialize
+        document.getElementById('submitButton').addEventListener('click', handleSubmit);
+        updateCartDisplay();
+        // initializeStripe(); // Uncomment when you have Stripe key
+    </script>
+    <script src="cookie-consent.js"></script>
+
+    <footer class="footer">
+        <p>© 2025 45° North Collective · 431 NW Flanders St #305, Portland, Oregon · <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> · <a href="tel:6575226467">(657) 522-6467</a></p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://www.instagram.com/45northcollective" target="_blank" rel="noopener noreferrer" style="margin: 0 0.5rem;">Instagram</a> · 
+            <a href="https://www.facebook.com/45northcollective" target="_blank" rel="noopener noreferrer" style="margin: 0 0.5rem;">Facebook</a>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;"><a href="privacy-policy.html">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>

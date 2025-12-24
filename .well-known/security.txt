@@ -1,0 +1,16 @@
+Contact: mailto:info@45northcollective.com
+Contact: tel:+1-657-522-6467
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://45degreesnorth.co/.well-known/security.txt
+
+# Our security disclosure policy
+# If you discover a security vulnerability, please:
+# 1. Email info@45northcollective.com with details
+# 2. Allow us reasonable time to respond
+# 3. Do not publicly disclose until we've had a chance to address it
+
+# We commit to:
+# - Acknowledge your email within 48 hours
+# - Provide an estimated timeline for fixes
+# - Credit you for the discovery (if desired)

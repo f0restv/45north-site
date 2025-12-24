@@ -5,9 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>45° North Collective | Submit Your Item</title>
     <meta name="description" content="Submit your items for listing. Upload photos and we'll get back to you within 24 hours.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://45degreesnorth.co/portal-simple.html">
+    <meta property="og:title" content="Client Portal | 45° North Collective">
+    <meta property="og:description" content="Submit your items for listing. Upload photos and we'll get back to you within 24 hours.">
+    <meta property="og:image" content="https://45degreesnorth.co/45north-logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="cookie-consent.css">
+    
+    <!-- Google Analytics with Cookie Consent -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      if (localStorage.getItem('cookieConsent') === 'accepted') {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-MJE80RBSSL';
+        document.head.appendChild(script);
+        script.onload = function() {
+          gtag('js', new Date());
+          gtag('config', 'G-MJE80RBSSL');
+        };
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --sage: #8f9f83;
@@ -21,7 +48,7 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Source Sans Pro', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--darker);
             color: var(--white);
             min-height: 100vh;
@@ -37,13 +64,28 @@
             z-index: 1000;
             padding: 0 2rem;
             background: var(--sage);
+            transition: all 0.3s ease;
+            height: 120px;
+            overflow: visible;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
         }
-        .logo { display: flex; align-items: center; }
-        .logo img { height: 50px; }
+        .nav.scrolled {
+            height: 80px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+        .logo { 
+            display: flex; 
+            align-items: center;
+            position: relative;
+            top: -10px;
+        }
+        .logo img { 
+            height: 130px;
+            transition: height 0.3s;
+        }
+        .nav.scrolled .logo img { height: 100px; }
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -78,7 +120,7 @@
         }
         /* === END NAV === */
 
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; padding-top: 110px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; padding-top: 140px; }
         
         header {
             text-align: center;
@@ -247,6 +289,20 @@
         }
         footer a { color: var(--sage); text-decoration: none; }
 
+        @media (max-width: 1100px) {
+            .nav { padding: 0 1.5rem; }
+            .nav-links { gap: 1.5rem; }
+            .nav-links a { font-size: 0.9rem; }
+        }
+
+        @media (max-width: 968px) {
+            .nav { height: 100px; }
+            .nav.scrolled { height: 80px; }
+            .logo img { height: 110px; }
+            .nav.scrolled .logo img { height: 90px; }
+            .nav-links { gap: 1.25rem; }
+        }
+
         @media (max-width: 768px) {
             .container { padding: 20px 15px; padding-top: 90px; }
             header h1 { font-size: 1.5rem; }
@@ -270,6 +326,18 @@
     </style>
 </head>
 <body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <p><strong>🍪 We use cookies</strong></p>
+            <p>We use Google Analytics to understand how visitors interact with our site. By clicking "Accept", you consent to our use of cookies. <a href="privacy-policy.html">Learn more</a></p>
+            <div class="cookie-buttons">
+                <button onclick="acceptCookies()" class="cookie-accept">Accept</button>
+                <button onclick="declineCookies()" class="cookie-decline">Decline</button>
+            </div>
+        </div>
+    </div>
+
     <nav class="nav">
         <a href="index.html" class="logo">
             <img src="45north-logo.png" alt="45° North Collective">
@@ -280,7 +348,8 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="marketplace.html">Marketplace</a></li>
+            <li><span style="color: rgba(255, 255, 255, 0.5); cursor: not-allowed;">Marketplace (Coming Soon)</span></li>
+            <li><a href="holiday-campaign.html">Campaigns</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="portal-simple.html" class="nav-cta">Client Portal</a></li>
@@ -300,13 +369,20 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
                     </svg>
                 </div>
-                <p class="upload-text">Drop photos here or click to upload</p>
-                <p class="upload-hint">Up to 6 images · Max 10MB each · JPG, PNG</p>
+                <p class="upload-text">Drop photos or videos here or click to upload</p>
+                <p class="upload-hint">Up to 6 files · Images: Max 10MB · Videos: Max 50MB, 10 seconds · JPG, PNG, MP4, MOV</p>
             </div>
-            <input type="file" id="file-input" accept="image/*" multiple>
+            <input type="file" id="file-input" accept="image/*,video/*" multiple>
             <div class="preview-grid" id="preview-grid"></div>
 
             <form class="form-section" id="submission-form">
+                <div class="form-group">
+                    <label>Client ID <span class="required">*</span></label>
+                    <input type="text" name="client-id" required placeholder="Enter your Client ID">
+                    <p style="font-size: 0.85rem; color: var(--gray); margin-top: 5px;">
+                        Don't have a Client ID? <a href="contact.html" style="color: var(--sage); text-decoration: underline;">Contact us to request one</a>
+                    </p>
+                </div>
                 <div class="form-group">
                     <label>Your Name <span class="required">*</span></label>
                     <input type="text" name="name" required>
@@ -355,8 +431,54 @@
         const CLOUDINARY_UPLOAD_PRESET = '45north';
         const NOTIFICATION_EMAIL = 'admin@45northcollective.com';
 
+        // Valid Client IDs - Add new IDs here as you onboard clients
+        const VALID_CLIENT_IDS = [
+            'CLT-001',
+            'CLT-002',
+            'CLT-003',
+            'DEMO',
+            'TEST'
+        ];
+
         let uploadedFiles = [];
         let uploadedUrls = [];
+
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('file-input');
+        const previewGrid = document.getElementById('preview-grid');
+        const submitBtn = document.getElementById('submit-btn');
+        const mainForm = document.getElementById('main-form');
+        const loading = document.getElementById('loading');
+        const success = document.getElementById('success');
+        const form = document.getElementById('submission-form');
+
+        // Client ID validation
+        const clientIdInput = document.querySelector('input[name="client-id"]');
+        clientIdInput.addEventListener('blur', validateClientId);
+        clientIdInput.addEventListener('input', () => {
+            const errorMsg = clientIdInput.nextElementSibling;
+            if (errorMsg && errorMsg.classList.contains('error-msg')) {
+                errorMsg.remove();
+            }
+        });
+
+        function validateClientId() {
+            const clientId = clientIdInput.value.trim().toUpperCase();
+            const existingError = clientIdInput.nextElementSibling;
+            if (existingError && existingError.classList.contains('error-msg')) {
+                existingError.remove();
+            }
+
+            if (clientId && !VALID_CLIENT_IDS.includes(clientId)) {
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'error-msg';
+                errorMsg.style.cssText = 'color: #ff4444; font-size: 0.9rem; margin-top: 5px; background: rgba(255, 68, 68, 0.1); padding: 10px; border-radius: 5px;';
+                errorMsg.innerHTML = '❌ Invalid Client ID. <a href="contact.html" style="color: var(--sage); text-decoration: underline; font-weight: 600;">Contact us</a> to request a Client ID.';
+                clientIdInput.parentNode.appendChild(errorMsg);
+                return false;
+            }
+            return true;
+        }
 
         const uploadArea = document.getElementById('upload-area');
         const fileInput = document.getElementById('file-input');
@@ -377,23 +499,70 @@
         });
         fileInput.addEventListener('change', e => handleFiles(e.target.files));
 
-        function handleFiles(files) {
+        async function handleFiles(files) {
             for (let file of files) {
-                if (!file.type.startsWith('image/')) continue;
-                if (file.size > 10 * 1024 * 1024) { alert(`${file.name} is too large (max 10MB)`); continue; }
-                if (uploadedFiles.length >= 6) { alert('Maximum 6 images allowed'); break; }
+                const isImage = file.type.startsWith('image/');
+                const isVideo = file.type.startsWith('video/');
+                
+                if (!isImage && !isVideo) {
+                    alert(`${file.name} is not a supported file type`);
+                    continue;
+                }
+                
+                if (isImage && file.size > 10 * 1024 * 1024) {
+                    alert(`${file.name} is too large (max 10MB for images)`);
+                    continue;
+                }
+                
+                if (isVideo && file.size > 50 * 1024 * 1024) {
+                    alert(`${file.name} is too large (max 50MB for videos)`);
+                    continue;
+                }
+                
+                if (uploadedFiles.length >= 6) {
+                    alert('Maximum 6 files allowed');
+                    break;
+                }
+                
+                // Validate video duration
+                if (isVideo) {
+                    const duration = await getVideoDuration(file);
+                    if (duration > 10) {
+                        alert(`${file.name} is too long (${duration.toFixed(1)}s). Videos must be 10 seconds or less.`);
+                        continue;
+                    }
+                }
+                
                 uploadedFiles.push(file);
                 addPreview(file, uploadedFiles.length - 1);
             }
             updateButton();
         }
 
+        function getVideoDuration(file) {
+            return new Promise((resolve, reject) => {
+                const video = document.createElement('video');
+                video.preload = 'metadata';
+                video.onloadedmetadata = function() {
+                    window.URL.revokeObjectURL(video.src);
+                    resolve(video.duration);
+                };
+                video.onerror = () => reject(new Error('Failed to load video'));
+                video.src = URL.createObjectURL(file);
+            });
+        }
+
         function addPreview(file, index) {
+            const isVideo = file.type.startsWith('video/');
             const reader = new FileReader();
             reader.onload = e => {
                 const div = document.createElement('div');
                 div.className = 'preview-item';
-                div.innerHTML = `<img src="${e.target.result}" alt="Preview"><button class="remove-btn" onclick="removeImage(${index})">×</button>`;
+                if (isVideo) {
+                    div.innerHTML = `<video src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;"></video><button class="remove-btn" onclick="removeImage(${index})">×</button>`;
+                } else {
+                    div.innerHTML = `<img src="${e.target.result}" alt="Preview"><button class="remove-btn" onclick="removeImage(${index})">×</button>`;
+                }
                 previewGrid.appendChild(div);
             };
             reader.readAsDataURL(file);
@@ -408,17 +577,31 @@
 
         function updateButton() {
             submitBtn.disabled = uploadedFiles.length === 0;
-            submitBtn.textContent = uploadedFiles.length > 0 ? `📤 Submit ${uploadedFiles.length} Image${uploadedFiles.length > 1 ? 's' : ''}` : '📤 Submit for Review';
+            submitBtn.textContent = uploadedFiles.length > 0 ? `📤 Submit ${uploadedFiles.length} File${uploadedFiles.length > 1 ? 's' : ''}` : '📤 Submit for Review';
         }
 
         submitBtn.addEventListener('click', async () => {
             if (!form.checkValidity()) { form.reportValidity(); return; }
+            
+            // Validate Client ID before submission
+            if (!validateClientId()) {
+                alert('Please enter a valid Client ID before submitting.');
+                return;
+            }
+
+            const clientId = clientIdInput.value.trim().toUpperCase();
+            if (!VALID_CLIENT_IDS.includes(clientId)) {
+                alert('⚠️ Invalid Client ID\n\nYou need a valid Client ID to submit items. Please contact us at:\n\n📧 info@45northcollective.com\n📞 (657) 522-6467\n\nor visit our Contact page to request your Client ID.');
+                return;
+            }
+
             mainForm.style.display = 'none';
             loading.classList.add('visible');
             try {
                 uploadedUrls = await Promise.all(uploadedFiles.map(uploadToCloudinary));
                 const formData = new FormData(form);
                 const data = {
+                    clientId: formData.get('client-id'),
                     name: formData.get('name'),
                     email: formData.get('email'),
                     phone: formData.get('phone') || 'Not provided',
@@ -443,17 +626,20 @@
             fd.append('file', file);
             fd.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
             fd.append('folder', '45north-submissions');
-            const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, { method: 'POST', body: fd });
+            
+            const isVideo = file.type.startsWith('video/');
+            const resourceType = isVideo ? 'video' : 'image';
+            const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/${resourceType}/upload`, { method: 'POST', body: fd });
             if (!res.ok) throw new Error('Upload failed');
             return (await res.json()).secure_url;
         }
 
         async function sendNotification(data) {
-            const body = `NEW ITEM SUBMISSION\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nAsking: ${data.askingPrice}\nNotes: ${data.notes}\n\nImages:\n${data.images.join('\n')}\n\nSubmitted: ${data.timestamp}`;
+            const body = `NEW ITEM SUBMISSION\n\nClient ID: ${data.clientId}\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nAsking: ${data.askingPrice}\nNotes: ${data.notes}\n\nFiles (Images/Videos):\n${data.images.join('\n')}\n\nSubmitted: ${data.timestamp}`;
             await fetch('https://formsubmit.co/' + NOTIFICATION_EMAIL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ _subject: `New Item from ${data.name}`, _captcha: 'false', message: body, _replyto: data.email }),
+                body: JSON.stringify({ _subject: `New Item from ${data.name} (Client: ${data.clientId})`, _captcha: 'false', message: body, _replyto: data.email }),
             });
         }
 
@@ -466,9 +652,32 @@
             updateButton();
         });
 
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
         document.getElementById('hamburger').addEventListener('click', () => {
             document.getElementById('navLinks').classList.toggle('open');
         });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
     </script>
+    <script src="cookie-consent.js"></script>
+
+    <footer class="footer">
+        <p>© 2025 45° North Collective · 431 NW Flanders St #305, Portland, Oregon · <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> · <a href="tel:6575226467">(657) 522-6467</a></p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://www.instagram.com/45northcollective" target="_blank" rel="noopener noreferrer" style="margin: 0 0.5rem;">Instagram</a> · 
+            <a href="https://www.facebook.com/45northcollective" target="_blank" rel="noopener noreferrer" style="margin: 0 0.5rem;">Facebook</a>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;"><a href="privacy-policy.html">Privacy Policy</a></p>
+    </footer>
 </body>
 </html>

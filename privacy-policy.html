@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | 45° North Collective</title>
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://45degreesnorth.co/privacy-policy.html">
+    <meta property="og:title" content="Privacy Policy | 45° North Collective">
+    <meta property="og:image" content="https://45degreesnorth.co/45north-logo.png">
+    
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="cookie-consent.css">
+    
+    <!-- Google Analytics with Cookie Consent -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      if (localStorage.getItem('cookieConsent') === 'accepted') {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-MJE80RBSSL';
+        document.head.appendChild(script);
+        script.onload = function() {
+          gtag('js', new Date());
+          gtag('config', 'G-MJE80RBSSL');
+        };
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #8f9f83;
+            --sage-dark: #6d7a63;
+            --dark: #161616;
+            --darker: #0d0d0d;
+            --light: #f7f7f7;
+            --white: #ffffff;
+            --gray: #64748b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: var(--white);
+        }
+        
+        /* === STANDARDIZED NAV === */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+            background: var(--sage);
+            transition: all 0.3s ease;
+            height: 120px;
+            overflow: visible;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav.scrolled {
+            height: 80px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+        .logo { 
+            display: flex; 
+            align-items: center;
+            position: relative;
+            top: -10px;
+        }
+        .logo img { 
+            height: 130px;
+            transition: height 0.3s;
+        }
+        .nav.scrolled .logo img { height: 100px; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+        .nav-links a:hover { opacity: 0.8; }
+        .nav-cta {
+            background: white !important;
+            color: var(--sage) !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s;
+        }
+        /* === END NAV === */
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 180px 2rem 4rem;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .last-updated {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--dark);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h3 {
+            font-size: 1.25rem;
+            color: var(--dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        a {
+            color: var(--sage);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-box {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--sage);
+        }
+        
+        .contact-box h3 {
+            margin-top: 0;
+        }
+
+        .footer {
+            background: var(--darker);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        .footer p { opacity: 0.7; font-size: 0.9rem; }
+        .footer a { color: var(--sage); text-decoration: none; }
+
+        @media (max-width: 1100px) {
+            .nav { padding: 0 1.5rem; }
+            .nav-links { gap: 1.5rem; }
+            .nav-links a { font-size: 0.9rem; }
+        }
+
+        @media (max-width: 968px) {
+            .nav { height: 100px; }
+            .nav.scrolled { height: 80px; }
+            .logo img { height: 110px; }
+            .nav.scrolled .logo img { height: 90px; }
+            .nav-links { gap: 1.25rem; }
+        }
+
+        @media (max-width: 768px) {
+            .content { padding: 140px 1.5rem 3rem; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--sage);
+                padding: 1rem 2rem;
+                gap: 1rem;
+            }
+            .nav-links.open { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <p><strong>🍪 We use cookies</strong></p>
+            <p>We use Google Analytics to understand how visitors interact with our site. By clicking "Accept", you consent to our use of cookies. <a href="privacy-policy.html">Learn more</a></p>
+            <div class="cookie-buttons">
+                <button onclick="acceptCookies()" class="cookie-accept">Accept</button>
+                <button onclick="declineCookies()" class="cookie-decline">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav" id="nav">
+        <a href="index.html" class="logo">
+            <img src="45north-logo.png" alt="45° North Collective">
+        </a>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><span style="color: rgba(255, 255, 255, 0.5); cursor: not-allowed;">Marketplace (Coming Soon)</span></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="portal-simple.html" class="nav-cta">Client Portal</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated"><strong>Last Updated:</strong> December 17, 2025</p>
+
+        <p>At 45° North Collective ("we," "our," or "us"), we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <a href="https://45degreesnorth.co">45degreesnorth.co</a> and use our services.</p>
+
+        <h2>1. Information We Collect</h2>
+        
+        <h3>Personal Information You Provide</h3>
+        <p>We collect information that you voluntarily provide to us when you:</p>
+        <ul>
+            <li>Fill out contact forms</li>
+            <li>Make a purchase through our marketplace</li>
+            <li>Create an account or use our client portal</li>
+            <li>Subscribe to our newsletter or marketing communications</li>
+            <li>Communicate with us via email or phone</li>
+        </ul>
+        
+        <p>This information may include:</p>
+        <ul>
+            <li>Name and contact information (email address, phone number, mailing address)</li>
+            <li>Billing and shipping addresses</li>
+            <li>Payment information (processed securely through Stripe)</li>
+            <li>Account credentials</li>
+            <li>Any other information you choose to provide</li>
+        </ul>
+
+        <h3>Automatically Collected Information</h3>
+        <p>When you visit our website, we automatically collect certain information about your device and browsing activity, including:</p>
+        <ul>
+            <li>IP address and general location</li>
+            <li>Browser type and version</li>
+            <li>Device information</li>
+            <li>Pages visited and time spent on pages</li>
+            <li>Referring website</li>
+            <li>Clickstream data</li>
+        </ul>
+
+        <h3>Cookies and Tracking Technologies</h3>
+        <p>We use cookies and similar tracking technologies to enhance your experience on our website. This includes:</p>
+        <ul>
+            <li><strong>Google Analytics:</strong> We use Google Analytics to understand how visitors interact with our site. Google Analytics collects information anonymously and reports website trends without identifying individual visitors.</li>
+            <li><strong>Essential Cookies:</strong> Necessary for the website to function properly, including shopping cart functionality and user authentication.</li>
+            <li><strong>Performance Cookies:</strong> Help us understand website performance and user behavior.</li>
+        </ul>
+
+        <h2>2. How We Use Your Information</h2>
+        
+        <p>We use the information we collect for the following purposes:</p>
+        <ul>
+            <li><strong>Order Fulfillment:</strong> Process and fulfill your purchases, including payment processing, shipping, and order confirmations</li>
+            <li><strong>Customer Service:</strong> Respond to your inquiries, provide support, and communicate about your orders or services</li>
+            <li><strong>Service Delivery:</strong> Provide consulting services, estate liquidation, and marketplace services</li>
+            <li><strong>Improvement:</strong> Analyze website usage to improve our services, user experience, and content</li>
+            <li><strong>Marketing:</strong> Send you promotional materials, newsletters, and updates (with your consent)</li>
+            <li><strong>Legal Compliance:</strong> Comply with legal obligations and protect our rights</li>
+            <li><strong>Security:</strong> Detect, prevent, and address fraud, security issues, and technical problems</li>
+        </ul>
+
+        <h2>3. How We Share Your Information</h2>
+        
+        <p>We do not sell your personal information. We may share your information with third parties in the following circumstances:</p>
+        
+        <h3>Service Providers</h3>
+        <ul>
+            <li><strong>Payment Processing:</strong> Stripe processes all payment transactions securely. We do not store your complete credit card information.</li>
+            <li><strong>Analytics:</strong> Google Analytics helps us understand website usage and improve our services.</li>
+            <li><strong>Email Services:</strong> Email service providers help us send order confirmations and communications.</li>
+            <li><strong>Shipping Partners:</strong> Shipping companies receive necessary information to deliver your purchases.</li>
+            <li><strong>Marketplace Partners:</strong> eBay, HiBid, and Shopify when fulfilling marketplace orders from these platforms.</li>
+        </ul>
+
+        <h3>Legal Requirements</h3>
+        <p>We may disclose your information if required by law, court order, or governmental authority, or to protect our rights, property, or safety.</p>
+
+        <h3>Business Transfers</h3>
+        <p>In the event of a merger, acquisition, or sale of assets, your information may be transferred to the acquiring entity.</p>
+
+        <h2>4. Data Security</h2>
+        
+        <p>We implement appropriate technical and organizational security measures to protect your personal information, including:</p>
+        <ul>
+            <li>SSL/TLS encryption for data transmission</li>
+            <li>Secure payment processing through PCI-compliant providers (Stripe)</li>
+            <li>Access controls and authentication</li>
+            <li>Regular security assessments</li>
+        </ul>
+        
+        <p>However, no method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your information, we cannot guarantee absolute security.</p>
+
+        <h2>5. Your Privacy Rights</h2>
+        
+        <p>Depending on your location, you may have certain rights regarding your personal information:</p>
+        
+        <h3>General Rights</h3>
+        <ul>
+            <li><strong>Access:</strong> Request access to the personal information we hold about you</li>
+            <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information</li>
+            <li><strong>Deletion:</strong> Request deletion of your personal information (subject to legal obligations)</li>
+            <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications at any time</li>
+            <li><strong>Data Portability:</strong> Request a copy of your data in a portable format</li>
+        </ul>
+
+        <h3>California Residents (CCPA)</h3>
+        <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA):</p>
+        <ul>
+            <li>Right to know what personal information is collected, used, shared, or sold</li>
+            <li>Right to delete personal information</li>
+            <li>Right to opt-out of the sale of personal information (we do not sell personal information)</li>
+            <li>Right to non-discrimination for exercising your privacy rights</li>
+        </ul>
+
+        <h3>European Residents (GDPR)</h3>
+        <p>If you are located in the European Economic Area (EEA), you have rights under the General Data Protection Regulation (GDPR):</p>
+        <ul>
+            <li>Right to access, rectify, or erase your personal data</li>
+            <li>Right to restrict or object to processing</li>
+            <li>Right to data portability</li>
+            <li>Right to withdraw consent at any time</li>
+            <li>Right to lodge a complaint with a supervisory authority</li>
+        </ul>
+
+        <h2>6. Third-Party Links</h2>
+        
+        <p>Our website may contain links to third-party websites, including marketplace platforms (eBay, HiBid, Shopify). We are not responsible for the privacy practices of these external sites. We encourage you to review their privacy policies.</p>
+
+        <h2>7. Children's Privacy</h2>
+        
+        <p>Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately, and we will delete such information.</p>
+
+        <h2>8. Data Retention</h2>
+        
+        <p>We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required by law. When we no longer need your information, we will securely delete or anonymize it.</p>
+
+        <h2>9. Do Not Track Signals</h2>
+        
+        <p>Some browsers include a "Do Not Track" (DNT) feature. Currently, there is no industry standard for responding to DNT signals. Our website does not respond to DNT signals at this time.</p>
+
+        <h2>10. International Data Transfers</h2>
+        
+        <p>If you are accessing our website from outside the United States, please be aware that your information may be transferred to, stored, and processed in the United States. By using our services, you consent to this transfer.</p>
+
+        <h2>11. Changes to This Privacy Policy</h2>
+        
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will post the updated policy on this page with a new "Last Updated" date. We encourage you to review this policy periodically.</p>
+
+        <h2>12. Contact Us</h2>
+        
+        <div class="contact-box">
+            <h3>Questions About Privacy?</h3>
+            <p>If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+            <p><strong>45° North Collective</strong><br>
+            Portland, Oregon<br>
+            Email: <a href="mailto:info@45northcollective.com">info@45northcollective.com</a><br>
+            Phone: <a href="tel:6575226467">(657) 522-6467</a></p>
+            
+            <p style="margin-top: 1rem;">To exercise your privacy rights or request information about your data, please email us with "Privacy Request" in the subject line.</p>
+        </div>
+
+        <h2>13. Consent</h2>
+        
+        <p>By using our website and services, you acknowledge that you have read and understood this Privacy Policy and consent to the collection, use, and disclosure of your information as described herein.</p>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 45° North Collective · 431 NW Flanders St #305, Portland, Oregon · <a href="mailto:info@45northcollective.com">info@45northcollective.com</a> · <a href="tel:6575226467">(657) 522-6467</a></p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://www.instagram.com/45northcollective" target="_blank" rel="noopener noreferrer" style="margin: 0 0.5rem;">Instagram</a> · 
+            <a href="https://www.facebook.com/45northcollective" target="_blank" rel="noopener noreferrer" style="margin: 0 0.5rem;">Facebook</a>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;"><a href="privacy-policy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+    </script>
+    <script src="cookie-consent.js"></script>
+</body>
+</html>

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holiday Campaign - Reuse, Regift, Rewrap | 45° North Collective</title>
+    <meta name="description" content="Holiday campaign spotlighting local shops — moving your inventory to buyers nationwide who want to give the gift of previously loved.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://45degreesnorth.co/holiday-campaign.html">
+    <meta property="og:title" content="Holiday Campaign - Reuse, Regift, Rewrap | 45° North Collective">
+    <meta property="og:description" content="Holiday campaign spotlighting local shops — moving your inventory to buyers nationwide who want to give the gift of previously loved.">
+    <meta property="og:image" content="https://45degreesnorth.co/45north-logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="cookie-consent.css">
+    
+    <!-- Google Analytics with Cookie Consent -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      if (localStorage.getItem('cookieConsent') === 'accepted') {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-MJE80RBSSL';
+        document.head.appendChild(script);
+        script.onload = function() {
+          gtag('js', new Date());
+          gtag('config', 'G-MJE80RBSSL');
+        };
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0d1117;
+            color: #f0f6fc;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(143, 159, 131, 0.08) 0%, transparent 60%);
+        }
+
+        /* === STANDARDIZED NAV === */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+            background: #8f9f83;
+            transition: all 0.3s ease;
+            height: 120px;
+            overflow: visible;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav.scrolled {
+            height: 80px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+        .logo { 
+            display: flex; 
+            align-items: center;
+            position: relative;
+            top: -10px;
+        }
+        .logo img { 
+            height: 130px;
+            transition: height 0.3s;
+        }
+        .nav.scrolled .logo img { height: 100px; }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+        .nav-links a:hover { opacity: 0.8; }
+        .nav-cta {
+            background: white !important;
+            color: #8f9f83 !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s;
+        }
+        /* === END NAV === */
+
+        .page {
+            padding-top: 70px;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            margin-bottom: 5rem;
+            margin-top: 120px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .campaign-badge {
+            display: inline-block;
+            background: rgba(143, 159, 131, 0.15);
+            border: 1px solid rgba(143, 159, 131, 0.4);
+            color: #8f9f83;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: #8f9f83;
+        }
+
+        .hero-sub {
+            font-size: 1.25rem;
+            color: #8b949e;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #8f9f83 0%, #6d7a63 100%);
+            color: #0d1117;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(143, 159, 131, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(143, 159, 131, 0.4);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+            padding: 3rem 0;
+            border-top: 1px solid #30363d;
+            border-bottom: 1px solid #30363d;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #8f9f83;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        /* How It Works */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step {
+            background: rgba(22, 27, 34, 0.8);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            border-color: #8f9f83;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8f9f83 0%, #6d7a63 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #0d1117;
+            margin: 0 auto 1rem;
+        }
+
+        .step-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-desc {
+            font-size: 1rem;
+            color: #8b949e;
+            line-height: 1.5;
+        }
+
+        /* Value Props */
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .value-prop {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: rgba(22, 27, 34, 0.5);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .value-prop:hover {
+            transform: translateY(-3px);
+            border-color: rgba(143, 159, 131, 0.5);
+        }
+
+        .value-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(143, 159, 131, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .value-icon svg {
+            width: 28px;
+            height: 28px;
+            color: #8f9f83;
+        }
+
+        .value-text h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-text p {
+            font-size: 0.95rem;
+            color: #8b949e;
+            line-height: 1.5;
+        }
+
+        /* Guarantee */
+        .guarantee {
+            background: linear-gradient(135deg, rgba(143, 159, 131, 0.1) 0%, rgba(143, 159, 131, 0.05) 100%);
+            border: 2px solid rgba(143, 159, 131, 0.3);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guarantee-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #8f9f83;
+            margin-bottom: 1rem;
+        }
+
+        .guarantee-text {
+            font-size: 1.1rem;
+            color: #f0f6fc;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(22, 27, 34, 0.8);
+            border-radius: 16px;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #8b949e;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 3rem;
+            border-top: 1px solid #30363d;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .team {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .team-member h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-member p {
+            font-size: 0.95rem;
+            color: #8f9f83;
+        }
+
+        .contact {
+            text-align: right;
+        }
+
+        .contact-item {
+            font-size: 1rem;
+            color: #8b949e;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: #f0f6fc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-item a:hover {
+            color: #8f9f83;
+        }
+
+        @media (max-width: 768px) {
+            .page {
+                padding: 2rem 1.5rem;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-sub {
+                font-size: 1.1rem;
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .value-props {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact {
+                text-align: center;
+            }
+
+            .team {
+                justify-content: center;
+            }
+            
+            .nav-container {
+                flex-wrap: wrap;
+            }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: #8f9f83;
+                padding: 1rem 2rem;
+                gap: 1rem;
+            }
+            .nav-links.open { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <p><strong>🍪 We use cookies</strong></p>
+            <p>We use Google Analytics to understand how visitors interact with our site. By clicking "Accept", you consent to our use of cookies. <a href="privacy-policy.html">Learn more</a></p>
+            <div class="cookie-buttons">
+                <button onclick="acceptCookies()" class="cookie-accept">Accept</button>
+                <button onclick="declineCookies()" class="cookie-decline">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="index.html" class="logo">
+            <img src="45north-logo.png" alt="45° North Collective">
+        </a>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="marketplace.html">Marketplace</a></li>
+            <li><a href="holiday-campaign.html">Campaigns</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="portal-simple.html" class="nav-cta">Client Portal</a></li>
+        </ul>
+    </nav>
+
+    <div class="page">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="campaign-badge">🎁 Holiday Campaign</div>
+            <h1><span>Reuse, Regift, Rewrap</span></h1>
+            <p class="hero-sub">We're spotlighting local shops this holiday season — moving your inventory to buyers nationwide who want to give the gift of previously loved. Let us add your shop to the series.</p>
+            <a href="contact.html" class="cta-button">Get Started →</a>
+        </section>
+
+        <!-- Stats -->
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-value">$40K+</div>
+                <div class="stat-label">Sold This Quarter</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Auctions Completed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">5,000+</div>
+                <div class="stat-label">Bidder Views</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">3</div>
+                <div class="stat-label">Platforms</div>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-title">Upload Photos or Video</div>
+                <div class="step-desc">Keep your inventory at your shop. Just upload photos or video to our client portal. You get 80-90% when they sell.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-title">We List & Market</div>
+                <div class="step-desc">Professional photos, listings on HiBid, eBay & Whatnot. Full promo push.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-title">We Sell & Coordinate</div>
+                <div class="step-desc">Auctions run, buyers pay, we coordinate fulfillment. You get paid 80-90%.</div>
+            </div>
+        </div>
+
+        <!-- Value Props -->
+        <div class="value-props">
+            <div class="value-prop">
+                <div class="value-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div class="value-text">
+                    <h4>80-90% to You When It Sells</h4>
+                    <p>You set your retail asking price. We sell it and pay you 80-90% when it moves.</p>
+                </div>
+            </div>
+            <div class="value-prop">
+                <div class="value-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <div class="value-text">
+                    <h4>Professional Everything</h4>
+                    <p>Studio photos, optimized listings, targeted marketing to serious buyers.</p>
+                </div>
+            </div>
+            <div class="value-prop">
+                <div class="value-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <div class="value-text">
+                    <h4>National Reach</h4>
+                    <p>Your inventory hits buyers across the country, not just foot traffic.</p>
+                </div>
+            </div>
+            <div class="value-prop">
+                <div class="value-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <div class="value-text">
+                    <h4>Low Risk</h4>
+                    <p>No upfront costs. You keep your inventory until it sells. Get paid when we get paid.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Guarantee -->
+        <div class="guarantee">
+            <div class="guarantee-title">💰 Our Performance Guarantee</div>
+            <div class="guarantee-text">For retainer clients: If our sales don't beat your monthly fee by day 90, we refund your last month and walk away. No questions asked.</div>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to Move Some Inventory?</h2>
+            <p>Drop us a line and let's talk about adding your shop to the Holiday Campaign.</p>
+            <a href="contact.html" class="cta-button">Get In Touch →</a>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="team">
+                <div class="team-member">
+                    <h4>Forest VanDehey</h4>
+                    <p>Managing Partner</p>
+                </div>
+                <div class="team-member">
+                    <h4>Peyton Sprague</h4>
+                    <p>Chief of Creative</p>
+                </div>
+            </div>
+            <div class="contact">
+                <div class="contact-item"><a href="mailto:info@45northcollective.com">info@45northcollective.com</a></div>
+                <div class="contact-item"><a href="tel:6575226467">(657) 522-6467</a></div>
+                <div class="contact-item"><a href="index.html">45northcollective.com</a></div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+    </script>
+    <script src="cookie-consent.js"></script>
+</body>
+</html>
